@@ -4,14 +4,13 @@ layout: nil
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>Mister Bleigh</title>
- <link href="http://mbleigh.github.com/atom.xml" rel="self"/>
- <link href="http://www.mbleigh.com/"/>
+ <title>´ÐÄ©</title>
+ <link href="http://congmo.github.com/atom.xml" rel="self"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://www.mbleigh.com/</id>
+ <id>http://congmo.github.com/</id>
  <author>
-   <name>Michael Bleigh</name>
-   <email>mbleigh@mbleigh.com</email>
+   <name>congmo</name>
+   <email>congmogit@gmail.com</email>
  </author>
  
  {% for post in site.posts %}
