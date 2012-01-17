@@ -1,6 +1,0 @@
----
-layout:post
----
-<h2>Resin中类加载器</h2>
-在我了解的ClassLoader是在com.caucho.loader包下，结构请看下图：
-<image src="cl.png" />

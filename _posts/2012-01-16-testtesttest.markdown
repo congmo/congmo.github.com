@@ -1,8 +1,0 @@
----
-layout: post
----
-ddddddddddddddddddddddddddddd
-ddddddddddddddddddddddddddddd
-dddddddddddddddddddddddddddddddddd
-dddddddddddddddddddddddddddddddd
-ddddddddddddddddddddddddddd
