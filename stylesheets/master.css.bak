@@ -73,7 +73,6 @@ a:visited {
 #menu ul li a#linkedin_link { background-image: url(/images/linkedin.gif); }
 #menu ul li a#github_link { background-image: url(/images/github.gif); }
 #menu ul li a#about_link { background-image: url(/images/about.gif); }
-#menu ul li a#home_link { background-image: url(/images/home.gif); }
 
 #content {
   padding: 2em 0;
