@@ -316,7 +316,7 @@ code {
 }
 
 #post_content {
-  height: 290px;
+  height: 288px;
   display:block;/*内联对象需加*/ 
   overflow:hidden;
 }
