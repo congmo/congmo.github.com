@@ -267,7 +267,7 @@ code {
   color: #000;
   z-index: 10000;
   font-size: 0.8em;
-  line-height: 100%;
+  line-height: 150%;
 }
 
 .repo h3 {
