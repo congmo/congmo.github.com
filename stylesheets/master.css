@@ -289,7 +289,14 @@ code {
   float: none;
   vertical-align: top;
 }
-
+#lastest-comments.big .repo {
+  float: left;
+  width: 25.2em;
+  margin: 1.2em 1em 0 0;
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+} 
 #github-projects .repo .post .body a{ 
   display:block;/*内联对象需加*/ 
   width:16em; 
@@ -299,8 +306,17 @@ code {
   text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/ 
 }
 
+#latest-comments .repo .post .body a{ 
+  display:block;
+  width:16em; 
+  word-break:keep-all;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
 #post_content {
-  height: 450px;
+  height: 293px;
   display:block;/*内联对象需加*/ 
   overflow:hidden;
 }
