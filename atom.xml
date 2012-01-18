@@ -4,7 +4,7 @@ layout: nil
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>´ÐÄ©</title>
+ <title>congmo</title>
  <link href="http://congmo.github.com/atom.xml" rel="self"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
  <id>http://congmo.github.com/</id>
