@@ -321,6 +321,12 @@ code {
   overflow:hidden;
 }
 
+#blog_content{
+  height: 289px;
+  display:block;/*内联对象需加*/ 
+  overflow:hidden;  
+}
+
 .float-left { float: left; }
 .float-right { float: right; }
 
