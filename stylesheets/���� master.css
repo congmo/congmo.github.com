@@ -3,9 +3,16 @@ body {
   letter-spacing: 0em;
   background: #fff url(/images/header_bg.gif) repeat-x top;
   color: #353B40;
-  margin: 0;
-  padding: 0;
+  margin-bottom: 10px;
   font-size: 14px;
+  line-height: 145%;
+  line-height: 22px;
+  padding: 8px;
+  background: white;
+}
+body li{
+  list-style-position: inside;
+  padding-left: 20px;
 }
 
 a {
@@ -83,6 +90,28 @@ a:visited {
   margin: 0 0 0.5em 0;
   color: black;
   font-size: 1.2em;
+}
+
+#title{
+  font-size: 20px;
+  font-family: 'Microsoft YaHei',Verdana,"BitStream vera Sans";
+}
+
+#home_left h1{
+  text-decoration: none;
+  clear: left;
+  display: block;
+  color: black;
+  padding: 0.3em 0.5em;
+  margin: 0 0 0.2em 0;
+  font-weight: bold;
+  background: #f8f8f8 url(/images/header_gradient.gif) repeat-x bottom;
+  -moz-box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+  -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+  font-weight: normal;
+  color: #000;
+  z-index: 10000;
 }
 
 #content p {

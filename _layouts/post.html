@@ -1,11 +1,13 @@
 ---
 layout: master
+lastest_posts: 10
 ---
-<div class='post'>
+<div class='home_box' id='home_left'>
   <span class='date'>{{page.date | date_to_string}}</span>
-  <h1><a href='{{page.url}}'>{{page.title}}</a></h1>
-  <div class='body'>{{ content }}</div>
-</div>
+  <h1><a id='title' href='{{page.url}}'>{{page.title}}</a></h1>
+  <div class='body' style='border-left: 1px solid #EEE;
+  border-right: 1px solid #EEE;'>{{ content }}</div>
+
 
 <div class="related">
   <h3>Related Posts</h3>
@@ -19,11 +21,45 @@ layout: master
     {% endfor %}
   </table>
 </div>
+<div id="disqus_thread"></div>
+</div>
 
+<div class='home_box' id='home_right'>
+  <h2>最新文章</h2>
+  <div id='github-projects'>
+    <div class="repo">  
+      {% for post in site.posts limit:page.lastest_posts %}
+        <div class='post'>
+          <div class='body'><a href='{{post.url}}' style="font-size:0.9em">{{post.title}}</a></div>
+        </div>
+      {% endfor %}
+    </div>
+  <div>
+  <h2>热点文章</h2>
+  <div id='lastest-comments'>
+    <div class="repo">
+      <div id="popularthreads" class="dsq-widget"><script type="text/javascript" src="http://congmo.disqus.com/popular_threads_widget.js?num_items=10"></script></div>
+    </div>  
+  </div>
+  <h2>近期评论</h2>
+  <div id='lastest-comments'>
+    <div class="repo">
+      <div id="recentcomments" class="dsq-widget"><script type="text/javascript" src="http://congmo.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=24&excerpt_length=20"></script></div>
+    </div>  
+  </div>
+  <h2>友情链接</h2>
+  <div id='github-projects'>
+    <div class="repo">  
+      <div class='post'>
+        <div class='body'><li><a target='_blank' href='http://coolshell.cn/' style='font-size:14pt' >  酷 壳  </a></li></div>
+      </div>
+    </div>
+  </div>
+</div>
 <script type="text/javascript" charset="utf-8">
   var disqus_url = "http://congmo.github.com{{page.url}}";
 </script>
-<div id="disqus_thread"></div>
+
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'congmo'; // required: replace example with your forum shortname
@@ -35,5 +71,3 @@ layout: master
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
