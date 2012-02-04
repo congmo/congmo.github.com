@@ -1,12 +1,18 @@
 body {
-
   font-family: Arial,/*'Microsoft YaHei',*/Verdana,"BitStream vera Sans",Tahoma,Helvetica,Sans-serif;
   letter-spacing: 0em;
-  background: #EEE url(/images/header_bg.gif) repeat-x top;
-  
-  margin: 0;
-  padding: 0;
+  background: #fff url(/images/header_bg.gif) repeat-x top;
+  color: #353B40;
+  margin-bottom: 10px;
   font-size: 14px;
+  line-height: 145%;
+  line-height: 22px;
+  padding: 8px;
+  background: white;
+}
+body li{
+  list-style-position: inside;
+  padding-left: 20px;
 }
 
 a {
@@ -86,7 +92,30 @@ a:visited {
   font-size: 1.2em;
 }
 
+#title{
+  font-size: 20px;
+  font-family: 'Microsoft YaHei',Verdana,"BitStream vera Sans";
+}
+
+#home_left h1{
+  text-decoration: none;
+  clear: left;
+  display: block;
+  color: black;
+  padding: 0.3em 0.5em;
+  margin: 0 0 0.2em 0;
+  font-weight: bold;
+  background: #f8f8f8 url(/images/header_gradient.gif) repeat-x bottom;
+  -moz-box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+  -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+  font-weight: normal;
+  color: #000;
+  z-index: 10000;
+}
+
 #content p {
+  line-height: 160%;
   line-height: 22px;
 }
 
@@ -236,38 +265,6 @@ div.related {
   width: 680px;
 }
 
-#title{
-  margin: 0;
-}
-
-#title a{
-  font-size:0.6em;
-  text-decoration: none;
-  clear: left;
-  display: block;
-  padding: 0.3em 0.5em;
-  margin: 0 0 0.2em 0;
-  font-weight: bold;
-  background: #F8F8F8 url(/images/header_gradient.gif) repeat-x bottom;
-  -moz-box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
-  -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
-  color: #583;
-}
-
-#post_content{
-  padding:0.5em;
-  background: #FFF;
-}
-
-#post_content li{
-  background: url(/images/icons.gif) 0 -560px no-repeat;
-  line-height: 22px;
-  padding-left: 22px;
-  list-style: none;
-  margin-top: 5px;
-}
-
 #home_right,#home_right_1 {
   width: 260px;
   margin-left: 1em;
@@ -348,12 +345,10 @@ code {
   text-overflow:ellipsis;
 }
 
-#post_content_overflow {
+#post_content {
   height: 289px;
   display:block;/*内联对象需加*/ 
   overflow:hidden;
-  padding:0.5em;
-  background: #FFF;
 }
 
 #blog_content{
