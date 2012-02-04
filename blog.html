@@ -3,16 +3,17 @@ layout: master
 title: Blog
 full_posts: 5
 ---
-
+<div class='home_box' id='home_left'>
 {% for post in site.posts %}
   {% if forloop.index < page.full_posts %}
-  <div class='home_box' id='home_left'>
+  <div>
     <span class='date'>{{post.date | date_to_string}}</span>
     <h1 id='title'><a href='{{post.url}}'>{{post.title}}</a></h1>
     <div class='body' id='post_content_overflow'>{{post.content}}</div>
     <BR>
     <a href='{{post.url}}#disqus_thread'>View Comments</a>
   </div>
+  <br/>
   {% else %}
 {% if forloop.index == page.full_posts %}
   <h3>全部文章</h3>
@@ -26,14 +27,14 @@ full_posts: 5
   {% endif %}
 {% endfor %}
 </table>
-
+</div>
 <div class='home_box' id='home_right'>
   <h2>最新文章</h2>
   <div id='github-projects'>
     <div class="repo">  
       {% for post in site.posts limit:page.lastest_posts %}
         <div class='post'>
-          <div class='body'><a href='{{post.url}}' style="font-size:14px">{{post.title}}</a></div>
+          <div class='body'><a href='{{post.url}}' style="font-size:0.9em">{{post.title}}</a></div>
         </div>
       {% endfor %}
     </div>
