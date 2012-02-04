@@ -4,12 +4,11 @@ lastest_posts: 10
 ---
 <div class='home_box' id='home_left'>
   <span class='date'>{{page.date | date_to_string}}</span>
-  <h1><a id='title' href='{{page.url}}'>{{page.title}}</a></h1>
-  <div class='body' style='border-left: 1px solid #EEE;
-  border-right: 1px solid #EEE;'>{{ content }}</div>
+  <h1 id='title'><a href='{{page.url}}'>{{page.title}}</a></h1>
+  <div class='body' id='post_content'>{{ content }}</div>
 
 
-<div class="related">
+<!--<div class="related">
   <h3>Related Posts</h3>
   <table class="post-list">
     {% for post in site.related_posts limit:1 %}
@@ -20,7 +19,7 @@ lastest_posts: 10
       </tr>
     {% endfor %}
   </table>
-</div>
+</div>-->
 <div id="disqus_thread"></div>
 </div>
 
