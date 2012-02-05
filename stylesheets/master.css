@@ -3,10 +3,10 @@ body {
   font-family: Arial,/*'Microsoft YaHei',*/Verdana,"BitStream vera Sans",Tahoma,Helvetica,Sans-serif;
   letter-spacing: 0em;
   background: #EEE url(/images/header_bg.gif) repeat-x top;
-  
   margin: 0;
   padding: 0;
   font-size: 14px;
+  border-bottom-color: #999;
 }
 
 a {
@@ -353,6 +353,12 @@ code {
   overflow:hidden;
   padding:0.5em;
   background: #FFF;
+}
+
+#contiue{
+  padding:0.5em;
+  background: #FFF;
+  font-size:14px;
 }
 
 #blog_content{

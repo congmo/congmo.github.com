@@ -9,9 +9,10 @@ full_posts: 5
   <div>
     <span class='date'>{{post.date | date_to_string}}</span>
     <h1 id='title'><a href='{{post.url}}'>{{post.title}}</a></h1>
-    <div class='body' id='post_content_overflow'>{{post.content}}</div>
-    <BR>
-    <a href='{{post.url}}#disqus_thread'>View Comments</a>
+    <div class='body' >
+      <div id="post_content_overflow">{{post.content}}</div>
+      <div id='contiue'><a href='{{post.url}}'>阅读全文...</a></div>
+    </div>
   </div>
   <br/>
   {% else %}
