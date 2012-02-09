@@ -34,7 +34,6 @@ AbstractStringBuilder这个抽象类提供了StringBuffer和StringBuilder绝大�
 </li>
 
 eg.StringBuffer中replace()方法：
-
 {% highlight java %}
 public synchronized StringBuffer replace(int start, int end, String str) {
         super.replace(start, end, str);

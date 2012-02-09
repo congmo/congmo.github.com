@@ -1,13 +1,12 @@
 ---
 layout: master
-title: Michael Bleigh on the Web
-full_posts: 5
+full_posts: 1
 lastest_posts: 10
 ---
 
-<div class='home_box' id='home_left'>
+<div class='home_box' id='home_left' style='margin-left:0.3em'>
   <!--<h2><a href='/atom.xml' class='float-right' target='_blank'><img src='/images/subscribe-icon.gif' alt='Subscribe'/></a> <a href='/blog.html'>全部文章</a></h2>-->
-  {% for post in site.posts limit:page.full_posts %}
+  <!--{% for post in site.posts limit:page.full_posts %}
   <div class='post'>
     <span class='date'>{{post.date | date_to_string}}</span>
     <h1 id='title'><a href='{{post.url}}'>{{post.title}}</a></h1>
@@ -17,9 +16,34 @@ lastest_posts: 10
     </div>
     <br/>
     
-    <!--<a href='{{post.url}}#disqus_thread'>View Comments</a>-->
+    <a href='{{post.url}}#disqus_thread'>View Comments</a>
   </div>
   {% endfor %}
+  <div>
+    <a href='{{paginator.posts}}'>下一页()</a>
+  </div>-->
+{% for post in paginator.posts %}
+  <div class="posts">
+    <span class='date'>{{ post.date | date_to_string }}</span>
+    <h1 id='title'><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h1>
+    <div class="body" style='background: #FFF;'>
+      <div id="post_content_overflow">{{ post.content }}</div>
+      <div id='contiue'><a href='{{post.url}}'>阅读全文...</a></div>
+    </div><br />
+    </div>
+    {% endfor %}
+
+  {% if paginator.total_pages > 1 %}
+    <div class="navigation">
+        {% for page in (1..paginator.total_pages) %}
+          {% if page == paginator.page %}
+            <span class="num">{{ page }}</span>
+          {% else %}
+            <a class="num" href="/{%if page > 1 %}page{{ page }}/{% endif %}">{{ page }}</a>
+          {% endif %}
+        {% endfor %}
+    </div>
+  {% endif %}
 </div>
 <div class='home_box' id='home_right'>
   <h2>最新文章</h2>
