@@ -56,7 +56,7 @@ a:visited {
   list-style: none;
   text-align: center;
   margin-top: 10px;
-  margin-right: 20px;
+  margin-right: 40px;
 }
 
 #menu ul li {
@@ -73,11 +73,8 @@ a:visited {
   text-indent: -999em;
 }
 
-#menu ul li a#twitter_link { background-image: url(/images/twitter.gif); }
-#menu ul li a#blog_link { background-image: url(/images/blog.gif); }
-#menu ul li a#linkedin_link { background-image: url(/images/linkedin.gif); }
+#menu ul li a#twitter_link { background-image: url(/images/weibo.gif); }
 #menu ul li a#github_link { background-image: url(/images/github.gif); }
-#menu ul li a#about_link { background-image: url(/images/about.gif); }
 #menu ul li a#home_link { background-image: url(/images/home.gif); }
 
 #content {
@@ -302,16 +299,14 @@ div.related {
 }
 
 #post_content li{
-  background: url(/images/icons.gif) 0 -560px no-repeat;
   line-height: 22px;
   padding-left: 22px;
-  list-style: none;
   margin-top: 5px;
 }
 
 #home_right,#home_right_1 {
   width: 260px;
-  margin-left: 0.5em;
+  margin-left: 0.8em;
 }
 
 .clearfix { clear: both;}
@@ -341,6 +336,14 @@ code {
   color: #000;
   z-index: 10000;
   font-size: 0.9em;
+}
+
+.repo li{
+  background: url(/images/icons.gif) 0 -557px no-repeat;
+  line-height: 22px;
+  padding-left: 22px;
+  list-style: none;
+  text-align: -webkit-match-parent;
 }
 
 .repo h3 {

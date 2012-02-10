@@ -5,23 +5,6 @@ lastest_posts: 10
 ---
 
 <div class='home_box' id='home_left' style='margin-left:0.3em'>
-  <!--<h2><a href='/atom.xml' class='float-right' target='_blank'><img src='/images/subscribe-icon.gif' alt='Subscribe'/></a> <a href='/blog.html'>全部文章</a></h2>-->
-  <!--{% for post in site.posts limit:page.full_posts %}
-  <div class='post'>
-    <span class='date'>{{post.date | date_to_string}}</span>
-    <h1 id='title'><a href='{{post.url}}'>{{post.title}}</a></h1>
-    <div class='body' >
-      <div id="post_content_overflow">{{post.content}}</div>
-      <div id='contiue'><a href='{{post.url}}'>阅读全文...</a></div>
-    </div>
-    <br/>
-    
-    <a href='{{post.url}}#disqus_thread'>View Comments</a>
-  </div>
-  {% endfor %}
-  <div>
-    <a href='{{paginator.posts}}'>下一页()</a>
-  </div>-->
 {% for post in paginator.posts %}
   <div class="posts">
     <span class='date'>{{ post.date | date_to_string }}</span>
@@ -44,36 +27,4 @@ lastest_posts: 10
         {% endfor %}
     </div>
   {% endif %}
-</div>
-<div class='home_box' id='home_right'>
-  <h2>最新文章</h2>
-  <div id='github-projects'>
-    <div class="repo">  
-      {% for post in site.posts limit:page.lastest_posts %}
-        <div class='post'>
-          <div class='body'><a href='{{post.url}}' style="font-size:0.9em">{{post.title}}</a></div>
-        </div>
-      {% endfor %}
-    </div>
-  <div>
-  <h2>热点文章</h2>
-  <div id='lastest-comments'>
-    <div class="repo">
-      <div id="popularthreads" class="dsq-widget"><script type="text/javascript" src="http://congmo.disqus.com/popular_threads_widget.js?num_items=10"></script></div>
-    </div>  
-  </div>
-  <h2>近期评论</h2>
-  <div id='lastest-comments'>
-    <div class="repo">
-      <div id="recentcomments" class="dsq-widget"><script type="text/javascript" src="http://congmo.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=24&excerpt_length=20"></script></div>
-    </div>  
-  </div>
-  <h2>友情链接</h2>
-  <div id='github-projects'>
-    <div class="repo">  
-      <div class='post'>
-        <div class='body'><li><a target='_blank' href='http://coolshell.cn/' style='font-size:14px' >  酷 壳  </a></li></div>
-      </div>
-    </div>
-  </div>
 </div>

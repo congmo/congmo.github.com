@@ -18,7 +18,6 @@
         <div id='menu'>
           <ul>
 			      <li><a href='/index.html' id='home_link' title='Home'>Home</a></li>
-            <li><a href='/blog.html' id='blog_link' title='Blog'>Blog</a></li>
             <li><a href='http://github.com/congmo' target='_blank' title='GitHub' rel='me' id='github_link'>GitHub</a></li>
             <li><a href='http://weibo.com/u/2033654862' title='WeiBo' target='_blank' rel='me' id='twitter_link'>WeiBo</a></li>
           </ul>
@@ -27,7 +26,69 @@
       <div id='navigater'></div>
       <div id='content'>
         {{ content }}
-        <div class='clearfix'></div>
+          <div class='home_box' id='home_right'>
+            <h2>最新文章</h2>
+            <div id='github-projects'>
+              <div class="repo">  
+                {% for post in site.posts limit:page.lastest_posts %}
+                  <div class='post'>
+                    <div class='body'><a href='{{post.url}}' style="font-size:0.9em">{{post.title}}</a></div>
+                  </div>
+                {% endfor %}
+              </div>
+            <div>
+  
+            <h2>近期评论</h2>
+            <div>
+              <div class="repo">
+                <div id="recentcomments" class="dsq-widget"><script type="text/javascript" src="http://congmo.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=24&excerpt_length=20"></script></div>
+              </div>  
+            </div>
+
+            <h2>文章分类</h2>
+            <div>
+              <div class="repo">
+                {% for category in site.categories %}
+                  <li class="cat-item cat-item-{{category | last | size }}"><a href="/category/{{category | first}}/{{category | first}}.html" title="View all posts filed under {{category | first}}">{{category | first}} ({{category | last | size }})</a></li>
+                {% endfor %}
+               </div>  
+            </div>
+
+           <!-- <h2>存档</h2>
+            <div>
+              <div class="repo">
+                {% for post in site.posts %}
+                  {% capture the_year %}
+                    {{ post.date|date:"%Y" }}
+                  {% endcapture %}
+                  {% capture previous_year %}
+                    {{ previous_post.date|date:"%Y" }}
+                  {% endcapture %}
+  
+                  {% if the_year != previous_year %}
+                    {% assign year_changed = true %}
+                  {% else %}
+                    {% assign year_changed = false %}
+                  {% endif %}
+                  {% if year_changed %}
+                    <li><a href="/archive/{{the_year}}/{{the_year}}.html">{{the_year}}</a></li>
+                  {% endif %}
+                  {% assign previous_post = post %}
+                  {% endfor %}
+              </div>
+            </div>-->
+
+
+            <h2>友情链接</h2>
+            <div id='github-projects'>
+              <div class="repo">  
+                <div class='post'>
+                  <div class='body'><li><a target='_blank' href='http://coolshell.cn/' style='font-size:14px' >  酷 壳  </a></li></div>
+                  <div class='body'><li><a target='_blank' href='http://chxt6896.github.com' style='font-size:14px' >  浩宇啸天  </a></li></div>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
     <div id='footer'>
