@@ -488,27 +488,27 @@ a#gotop .tube {
 a#gotop:hover em {
   color: white;
 }
-
+/*
 pre::-webkit-scrollbar, .highlight::-webkit-scrollbar, .gist-highlight::-webkit-scrollbar{
 height: .5em;
 background: rgba(255, 255, 255, 0.15);
-}
+}*/
 
 img{
   -moz-border-radius: 0.3em;
--webkit-border-radius: 0.3em;
--o-border-radius: 0.3em;
--ms-border-radius: 0.3em;
--khtml-border-radius: 0.3em;
-border-radius: 0.3em;
--moz-box-shadow: rgba(0,0,0,0.15) 0 1px 4px;
--webkit-box-shadow: rgba(0,0,0,0.15) 0 1px 4px;
--o-box-shadow: rgba(0,0,0,0.15) 0 1px 4px;
-box-shadow: rgba(0,0,0,0.15) 0 1px 4px;
--moz-box-sizing: border-box;
--webkit-box-sizing: border-box;
--ms-box-sizing: border-box;
-box-sizing: border-box;
-padding: 3px;
-border: #F8F8F8 0.5em solid;
+  -webkit-border-radius: 0.3em;
+  -o-border-radius: 0.3em;
+  -ms-border-radius: 0.3em;
+  -khtml-border-radius: 0.3em;
+  border-radius: 0.3em;
+  -moz-box-shadow: rgba(0,0,0,0.15) 0 1px 4px;
+  -webkit-box-shadow: rgba(0,0,0,0.15) 0 1px 4px;
+  -o-box-shadow: rgba(0,0,0,0.15) 0 1px 4px;
+  box-shadow: rgba(0,0,0,0.15) 0 1px 4px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 3px;
+  border: #F8F8F8 0.5em solid;
 }
