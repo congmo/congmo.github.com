@@ -311,7 +311,7 @@ div.related {
 
 #home_right,#home_right_1 {
   width: 260px;
-  margin-left: 1em;
+  margin-left: 0.5em;
 }
 
 .clearfix { clear: both;}
@@ -412,3 +412,5 @@ code {
 .float-right { float: right; }
 
 a img { border: 0; }
+
+.highlight{ overflow: auto; } 
