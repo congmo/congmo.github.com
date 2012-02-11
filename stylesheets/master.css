@@ -206,7 +206,7 @@ div.related {
 #footer {
   background-position: top;
   margin: 2em auto 1em;
-  width: 960px;
+  width: 1020px;
   height: 30px;
   color: #444;
   font-size: 0.9em;
@@ -502,12 +502,11 @@ img{
 }
 
 #category-name{
-  padding-left: 10px;
   height:40px;
   color: #555;
   margin-top: 0px;
   display: block;
-  padding: 0.4em 0.6em 0.5em;
+  padding: 1em 0.6em 0.5em;
   font-family: 'Microsoft YaHei',Verdana,"BitStream vera Sans";
 }
 
@@ -518,18 +517,20 @@ img{
 }
 
 #category-post{
+  color: #555;
   margin-left:40px;
   font-size: 20px;
 }
 
 #post-title ,#post-date{
   color: #999;
-  padding-right: 5px;
+  padding-right: 25px;
 }
 
 .separator{
   background:url('/images/separator.png') top left repeat-x;
   margin-left:5px;
+  margin-right: 15px;
   height: 1px;
 }
 

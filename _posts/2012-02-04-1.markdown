@@ -70,7 +70,7 @@ public class PathServlet extends HttpServlet {
     <img src='/post_images/2012/02/resin01.png'>
 </div>
 
-然后写到了如下图的b.txt中。代码中是这样实现的：File file = new File(Path.class.getResource("/").getPath()+"/b.txt");本意是想在a.txt文件目录下入b.txt。结果却和料想的不一样。<br/>
+然后写到了如下图的b.txt中。代码中是这样实现的：File file = new File(Path.class.getResource("/").getPath()+"/b.txt");本意是想在a.txt文件目录下入b.txt。结果却和料想的不一样。
 <div class='center'>
     <img src='/post_images/2012/02/resin02.png'>
 </div>
@@ -156,11 +156,11 @@ public InputStream getResourceAsStream(String name) {
 <div class='center'>
     <img src='/post_images/2012/02/resin05.png'>
 </div>
-<div class='center'>图一</div><br/>
+<div class='center'>图一</div>
 <div class='center'>
     <img src='/post_images/2012/02/resin06.png' width='650px'>
 </div>
-<div class='center'>图二</div><br/>
+<div class='center'>图二</div>
 从上面两幅图中可以看出，图1是与Jdk有关联的，继承自java.net.URLClassLoader。DynamicClassLoader的注释是这样的：
 
 {% highlight java linenos %}
@@ -265,7 +265,7 @@ public URL getResource(String name)
 }
 {% endhighlight %}
 
-代码不难懂，我画了一张流程图，不规范，凑合看下。<br/>
+代码不难懂，我画了一张流程图，不规范，凑合看下。
 <div class='center'>
     <img src='/post_images/2012/02/resin07.png'>
 </div>
