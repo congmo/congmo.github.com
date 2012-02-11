@@ -512,3 +512,35 @@ img{
   padding: 3px;
   border: #F8F8F8 0.5em solid;
 }
+
+#category-name{
+  padding-left: 10px;
+  height:40px;
+  color: #555;
+  margin-top: 0px;
+  display: block;
+  padding: 0.4em 0.6em 0.5em;
+  font-family: 'Microsoft YaHei',Verdana,"BitStream vera Sans";
+}
+
+#category-name h1{
+  padding-top: 0px;
+  margin: 0;
+  vertical-align: middle; 
+}
+
+#category-post{
+  margin-left:40px;
+  font-size: 20px;
+}
+
+#post-title ,#post-date{
+  color: #999;
+  padding-right: 5px;
+}
+
+.separator{
+  background:url('/images/separator.png') top left repeat-x;
+  margin-left:5px;
+  height: 1px;
+}

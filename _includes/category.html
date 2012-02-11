@@ -1,16 +1,20 @@
-<dt>
-	<h3>{{ page.name }}</h3>
-</dt><br />
-<dd>
+<div class='home_box' id='home_left'>
+<span id='category-name'>
+	<h1>Category:{{ page.name }}</h1>
+</span>
+<div class='separator'></div>
+<br />
+<div id='category-post'>
 	{% for post in site.categories[page.name] %}
-		<div class="posts">
-			<h2><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
-			<span style="float:right">{{ post.date | date_to_string }}</span>
-			<div class="entry">
-				<p class="postmetadata"></p>
+		<div id='post-entry'>
+			<a id='post-title' href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+			<span id='post-date' style="float:right">{{ post.date | date_to_string }}</span>
+			<div>
+				<p class="separator"></p>
 			</div><br />
 		</div>
 	{% endfor %}
-</dd>
+</div>
+</div>
 
 
