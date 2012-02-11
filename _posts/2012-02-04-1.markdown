@@ -66,9 +66,14 @@ public class PathServlet extends HttpServlet {
 于是将WEB应用部署到Resin下，运行定义好的Servlet，出乎意料的结果是：/D:/work/resin-3.0.23/webapps/WEB-INF/classes/ 。特别奇怪，怎么会丢掉项目名称：EhCacheTestAnnotation呢？
 
 还有一点值得注意，getPath方法中使用getResourceAsStream("/a.txt")却正常的读到了位于下图的a.txt。
-<img src='/post_images/2012/02/resin01.png'><br/>
+<div class='center'>
+    <img src='/post_images/2012/02/resin01.png'>
+</div>
+
 然后写到了如下图的b.txt中。代码中是这样实现的：File file = new File(Path.class.getResource("/").getPath()+"/b.txt");本意是想在a.txt文件目录下入b.txt。结果却和料想的不一样。<br/>
-<img src='/post_images/2012/02/resin02.png'><br/>
+<div class='center'>
+    <img src='/post_images/2012/02/resin02.png'>
+</div>
 请注意，区别还是丢掉了项目名称。
 
 写的比较乱，稍微总结下：
@@ -111,7 +116,10 @@ public InputStream getResourceAsStream(String name) {
 一个闪光点，是不是与web容器有关啊，于是换成Tomcat6.0。OMG，"奇迹"出现了，真的是这样子啊，换成Tomcat就一样了啊！和预想的一致。
 
 在Tomcat下运行结果如下图:
-<img src='/post_images/2012/02/resin03.png'><br/>
+<div class='center'>
+    <img src='/post_images/2012/02/resin03.png'>
+</div>
+
 对，这就是我想要的。
 
 因此我对Resin产生了厌恶感，之前也因为在Resin下程序报错，在Tomcat下正常运行而纠结了好久。记得看《松本行弘的程序世界》中对C++中的多继承是这样评价的(大概意思)：多重继承带来的负面影响多数是由于使用不当造成的。是不是因为对Resin使用不得当才使得和Tomcat下得到不同的结果。
@@ -124,7 +132,9 @@ public InputStream getResourceAsStream(String name) {
 </class-loader>
 {% endhighlight %}
 其中的compiling-loader很可能与之有关，遂将其注释掉，一切正常。担心是错觉，于是将compiling-loader的path属性改成：webapps/WEB-INF/classes1，然后运行pathServlet，b.txt位置如下图：
-<img src='/post_images/2012/02/resin04.png'><br/>
+<div class='center'>
+    <img src='/post_images/2012/02/resin04.png'>
+</div>
 确实与compiling-loader有关。
 
 <h3><strong>结论</strong></h3>
@@ -143,10 +153,14 @@ public InputStream getResourceAsStream(String name) {
 
 <h3><strong>Resin中的类加载器</strong></h3>
 在我了解的ClassLoader是在com.caucho.loader包下，结构请看下图：
-<img src='/post_images/2012/02/resin05.png'><br/>
-图一<br/>
-<img src='/post_images/2012/02/resin06.png' width='650px'><br/>
-图二<br/>
+<div class='center'>
+    <img src='/post_images/2012/02/resin05.png'>
+</div>
+<div class='center'>图一</div><br/>
+<div class='center'>
+    <img src='/post_images/2012/02/resin06.png' width='650px'>
+</div>
+<div class='center'>图二</div><br/>
 从上面两幅图中可以看出，图1是与Jdk有关联的，继承自java.net.URLClassLoader。DynamicClassLoader的注释是这样的：
 
 {% highlight java linenos %}
@@ -252,7 +266,9 @@ public URL getResource(String name)
 {% endhighlight %}
 
 代码不难懂，我画了一张流程图，不规范，凑合看下。<br/>
-<img src='/post_images/2012/02/resin07.png'><br/>
+<div class='center'>
+    <img src='/post_images/2012/02/resin07.png'>
+</div>
 
 <h3><strong>总结</strong></h3>
 {% highlight java %}

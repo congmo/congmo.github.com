@@ -10,8 +10,9 @@ StringBuffer与StringBuilder是java.lang包下被大家熟知的两个类。其�
 <h3><strong>正文</strong></h3>
 首先上一张StringBuffer和StringBuilder类结构图：
 
-<br/>
-<img src='/post_images/2012/02/StringBuilder+StringBuffer.bmp'/>
+<div class='center'>
+    <img src='/post_images/2012/02/StringBuilder+StringBuffer.bmp'/>
+</div>
 
 抽象类AbstractStringBuilder（也是核心实现类）实现了Appendable和CharSequence两个接口；StringBuffer与StringBuilder统统继承自AbstractStringBuilder，并且实现了java.io.Serializable和CharSequence接口。
 

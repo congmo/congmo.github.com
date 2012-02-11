@@ -7,19 +7,6 @@ body {
   padding: 0;
   font-size: 14px;
   border-bottom-color: #999;
-  scrollbar-arrow-color: #f4ae21; /*图6,三角箭头的颜色*/
-scrollbar-face-color: #333; /*图5,立体滚动条的颜色*/
-scrollbar-3dlight-color: #666; /*图1,立体滚动条亮边的颜
-色*/
-scrollbar-highlight-color: #666; /*图2,滚动条空白部分的
-颜色*/
-scrollbar-shadow-color: #999; /*图3,立体滚动条阴影的颜
-色*/
-scrollbar-darkshadow-color: #666; /*图4,立体滚动条强阴
-影的颜色*/
-scrollbar-track-color: #666; /*图7,立体滚动条背景颜色*/
-scrollbar-base-color:#f8f8f8; /*滚动条的基本颜色*/
-Cursor:url(mouse.cur); /*自定义个性鼠标*/
 }
 
 a {
@@ -33,7 +20,7 @@ a:visited {
 }
 
 #wrapper {
-  width: 960px;
+  width: 1020px;
   margin: 0 auto;
   margin-bottom: 5em;
   padding: 0;
@@ -278,7 +265,7 @@ div.related {
 }
 
 #home_left {
-  width: 680px;
+  width: 740px;
 }
 
 #title{
@@ -509,8 +496,9 @@ img{
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 3px;
+  padding: 5px;
   border: #F8F8F8 0.5em solid;
+  margin:10px;
 }
 
 #category-name{
@@ -543,4 +531,9 @@ img{
   background:url('/images/separator.png') top left repeat-x;
   margin-left:5px;
   height: 1px;
+}
+
+.center{
+  vertical-align:middle;
+  text-align:center;
 }
