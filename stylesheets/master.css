@@ -431,10 +431,11 @@ a#gotop {
   right: 10px;
   line-height: 46px;
   margin-right: 0;
-  padding: 10px 0;
+  padding: 5px 0;
   position: fixed;
   text-align: center;
   width: 60px;
+  height:45px;
   _position: absolute;
   _bottom: auto;
   _top: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)) - 10);
@@ -522,9 +523,15 @@ img{
   font-size: 20px;
 }
 
+#post-entry{
+  padding: 0;
+  margin: 10px;
+  height: 60px;
+}
 #post-title ,#post-date{
   color: #999;
   padding-right: 25px;
+  padding-left: 10px;
 }
 
 .separator{
