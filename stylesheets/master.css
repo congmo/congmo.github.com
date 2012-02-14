@@ -527,6 +527,7 @@ img{
   padding: 0;
   margin: 10px;
   height: 60px;
+  vertical-align: middle;
 }
 #post-title ,#post-date{
   color: #999;
