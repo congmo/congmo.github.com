@@ -538,3 +538,11 @@ img{
   vertical-align:middle;
   text-align:center;
 }
+
+blockquote{
+background: #F4F5F7 url('/images/blockquote.gif') 3px 3px no-repeat;
+border: 1px dashed #CCC;
+padding: 8px 12px 8px 36px;
+margin: 5px 0;
+line-height:22px;
+}
