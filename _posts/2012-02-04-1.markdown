@@ -3,6 +3,11 @@
 layout: post
 title: "由一个问题到 Resin ClassLoader 的学习"
 category: Resin
+tags:
+ - Java
+ - Resin
+ - ClassLoader
+ - Resin源码
 ---
 <h3><strong>背景</strong></h3>
 某日临近下班，一个同事欲取任何类中获取项目绝对路径，不通过Request方式获取，可是始终获取不到预想的路径。于是晚上回家google了一下，误以为是System.getProperty(“java.class.path”)-未实际进行测试，早上来和同事沟通，提出了使用这个内置方法，结果人家早已验证过，该方法是打印出CLASSPATH环境变量的值。

@@ -3,6 +3,11 @@
 layout: post
 title: "StringBuffer&StringBuilder详解"
 category: Java
+tags:
+ - Java
+ - StringBuffer
+ - StringBuilder
+keywords: Java,StringBuffer,StringBuilder
 ---
 <h3><strong>序言</strong></h3>
 StringBuffer与StringBuilder是java.lang包下被大家熟知的两个类。其异同为：一、长度都是可扩充的；二、StringBuffer是线程安全的，StringBuilder是线程不安全的。那么他们的长度是如何实现动态扩充以及StringBuffer的线程安全是如何实现的呢？通过"深度"阅读它们的源代码，最终弄明白其中的缘由。

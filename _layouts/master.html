@@ -48,13 +48,24 @@
             <h2>文章分类</h2>
             <div>
               <div class="repo">
-                {% for category in site.categories %}
-                  <li class="cat-item cat-item-{{category | last | size }}"><a href="/category/{{category | first}}/{{category | first}}.html" title="View all posts filed under {{category | first}}">{{category | first}} ({{category | last | size }})</a></li>
-                {% endfor %}
+                {% for cat in site.categories %}
+                  <li><a href="/blog/categories/{{ cat | first | replace:' ','-' | downcase }}/">{{ cat | first }}({{cat | last | size }})</a></li>
+                  {% endfor %}
+               </div>  
+            </div>
+            
+            <h2>标签</h2>
+            <div>
+              <div style='padding:5px 5px;' class="repo" >
+                <ul style='padding-left:5px; margin: 0px; padding-right: 5px'>
+                  {% for tag in site.tags %}
+                    <li id='tag-item'><a href="/blog/tags/{{ tag | first | replace:' ','-' | downcase }}/" name="{{ tag | first | replace:' ','-' | downcase }}">{{ tag | first }}</a></li>
+                  {% endfor %}
+                </ul>
                </div>  
             </div>
 
-           <!--<h2>存档</h2>
+            <!--<h2>存档</h2>
             <div>
               <div class="repo">
                 {% for post in site.posts %}

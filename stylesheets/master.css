@@ -555,10 +555,24 @@ p img{
 }
 
 blockquote{
-background: #F4F5F7 url('/images/blockquote.gif') 3px 3px no-repeat;
-border: 1px dashed #CCC;
-padding: 8px 12px 8px 36px;
-margin: 5px 0;
-line-height:22px;
+  background: #F4F5F7 url('/images/blockquote.gif') 3px 3px no-repeat;
+  border: 1px dashed #CCC;
+  padding: 8px 12px 8px 36px;
+  margin: 5px 0;
+  line-height:22px;
+}
+
+.repo ul #tag-item {
+  background: #efeded;
+  display: inline;
+  line-height: 25px;
+  padding: 1px;
+  margin: 0;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  list-style: none;
+  text-align: -webkit-match-parent;
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 5px;
 }
 

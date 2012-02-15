@@ -3,6 +3,12 @@
 layout: post
 title: "String的subString、split,外加StringTokenizer三者截取字符串性能比较"
 category: Java
+tags:
+ - Java
+ - String
+ - subString
+ - split
+ - StringTokenizer
 ---
 最近在阅读java.lang下的源码，读到String时，突然想起面试的时候曾经被人问过：都知道在大数据量情况下，使用String的split截取字符串效率很低，有想过用其他的方法替代吗？用什么替代？我当时的回答很斩钉截铁：没有。
 

@@ -1,0 +1,25 @@
+---
+layout: master-left
+---
+
+<div>
+	<span id='category-name'>
+		<h1>Tag: {{ page.tag }}</h1>
+	</span>
+	<div class='separator'></div>
+	<br />
+
+	<div id='category-post'>
+
+		{% for post in site.tags[page.tag] %}
+			<div id='post-entry'>
+				<a id='post-title' href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+				<span id='post-date' style="float:right">{{ post.date | date_to_string }}</span>
+				<div class='separator'>
+				</div>
+			</div>
+		{% endfor %}
+		
+	</div>
+</div>
+

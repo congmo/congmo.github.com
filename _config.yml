@@ -1,3 +1,9 @@
 pygments:	true
 markdown: redcloth
 paginate: 5
+regeneration: true
+lsi: true
+permalink: /blog/:year/:month/:day/:title/
+category_dir: ../blog/categories/
+tag_dir: ../blog/tags/
+tag_title_prefix: 'Tag: '
