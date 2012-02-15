@@ -225,6 +225,13 @@ div.related {
   margin: 0 0 0 0.2em;
 }
 
+#footer p img{
+  border:0px;
+  border-radius:0px;
+  padding: 0;
+  margin: 0 0 0 0.2em;
+}
+
 #footer a {
   color: black;
   font-weight: bold;
@@ -482,7 +489,7 @@ height: .5em;
 background: rgba(255, 255, 255, 0.15);
 }*/
 
-img{
+p img{
   -moz-border-radius: 0.3em;
   -webkit-border-radius: 0.3em;
   -o-border-radius: 0.3em;
@@ -554,3 +561,4 @@ padding: 8px 12px 8px 36px;
 margin: 5px 0;
 line-height:22px;
 }
+
