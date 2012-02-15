@@ -489,7 +489,7 @@ height: .5em;
 background: rgba(255, 255, 255, 0.15);
 }*/
 
-p img{
+img{
   -moz-border-radius: 0.3em;
   -webkit-border-radius: 0.3em;
   -o-border-radius: 0.3em;
