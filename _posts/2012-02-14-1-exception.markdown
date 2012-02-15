@@ -2,12 +2,11 @@
 ---
 layout: post
 title: "异常处理最佳实践"
-category: 外文翻译
+category: Translation
 tags:
  - Java
  - Exception
- - 异常处理
- - 异常最佳实践
+ - Translation
 keywords: Java, Exception, 翻译
 ---
 <span><strong>作者：Gunjan Doshi</strong></span>

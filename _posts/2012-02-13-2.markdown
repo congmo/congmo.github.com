@@ -8,7 +8,6 @@ tags:
  - Resin
  - getResource
  - getResourceAsStream
- - Resin源码
 ---
 <h3><strong>前言</strong></h3>
 接上文<a href='http://congmo.github.com/Resin/2012/02/04/1.html'>"由一个问题到Resin ClassLoader的学习"</a>，本文将以this.getClass().getResource("/"").getPath()和this.getClass().getResourceAsStream("/a.txt")为例，一步步解析加载的过程。
