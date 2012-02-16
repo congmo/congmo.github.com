@@ -187,7 +187,7 @@ toString方法有个神奇的地方。在需要转换为字符串时，好像自
 
 String.replace( char target, char replacement )、String. replace( String target, String replacement ) 两个方法都是替换目标字符串中出现的所有指定的字符或字符串，但是前者要比后者快很多。所以在替换单个字符时，要使用前者，即使用单引号。不幸的是，后者只有在1.5及其之后的版本中才可以使用。
 
-replaceAll( String regex, String replacement )  方法也是全部替换，区别在于replaceAll方法使用正则表达式搜索。欲使用replace( String target, String replacement ) 时千万不能使用replaceAll(String regex, String replacement) 。第二个参数不是简单的字符串，String. replaceAll 与Matcher. replaceAll 一样。$代表匹配字符串的引用，\则是正则表达式中的关键字，所以需要将\转义为\\\\，将$转义为\\$。
+replaceAll( String regex, String replacement )  方法也是全部替换，区别在于replaceAll方法使用正则表达式搜索。欲使用replace( String target, String replacement ) 时千万不能使用replaceAll(String regex, String replacement) 。第二个参数不是简单的字符串，String. replaceAll 与Matcher. replaceAll 一样。$代表匹配字符串的引用，\则是正则表达式中的关键字，所以需要将\转义为\\\\\\\\，将$转义为\\\\$。
 
 replaceFirst( String regex, String replacement )  也使用正则表达式。
 
