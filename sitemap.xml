@@ -2,23 +2,27 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://ravenw.com/blog/2012/02/02/1/</loc>
-        <lastmod>2012-02-15T15:27:55+08:00</lastmod>
+        <lastmod>2012-02-15T22:43:18+08:00</lastmod>
     </url>
     <url>
         <loc>http://ravenw.com/blog/2012/02/04/1/</loc>
-        <lastmod>2012-02-15T15:53:02+08:00</lastmod>
+        <lastmod>2012-02-15T22:43:18+08:00</lastmod>
     </url>
     <url>
         <loc>http://ravenw.com/blog/2012/02/13/1/</loc>
+<<<<<<< HEAD
         <lastmod>2012-02-16T10:33:45+08:00</lastmod>
+=======
+        <lastmod>2012-02-15T22:43:18+08:00</lastmod>
+>>>>>>> 1b35da1e5fe9d83c02d1f620deacde995a52cd08
     </url>
     <url>
         <loc>http://ravenw.com/blog/2012/02/13/2/</loc>
-        <lastmod>2012-02-15T15:53:08+08:00</lastmod>
+        <lastmod>2012-02-15T22:43:18+08:00</lastmod>
     </url>
     <url>
         <loc>http://ravenw.com/blog/2012/02/14/1-exception/</loc>
-        <lastmod>2012-02-15T15:53:36+08:00</lastmod>
+        <lastmod>2012-02-15T22:43:18+08:00</lastmod>
     </url>
     <url>
         <loc>http://ravenw.com/blog/2012/02/16/1-translationofstring/</loc>
@@ -26,30 +30,34 @@
     </url>
     <url>
         <loc>http://ravenw.com/about.html</loc>
-        <lastmod>2012-02-15T15:27:55+08:00</lastmod>
+        <lastmod>2012-02-15T22:43:18+08:00</lastmod>
     </url>
     <url>
         <loc>http://ravenw.com/archive/2012/2012.html</loc>
-        <lastmod>2012-02-15T15:27:55+08:00</lastmod>
+        <lastmod>2012-02-15T22:43:18+08:00</lastmod>
     </url>
     <url>
         <loc>http://ravenw.com/category/Java/Java.html</loc>
-        <lastmod>2012-02-15T15:27:55+08:00</lastmod>
+        <lastmod>2012-02-15T22:43:18+08:00</lastmod>
     </url>
     <url>
         <loc>http://ravenw.com/category/Resin/Resin.html</loc>
-        <lastmod>2012-02-15T15:27:55+08:00</lastmod>
+        <lastmod>2012-02-15T22:43:18+08:00</lastmod>
     </url>
     <url>
         <loc>http://ravenw.com/category/Translation/Translation.html</loc>
-        <lastmod>2012-02-15T15:27:55+08:00</lastmod>
+        <lastmod>2012-02-15T22:43:18+08:00</lastmod>
     </url>
     <url>
         <loc>http://ravenw.com/drafts/outsource-your-blog.html</loc>
-        <lastmod>2012-02-15T15:27:55+08:00</lastmod>
+        <lastmod>2012-02-15T22:43:18+08:00</lastmod>
     </url>
     <url>
         <loc>http://ravenw.com/</loc>
+<<<<<<< HEAD
         <lastmod>2012-02-16T11:50:06+08:00</lastmod>
+=======
+        <lastmod>2012-02-15T22:43:18+08:00</lastmod>
+>>>>>>> 1b35da1e5fe9d83c02d1f620deacde995a52cd08
     </url>
 </urlset>
