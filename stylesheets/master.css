@@ -573,6 +573,45 @@ blockquote{
   list-style: none;
   text-align: -webkit-match-parent;
   -moz-border-radius: 1px;
-  -webkit-border-radius: 5px;
+  -webkit-border-radius: 3px;
+}
+
+.wp-pagenavi {
+  margin: 0 0 30px;
+  font-size: 12px;
+}
+
+.wp-pagenavi a ,.quick-read-more a:link{
+  background:#FFF url(/images/feed-title-white.jpg) top repeat-x #EFEFEF;
+  color: #333;
+  text-decoration: none;
+  padding: 5px 8px;
+  margin: 5px 10px 10px 0px;
+  margin-left: 5px;
+  border: 1px solid #CCC;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  display: inline-block;
+}
+
+.current{
+  background: #313428;
+  color: white;
+  text-decoration: none;
+  padding: 5px 8px;
+  margin: 0;
+  border: 1px solid #CCC;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+
+.pages{
+  border: 1px solid #CCC;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  padding: 5px 8px;
 }
 

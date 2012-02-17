@@ -11,20 +11,21 @@ lastest_posts: 10
     <h1 id='title'><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h1>
     <div class="body" style='background: #FFF;'>
       <div id="post_content_overflow">{{ post.content }}</div>
-      <div id='contiue'><a href='{{post.url}}'>阅读全文...</a></div>
+      <div class='quick-read-more'><a href='{{post.url}}'>阅读全文...</a></div>
     </div><br />
     </div>
     {% endfor %}
 
   {% if paginator.total_pages > 1 %}
-    <div class="navigation">
-        {% for page in (1..paginator.total_pages) %}
-          {% if page == paginator.page %}
-            <span class="num">{{ page }}</span>
-          {% else %}
-            <a class="num" href="/{%if page > 1 %}page{{ page }}/{% endif %}">{{ page }}</a>
-          {% endif %}
-        {% endfor %}
+    <div class='wp-pagenavi'>
+      <span class='pages'>Total Pages:{{ paginator.total_pages }}</span>
+      {% for page in (1..paginator.total_pages) %}
+        {% if page == paginator.page %}
+          <span class='current'>{{ page }}</span>
+        {% else %}
+          <a href='/{%if page > 1 %}page{{ page }}/{% endif %}'>{{ page }}</a>
+        {% endif %}
+      {% endfor %}
     </div>
   {% endif %}
 </div>
