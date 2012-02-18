@@ -32,7 +32,7 @@ keywords: Java, String, 翻译
 
 String.subString产生的空串也不用自动规范化，因此，空串也会导致长长的原始字符串没法被回收。
 {% highlight java linenos %}
-        public static void main(String args[]){
+public static void main(String args[]){
         String s = "a very long string";
         // create an empty substring
         String e1 = s.substring( 0,0);
