@@ -305,7 +305,7 @@ div.related {
   background: #FFF;
 }
 
-#post_content li{
+#post_content li, #post_content_overflow li {
   line-height: 22px;
   padding-left: 22px;
   margin-top: 5px;
