@@ -614,3 +614,12 @@ blockquote{
   -webkit-border-radius: 3px;
   padding: 5px 8px;
 }
+
+img.img-left {
+  margin: 5px 5px 5px 10px;
+  display: inline;
+  float: left;
+  padding: 3px 3px;
+  border: 1px solid #E8E8E8;
+  box-shadow: 0 0 4px #d0d0d0;
+}
