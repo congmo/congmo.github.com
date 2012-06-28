@@ -77,7 +77,6 @@ keywords: ajax,jsonp,跨域,jQuery,jquery-jsonp
   public String getGroupById(@RequestParam("id") Long id,
       HttpServletRequest request, HttpServletResponse response)
       throws IOException {
-
     String callback = request.getParameter("callback");
     ReturnObject result = null;
     Group group = null;
@@ -106,7 +105,6 @@ keywords: ajax,jsonp,跨域,jQuery,jquery-jsonp
   @ResponseBody
   public ReturnObject getGroupById(@RequestParam("id") Long id,
       HttpServletRequest request, HttpServletResponse response){
-
     String callback = request.getParameter("callback");
     ReturnObject result = null;
     Group group = null;
