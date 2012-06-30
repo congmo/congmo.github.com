@@ -154,7 +154,7 @@ StringTokenizer则是表现最优秀的，基本上平稳，始终保持在5000n
 {% highlight java %}
 public String[] split(String regex, int limit) {
     return Pattern.compile(regex).split(this, limit);
-}
+} 
 {% endhighlight %}
 
 验证可能存在不合理的地方，如哪里不合适，还请指出，共同进步。
