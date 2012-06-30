@@ -20,14 +20,14 @@ String.length()用来获取字符串的长度，而不是像其他类中使用�
 ###空字符串###
 
 Java中有3种空字符串：null,""和" "。下面就是如何区别这3中空字符串的方法。
-{% highlight java  %}
+{% highlight java %}
 if( s==null) echo( "was null" );
 else if( s.length() ==0) echo( "was empty" );
 else if( s.trim().length() ==0) echo( "was blank or other whitespace" );
 {% endhighlight %}
 
 ###字符串比较###
-{% highlight java  %}
+{% highlight java %}
 if( "abc".equals(s) ) echo( "matched" );
 {% endhighlight %}
 与
@@ -44,7 +44,7 @@ if( s.equals( "abc" ) ) echo( "matched" );
 <li>在某些JVM的实现中，规范化后的字符串，就算不在被引用，也永远不会被垃圾回收器回收。</li>
 
 如果想比较两个字符串的大小，就不能使用常规的比较操作了，可以使用compareTo()或compareToIgnoreCase()方法替代。
-{% highlight java  %}
+{% highlight java %}
 String s ="apple";
 String t ="orange";
 if( s.compareTo(t) <0)
@@ -72,7 +72,7 @@ compareTo的返回值：
 
 ####大小写敏感与大小写不敏感比较####
 
-{% highlight java  %}
+{% highlight java %}
 
 // String comparison, case-sensitive and insensitive.
 Stringapple="apple";
@@ -111,7 +111,7 @@ intorder=lcApple.compareTo( lcOrange);
 
 字符串搜索可使用indexOf和lastIndexOf。他们都可以通过fromOffset改变搜索开始的位置。返回的结果是相对于字符串开始的位置(0)，而不是相对于fromOffset的位置。如果搜索时忽略大小写，可先将字符串全部转换成大写或小写。可以这样实现：
 
-{% highlight java  %}
+{% highlight java %}
 
     public static voidmain( String[] args)
         {
@@ -198,7 +198,7 @@ Javadoc中String.replace是以 CharSequence为入参的，别担心，String实�
 String中包含很多非常好用的正则表达式方法，比如split、matches、replaceAll还有replaceFirst。通常情况下推荐使用高效的java.util.regex中的方法，方法中的Pattern被提前编译，并且可重用。在不考虑效率的情况下，就可以使用String中的正则表达式方法了。
 
 replaceAll和replace都以低效的方式实现，每次调用都要重新编译regex pattern。
-{% highlight java  %}
+{% highlight java %}
 // how replace is implemented.
 // It uses regex techniques even though neither parameter is a regex.
 publicStringreplace(CharSequencetarget,CharSequencereplacement)

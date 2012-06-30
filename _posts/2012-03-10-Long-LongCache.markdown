@@ -10,7 +10,7 @@ keywords: Long,Java,详解,缓存,LongChace
 众所周知Long中有个小小的陷阱，就是在-128至127范围内，Long.valueOf(long l)返回的Long的实例是相同的，而在此范围之外每次使用valueOf(long l)时，返回的实例都是不同的。本篇文章的主要目的就是揭示这个小陷阱。
 
 首先来看一段代码，验证上述的小陷阱。
-{% highlight java  %}
+{% highlight java %}
 System.out.println(Long.valueOf(128) == Long.valueOf(128));
 System.out.println(Long.valueOf(127) == Long.valueOf(127));
 {% endhighlight %}
@@ -22,7 +22,7 @@ true<br/>
 
 像变魔术一样，揭开之后就会觉得异常简单。这里也是同样的道理。上两段代码，明白人一看便知。
 
-{% highlight java  %}
+{% highlight java %}
 private static class LongCache {
   private LongCache(){}
   static final Long cache[] = new Long[-(-128) + 127 + 1];
@@ -33,7 +33,7 @@ private static class LongCache {
 }
 {% endhighlight %}
 
-{% highlight java  %}
+{% highlight java %}
 public static Long valueOf(long l) {
   final int offset = 128;
   if (l >= -128 && l <= 127) { // will cache

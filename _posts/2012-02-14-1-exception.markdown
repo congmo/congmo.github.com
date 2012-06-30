@@ -15,7 +15,7 @@ keywords: Java, Exception, 翻译
 
 作为开发人员，我们都希望能编写既具高质量又能解决问题的代码，不幸的是，异常对代码质量总是会起到负面的影响。没有哪个程序员愿意一味的接受这种负面的影响，所以我们总是寻找各种方法避免异常处理。我曾经看过优秀的程序员这样处理异常：
 
-{% highlight java  %}
+{% highlight java %}
 public void consumeAndForgetAllExceptions(){
     try {
         ...some code that throws exceptions
@@ -31,7 +31,7 @@ public void consumeAndForgetAllExceptions(){
 
 下面这种方式怎么样？
 
-{% highlight java  %}
+{% highlight java %}
 public void someMethod() throws Exception{
 }
 {% endhighlight %}
@@ -77,7 +77,7 @@ java中定义了两类异常：
 
 检查性异常还违反封装性原则。看一下下面这段代码：
 
-{% highlight java  %}
+{% highlight java %}
 public List getAllAccounts() throws
     FileNotFoundException, SQLException{
     ...
@@ -115,7 +115,7 @@ getAllAccounts()方法抛出两种检查性异常。尽管你还不知道getAllA
 
 大多数情况下，面对SQLException我们无能为力，那么直接转化成非检查性异常抛出。看看下面一段代码：
 
-{% highlight java  %}
+{% highlight java %}
 public void dataAccessCode(){
     try{
         ..some code that throws SQLException
@@ -127,7 +127,7 @@ public void dataAccessCode(){
 
 这个catch块没做任何处理，将异常忽略掉，这样做是因为对于SQLException我们做不了任何处理。看看这样处理如何？
 
-{% highlight java  %}
+{% highlight java %}
 public void dataAccessCode(){
     try{
         ..some code that throws SQLException
@@ -147,7 +147,7 @@ public void dataAccessCode(){
 
 下面这段代码有什么问题吗？
 
-{% highlight java  %}
+{% highlight java %}
 public class DuplicateUsernameException
     extends Exception {}
 {% endhighlight %}
@@ -156,7 +156,7 @@ public class DuplicateUsernameException
 
 可以在DuplicateUsernameException中添加如下方法：
 
-{% highlight java  %}
+{% highlight java %}
 public class DuplicateUsernameException
     extends Exception {
     public DuplicateUsernameException 
@@ -168,13 +168,13 @@ public class DuplicateUsernameException
 
 加强版本中提供了两个方法：一个是requestedUsername()方法，用来返回调用方法的名称；另一个是availableNames()返回一个与调用方法名称相似的数组。这样编码时就可以指出调用方法不可用，以及哪些方法是可用的。如果没有额外的信息记录在异常中，那么直接像这样抛出标准异常即可：
 
-{% highlight java  %}
+{% highlight java %}
 throw new Exception("Username already taken");
 {% endhighlight %}
 
 甚至，处理异常时，除了将方法名记录下来外不会做其他处理，那么像下面一样抛出非检查型异常就好。
 
-{% highlight java  %}
+{% highlight java %}
 throw new RuntimeException("Username already taken");
 {% endhighlight %}
 
@@ -186,7 +186,7 @@ throw new RuntimeException("Username already taken");
 
 你可以使用javadoc的@throws标注检查性异常和非检查型异常。但是我比较倾向于使用单元测试验证异常。测试环境下可以追踪异常，因此服务器被当做可运行文档来使用。不管使用什么方式，需要让调用者感知异常的发生。下面是一个关于 IndexOutOfBoundsException异常的例子：
 
-{% highlight java  %}
+{% highlight java %}
 public void testIndexOutOfBoundsException() {
     ArrayList blankList = new ArrayList();
     try {
@@ -206,7 +206,7 @@ public void testIndexOutOfBoundsException() {
 
 当数据库连接或网络连接资源使用完毕后，记得手动将它们释放。即使代码中只使用了非检查性异常，也要使用try-finally语句块来释放资源。
 
-{% highlight java  %}
+{% highlight java %}
 public void dataAccessCode(){
     Connection conn = null;
     try{
@@ -240,7 +240,7 @@ DBUtil是数据库连接的工具类，这里的关键点是finally块，不论�
 
 下面是一个在流程控制中使用自定义MaximumCountReachedException异常的示例：
 
-{% highlight java  %}
+{% highlight java %}
 public void useExceptionsForFlowControl() {
     try {
         while (true) {
@@ -268,7 +268,7 @@ useExceptionsForFlowControl()中是一个抛出异常才会终止的无限循环
 
 检查性异常继承自RuntimeException， RuntimeException还继承自Exception。和下面的代码一样，捕获顶级异常Exception，也同样了捕获RuntimeException异常。
 
-{% highlight java  %}
+{% highlight java %}
 try{
 ..
 }catch(Exception ex){

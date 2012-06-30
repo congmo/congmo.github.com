@@ -57,7 +57,7 @@ keywords: 面试总结,Java
 
 回到家后，google了一下，发现这个问题如果你会得话，就简单的跟1似的。会者不难，难者不会啊。
 
-{% highlight java  %}
+{% highlight java %}
 public long getLongIp(String strIP){
   long [] ip=new long[4];
   int position1=strIP.indexOf(".");
@@ -73,7 +73,7 @@ public long getLongIp(String strIP){
 不用太多的解释吧，既然ip地址是32位，那么可以运用位移方式对转换成long型的值进行位移操作，然后将第一个8位左移24位，第二个8位左移16位，在加上第三个long，就可以得到ip地址对应的整数啦。
 
 然后我就是一次次的懊恼自己。看着这段程序我反思到，是让我转换成int类型的，这个是long类型的，不能这样就应付掉。于是实现自己"int"(注：这里我还没发现问题呢)。
-{% highlight java  %}
+{% highlight java %}
 public static void main(String[] args) {
   System.out.println(getIntIp("192.168.1.1"));
 }
@@ -111,7 +111,7 @@ public static void main(String[] args) {
 转换成long就木有问题啦，64位，足够足够啦。临走的时候也没来得及去问面试官这里想考我的知识点到底是什么。如此看来ip地址是没办法转换成int啦，只能是long。
 
 问题二考的是一个字符串的全排列，这里我只能承认我确实很小白，不为自己做任何辩解。我把从google上搜索出来的结果贴出来和大家分享：
-{% highlight java  %}
+{% highlight java %}
 public class MyTestGameCore {   
   public static void listAll(char[] arr_Str) {   
     if (arr_Str.length <= 1) {   

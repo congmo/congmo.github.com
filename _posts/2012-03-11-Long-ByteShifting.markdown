@@ -12,7 +12,7 @@ keywords: Long,Java,详解,缓存,位移
 
 先来看个简单的。
 
-{% highlight java  %}
+{% highlight java %}
 public static int signum(long i) {
   // HD, Section 2-7
   return (int) ((i >> 63) | (-i >>> 63));
@@ -20,7 +20,7 @@ public static int signum(long i) {
 {% endhighlight %}
 
 这个函数作用就是返回参数i的符号，如果返回-1则是负数，如果返回0则是0，如果返回1则是正数。算法就是(int) ((i &gt;&gt; 63) | (-i &gt;&gt;&gt; 63))，如果是正数的话i有符号右移63位后为0，-i无符号右移63位之后结果为1，或操作之后结果就是1.如果i为负数，那么有符号右移63位后就变成了1，然后-i无符号右移63位后就只剩下符号位，最后做或(|)操作结果就是-1. 如果参数i为0，那么移位后结果就是0.
-{% highlight java  %}
+{% highlight java %}
 System.out.println(Long.signum(100L));
 System.out.println(Long.signum(0L));
 System.out.println(Long.signum(-100L));
@@ -32,7 +32,7 @@ System.out.println(Long.signum(-100L));
 -1<br>
 </blockquote>
 接着是一个很少用到，但是实现方式不错的两个方法，循环左移和循环右移方法。
-{% highlight java  %}
+{% highlight java %}
 public static long rotateLeft(long i, int distance) {
     return (i << distance) | (i >>> -distance);
 }
@@ -52,7 +52,7 @@ public static long rotateRight(long i, int distance) {
 在distance大于0的前提下，先左移distance位，然后再右移64-distance，最终用或运算相加，就是循环移位的结果。图中为了省事儿用了8位做了个演示，先左移3位，然后右移(8-3)位，或运算之后就是结果啦。关于-distance在stackoverflow上的提问在<a href="http://stackoverflow.com/questions/9513074/how-does-i-distance-work">这里</a>。
 
 下面是个更给力的方法-reverse(long i)，可以说就是高效率的化身。
-{% highlight java  %}
+{% highlight java %}
 public static long reverse(long i) {
     // HD, Figure 7-1
     i = (i & 0x5555555555555555L) << 1 | (i >>> 1) & 0x5555555555555555L;
@@ -72,12 +72,12 @@ public static long reverse(long i) {
 最后一步没有按常理继续二分，而是通过一个转换一步就完成了以16和32位为单位的交换。进而结束了整个64位的反转。
 
 现在一步一步剖析都是如何实现的。
-{% highlight java  %}
+{% highlight java %}
 i = (i & 0x5555555555555555L) << 1 | (i >>> 1) & 0x5555555555555555L;
 {% endhighlight %}
 16进制的5为0101，或操作前半部分首先取出i的所有奇数位，然后整体左移一位，这样实现i的奇数位左移一位变成偶数位；或操作后半部分先右移，即将偶数位右移变成奇数位，然后再取出奇数位。这样就完成了64位中奇数位与偶数位的交换。
 
-{% highlight java  %}
+{% highlight java %}
 i = (i & 0x3333333333333333L) << 2 | (i >>> 2) & 0x3333333333333333L;
 {% endhighlight %}
 这句同样是实现交换，只不过3对应的16进制为0011，即本次交换以2个字节为单位，交换完成了4个字节的反转。
@@ -86,7 +86,7 @@ i = (i & 0x00ff00ff00ff00ffL) << 8 | (i >>> 8) & 0x00ff00ff00ff00ffL;
 {% endhighlight %}
 直到这行代码，实现了以字节为单位的反转，最后仅仅使用一行代码就实现了一两个字节和四个字节为单位的反转。
 为了方便画图，现在对操作进行编号，另外从以字节为单位交换开始，之前的细节忽略。
-{% highlight java  %}
+{% highlight java %}
 编号1：(i & 0x00ff00ff00ff00ffL) << 8 | (i >>> 8) & 0x00ff00ff00ff00ffL;
 编号2：(i << 48)
 编号3：(i & 0xffff0000L) << 16)
@@ -100,7 +100,7 @@ i = (i & 0x00ff00ff00ff00ffL) << 8 | (i >>> 8) & 0x00ff00ff00ff00ffL;
 </div>
 
 不多做解释，由于这个reverse的最后一行不是按常理"出牌"，所以我使用纯粹的二分法来实现reverse。
-{% highlight java  %}
+{% highlight java %}
 public static long reverse(long i) {
   // HD, Figure 7-1
   i = (i & 0x5555555555555555L) << 1 | (i >>> 1) & 0x5555555555555555L;
@@ -115,7 +115,7 @@ public static long reverse(long i) {
 至于为什么要采用那种方式，而不是用"纯粹"的二分法，在stackoverflow上有人提到，可能是因为前一种实现方式需要9个操作，而后一种实现方式需要10个操作。具体是出于怎样的目的可能只有作者才知道。关于reverse我在stackoverflow上的提问在<a href="http://stackoverflow.com/questions/9529275/how-does-i-48-i-0xffff0000l-16-i-16-0xffff0000l-i">这里</a>。
 
 最后看一个方法。
-{% highlight java  %}
+{% highlight java %}
 public static int bitCount(long i) {
     // HD, Figure 5-14
     i = i - ((i >>> 1) & 0x5555555555555555L);

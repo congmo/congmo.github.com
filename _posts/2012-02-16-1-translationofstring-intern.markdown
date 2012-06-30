@@ -31,7 +31,7 @@ keywords: Java, String, 翻译
 注意：只要还有"活动"的子串指向原始字符串，那么垃圾回收期就没法回收它。
 
 String.subString产生的空串也不用自动规范化，因此，空串也会导致长长的原始字符串没法被回收。
-{% highlight java  %}
+{% highlight java %}
 public static void main(String args[]){
         String s = "a very long string";
         // create an empty substring
@@ -46,7 +46,7 @@ public static void main(String args[]){
 ###规范化与void字符串###
 
 想要避免空串致使原始字符串不能被回收，就不要使用任何void字符串指向原始字符串。void字符串有3中：""," ",null。
-{% highlight java  %}
+{% highlight java %}
 public final static String possiblyEmpty( StringpString)
 {
    if( pString==null) return"";
@@ -88,7 +88,7 @@ public final staticStringneverNull( StringpString)
 这就引申出另外一个问题，s == s.substring(0)总是返回false吗？答案也是肯定的。
 
 还有一个适合用new来创建字符串的地方，如下：
-{% highlight java  %}
+{% highlight java %}
 String password = new String( jpassword.getPassWord() );
 {% endhighlight %}
 
@@ -105,7 +105,7 @@ JDK1.2版本之后，规范化字符串在没用引用指向它时，可以被�
 ###溢出###
 
 java.lang.OutOfMemoryError: String intern table overflow 表示规范化字符串太多。一些低版本的JVM规定规范化字符串不能超过64K(大约50000个)。IBM的Java1.1.8 JRE就有这样的限制。它是Error，不是Exception，如果想捕获它，可以这样做：
-{% highlight java  %}
+{% highlight java %}
 public class InternTest
 {
         public static final intn=80000;
@@ -200,7 +200,7 @@ public static void main(String[] args) {
 输出结果：true
 </blockquote>
 
-{% highlight java  %}
+{% highlight java %}
 public static void main(String[] args) {
         String str0 = args[0];
         System.out.println(str0.intern() == str0);
@@ -251,7 +251,7 @@ public static void main(String[] args) {
 true
 </blockquote>
 
-{% highlight java  %}
+{% highlight java %}
 public static void main(String[] args) {
         String str0 = new String( args[0] );
         System.out.println(str0.intern() == str0);

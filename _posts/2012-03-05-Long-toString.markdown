@@ -12,7 +12,7 @@ keywords: Long,Java,详解,toString
 
 ###toString(long i, int radix)
 首先让我们目睹下Long中强大的toString方法。
-{% highlight java  %}
+{% highlight java %}
 public static String toString(long i, int radix) {
   if (radix < Character.MIN_RADIX || radix > Character.MAX_RADIX)
       radix = 10;
@@ -116,7 +116,7 @@ public static String toString(long i, int radix) {
 {% endhighlight %}
 
 依旧奏效哦！
-{% highlight java  %}
+{% highlight java %}
 System.out.println(Long.toString(-8L, 2));
 System.out.println(toString(-8L,2));
 {% endhighlight %}
@@ -130,7 +130,7 @@ System.out.println(toString(-8L,2));
 ###toString(long i)
 
 这个toString方法用于将参数i转化为十进制形式的字符串，toString(long i)本身是很简单的，核心是getChars(long i, int index, char[] buf)。那么就一起目睹下它们都是如何实现的。
-{% highlight java  %}
+{% highlight java %}
 public static String toString(long i) {
   if (i == Long.MIN_VALUE)
     eturn "-9223372036854775808";
@@ -141,7 +141,7 @@ public static String toString(long i) {
 }
 {% endhighlight %}
 
-{% highlight java  %}
+{% highlight java %}
 static void getChars(long i, int index, char[] buf) {
   long q;
   int r;
@@ -199,7 +199,7 @@ static void getChars(long i, int index, char[] buf) {
 这段的主要目的是经过它的处理之后，能将一个long类型的数字转换成int来处理。这段while中几乎每行都是经典，首先这行：r = (int)(i - ((q &lt;&lt; 6) + (q &lt;&lt; 5) + (q &lt;&lt; 2)));很巧妙的使用高效的位移运算完成了r = i - (q * 100)。其实这样做事为了得到i的最后两位，比如2147483649这样一个long，经过这步之后r = 49.
 
 随后更巧妙的一件事就又发生了。那就是Integer中的DigitOnes和DigitTens巧妙的设计。那就看看这两个数组是如何巧妙的。
-{% highlight java linenow %}
+{% highlight java %}
 final static char [] DigitTens = {
   '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
   '1', '1', '1', '1', '1', '1', '1', '1', '1', '1',
@@ -241,7 +241,7 @@ final static char [] DigitOnes = {
 ###toUnsignedString(long i, int shift)
 接下来让我们认识下toUnsignedString(long i, int shift)，这个方法同样巧妙，一个方法就把long转二进制，八进制，十六进制全部搞定。仅仅通过shift一个参数，同样是通过位移来实现的。比如八进制，那么shift就是3，然后通过1 &gt;&gt; 3实现。唯一一个限制就是只能表示进制数是2的n次幂。
 
-{% highlight java  %}
+{% highlight java %}
 private static String toUnsignedString(long i, int shift) {
   char[] buf = new char[64];
   int charPos = 64;
