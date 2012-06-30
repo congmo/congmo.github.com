@@ -12,7 +12,7 @@ keywords: Long,Java,详解,toString
 
 ###toString(long i, int radix)
 首先让我们目睹下Long中强大的toString方法。
-{% highlight java linenos %}
+{% highlight java  %}
 public static String toString(long i, int radix) {
   if (radix < Character.MIN_RADIX || radix > Character.MAX_RADIX)
       radix = 10;
@@ -41,11 +41,11 @@ public static String toString(long i, int radix) {
 radix如果不在2-36范围内，则默认10进制。而如果是10进制，Long有专门将10进制的Long转化为String的toString方法，稍后再说。
 
 非10进制的toString就在这里负责处理。
-{% highlight java linenos%}
+{% highlight java %}
 char[] buf = new char[65];
 {% endhighlight %}
 刚开始我很不理解为什么要声明长度为65的char数组呢，long64位就够了啊。仔细琢磨了一下发现，多声明一个是为负数做准备，如果是正数那么确实是只用了64位(这里不算严谨，不过先把65这个问题说清楚)。请看下面一段代码：
-{% highlight java linenos%}
+{% highlight java %}
 if (negative) { 
   buf[--charPos] = '-';
  }
@@ -54,13 +54,13 @@ return new String(buf, charPos, (65 - charPos));
 清楚了吧，这个buf[0]如果有值，那么只可能是"-"，不会是其他任何值。最后一行也很好理解，用了几位，那么就传给String构造函数几位。所以上面说的"正数只用64位"是不严谨的。
 
 我喜欢这里negative的用法，算不上很巧妙，但是避开了正数和负数的差异。
-{% highlight java linenos%}
+{% highlight java %}
 if (!negative) {
   i = -i;
 }
 {% endhighlight %}
 一开始我同样不理解为啥要把一个正数转换为负数再处理呢？看下面这个代码片段：
-{% highlight java linenos%}
+{% highlight java %}
 while (i <= -radix) {
   buf[charPos--] = Integer.digits[(int)(-(i % radix))];
   i = i / radix;
@@ -69,7 +69,7 @@ buf[charPos] = Integer.digits[(int)(-i)];
 {% endhighlight %}
 请看while内部与外部，设想如果i是正是负未知，那么这两处就没法统一使用-(i % radix)和-i了。所以将i提前转换为负值了。
 Integer.digits是个挺巧妙的东西，可以随意应付2-36进制的转换。它是这样定义的：
-{% highlight java linenos %}
+{% highlight java  %}
 final static char[] digits = {
   '0' , '1' , '2' , '3' , '4' , '5' ,
   '6' , '7' , '8' , '9' , 'a' , 'b' ,
@@ -83,7 +83,7 @@ final static char[] digits = {
 
 我想这个toString已经介绍的够详细了。另外，源码中将i转换为负数，那么转换为正数也肯定成立吧。于是我做了一点点改动：
 
-{% highlight java linenos%}
+{% highlight java %}
 final static char[] digits = {
   '0' , '1' , '2' , '3' , '4' , '5' ,
   '6' , '7' , '8' , '9' , 'a' , 'b' ,
@@ -116,7 +116,7 @@ public static String toString(long i, int radix) {
 {% endhighlight %}
 
 依旧奏效哦！
-{% highlight java linenos %}
+{% highlight java  %}
 System.out.println(Long.toString(-8L, 2));
 System.out.println(toString(-8L,2));
 {% endhighlight %}
@@ -130,7 +130,7 @@ System.out.println(toString(-8L,2));
 ###toString(long i)
 
 这个toString方法用于将参数i转化为十进制形式的字符串，toString(long i)本身是很简单的，核心是getChars(long i, int index, char[] buf)。那么就一起目睹下它们都是如何实现的。
-{% highlight java linenos %}
+{% highlight java  %}
 public static String toString(long i) {
   if (i == Long.MIN_VALUE)
     eturn "-9223372036854775808";
@@ -141,7 +141,7 @@ public static String toString(long i) {
 }
 {% endhighlight %}
 
-{% highlight java linenos %}
+{% highlight java  %}
 static void getChars(long i, int index, char[] buf) {
   long q;
   int r;
@@ -241,7 +241,7 @@ final static char [] DigitOnes = {
 ###toUnsignedString(long i, int shift)
 接下来让我们认识下toUnsignedString(long i, int shift)，这个方法同样巧妙，一个方法就把long转二进制，八进制，十六进制全部搞定。仅仅通过shift一个参数，同样是通过位移来实现的。比如八进制，那么shift就是3，然后通过1 &gt;&gt; 3实现。唯一一个限制就是只能表示进制数是2的n次幂。
 
-{% highlight java linenos %}
+{% highlight java  %}
 private static String toUnsignedString(long i, int shift) {
   char[] buf = new char[64];
   int charPos = 64;

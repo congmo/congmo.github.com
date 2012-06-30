@@ -21,7 +21,7 @@ google了一下，发现有2中替代方法，于是在这里我将对这三种�
 <h3><strong>实现</strong></h3>
 闲话不说，先上代码：
 
-{% highlight java linenos %}
+{% highlight java  %}
 package test.java.lang.ref;
 
 import java.util.Random;
@@ -151,7 +151,7 @@ StringTokenizer则是表现最优秀的，基本上平稳，始终保持在5000n
 
 究其原因，split的实现方式是采用正则表达式实现，所以其性能会比较低。至于正则表达式为何低，还未去验证。split源码如下：
 
-{% highlight java linenos %}
+{% highlight java  %}
 public String[] split(String regex, int limit) {
     return Pattern.compile(regex).split(this, limit);
 }

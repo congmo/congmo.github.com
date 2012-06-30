@@ -24,7 +24,7 @@ tags:
 
 Path.java：
 
-{% highlight java linenos %}
+{% highlight java  %}
 public class Path {
     public String getPath() throws IOException
     {
@@ -45,7 +45,7 @@ public class Path {
 
 PathServlet.java：
 
-{% highlight java linenos %}
+{% highlight java  %}
 public class PathServlet extends HttpServlet {
     private static final long serialVersionUID = 4443655831011903288L;
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -87,7 +87,7 @@ public class PathServlet extends HttpServlet {
 这样我暂且得出一个结论：通过getResourceAsStream和getResource两个方法获取的路径是不同的。但是为什么呢？
 于是查看了ClassLoader的源码，贴出getResource和getResourceAsStream的源码。
 
-{% highlight java linenos %}
+{% highlight java  %}
 public URL getResource(String name) {
     URL url;
     if (parent != null) {
@@ -129,7 +129,7 @@ public InputStream getResourceAsStream(String name) {
 因此我对Resin产生了厌恶感，之前也因为在Resin下程序报错，在Tomcat下正常运行而纠结了好久。记得看《松本行弘的程序世界》中对C++中的多继承是这样评价的(大概意思)：多重继承带来的负面影响多数是由于使用不当造成的。是不是因为对Resin使用不得当才使得和Tomcat下得到不同的结果。
 
 最终，在查阅Resin配置文件resin.conf时候在"&lt;host-default&gt;"标签下发现了这样一段：
-{% highlight java linenos %}
+{% highlight java  %}
 <class-loader>
     <compiling-loader path="webapps/WEB-INF/classes"/>
     <library-loader path="webapps/WEB-INF/lib"/> 
@@ -167,7 +167,7 @@ public InputStream getResourceAsStream(String name) {
 <div class='center'>图二</div>
 从上面两幅图中可以看出，图1是与Jdk有关联的，继承自java.net.URLClassLoader。DynamicClassLoader的注释是这样的：
 
-{% highlight java linenos %}
+{% highlight java  %}
 /**
 * Class loader which checks for changes in class files and automatically
 * picks up new jars.
@@ -183,7 +183,7 @@ EnvironmentClassLoader又继承了DynamicClassLoader。
 图2应该是Resin本身的ClassLoader，其中Loader是一个抽象类，包含了各种子类类加载器。
 
 从两幅图中是看不出Resin自身的Loader体系与继承自JVM的类加载器存在关系，那是不是他们就不存在某种关联呢？其实不是这样子的。请看下面DynamicClassLoader源码的片段：
-{% highlight java linenos %}
+{% highlight java  %}
 // List of resource loaders
 private ArrayList _loaders = new ArrayList();
 private JarLoader _jarLoader;
@@ -195,7 +195,7 @@ private PathLoader _pathLoader;
 既然Resin标准的Loader及其子类以组合的方式嵌入到DynamicClassLoader中，那么在加载一个"资源"时，Loader分支和java.net.URLClassLoader分支的先后顺序是什么样子的呢？
 
 首先使用下面这段代码，将类加载器名称打印到控制台：
-{% highlight java linenos %}
+{% highlight java  %}
 ClassLoader loader = PathServlet.class.getClassLoader();
 while (loader != null) {
     System.out.println(loader.toString());
@@ -219,7 +219,7 @@ sun.misc.Launcher$ExtClassLoader@1a16869
 额，没有任何一个Resin的Loader被打印出来啊，对头，有就错了。下面就让我们看看DynamicClassLoader中getResource的源码来解答。
 getResource(String name)
 
-{% highlight java linenos %}
+{% highlight java  %}
 /**
 * Gets the named resource
 *

@@ -57,7 +57,7 @@ keywords: 面试总结,Java
 
 回到家后，google了一下，发现这个问题如果你会得话，就简单的跟1似的。会者不难，难者不会啊。
 
-{% highlight java linenos %}
+{% highlight java  %}
 public long getLongIp(String strIP){
   long [] ip=new long[4];
   int position1=strIP.indexOf(".");
@@ -73,7 +73,7 @@ public long getLongIp(String strIP){
 不用太多的解释吧，既然ip地址是32位，那么可以运用位移方式对转换成long型的值进行位移操作，然后将第一个8位左移24位，第二个8位左移16位，在加上第三个long，就可以得到ip地址对应的整数啦。
 
 然后我就是一次次的懊恼自己。看着这段程序我反思到，是让我转换成int类型的，这个是long类型的，不能这样就应付掉。于是实现自己"int"(注：这里我还没发现问题呢)。
-{% highlight java linenos %}
+{% highlight java  %}
 public static void main(String[] args) {
   System.out.println(getIntIp("192.168.1.1"));
 }
@@ -96,7 +96,7 @@ public int getIntIp(String strIP){
 </blockquote>
 而转化成long时，输出结果为：3232235777。
 在调试过程中发现，首8位对应的数字，小于127时，一切正常，但是从128开始，都会变成负数。仔细想想不难也发现，int类型是由32位组成，但是其中有一位是符号位，而128对应的二进制为：10000000，左移24位后就变成了：10000000,00000000,00000000,00000000，这样结果就变成了负数，再加上后面三个二进制移位后的十进制数结果仍然是负数，这样也就解释了为何大于128开始的ip地址转换成int后会变成负数。更准确的说是溢出了。口说无凭，上运行结果：
-{% highlight java linenos %}
+{% highlight java  %}
 public static void main(String[] args) {
     System.out.println(new Integer("127").intValue() << 24);
     System.out.println(new Integer("128").intValue() << 24);
@@ -111,7 +111,7 @@ public static void main(String[] args) {
 转换成long就木有问题啦，64位，足够足够啦。临走的时候也没来得及去问面试官这里想考我的知识点到底是什么。如此看来ip地址是没办法转换成int啦，只能是long。
 
 问题二考的是一个字符串的全排列，这里我只能承认我确实很小白，不为自己做任何辩解。我把从google上搜索出来的结果贴出来和大家分享：
-{% highlight java linenos %}
+{% highlight java  %}
 public class MyTestGameCore {   
   public static void listAll(char[] arr_Str) {   
     if (arr_Str.length <= 1) {   
