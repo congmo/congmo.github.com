@@ -24,7 +24,7 @@ tags:
 
 Path.java：
 
-{% highlight java  %}
+{% highlight java %}
 public class Path {
     public String getPath() throws IOException
     {
@@ -45,7 +45,7 @@ public class Path {
 
 PathServlet.java：
 
-{% highlight java  %}
+{% highlight java %}
 public class PathServlet extends HttpServlet {
     private static final long serialVersionUID = 4443655831011903288L;
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -87,7 +87,7 @@ public class PathServlet extends HttpServlet {
 这样我暂且得出一个结论：通过getResourceAsStream和getResource两个方法获取的路径是不同的。但是为什么呢？
 于是查看了ClassLoader的源码，贴出getResource和getResourceAsStream的源码。
 
-{% highlight java  %}
+{% highlight java %}
 public URL getResource(String name) {
     URL url;
     if (parent != null) {
@@ -167,7 +167,7 @@ public InputStream getResourceAsStream(String name) {
 <div class='center'>图二</div>
 从上面两幅图中可以看出，图1是与Jdk有关联的，继承自java.net.URLClassLoader。DynamicClassLoader的注释是这样的：
 
-{% highlight java  %}
+{% highlight java %}
 /**
 * Class loader which checks for changes in class files and automatically
 * picks up new jars.
@@ -183,7 +183,7 @@ EnvironmentClassLoader又继承了DynamicClassLoader。
 图2应该是Resin本身的ClassLoader，其中Loader是一个抽象类，包含了各种子类类加载器。
 
 从两幅图中是看不出Resin自身的Loader体系与继承自JVM的类加载器存在关系，那是不是他们就不存在某种关联呢？其实不是这样子的。请看下面DynamicClassLoader源码的片段：
-{% highlight java  %}
+{% highlight java %}
 // List of resource loaders
 private ArrayList _loaders = new ArrayList();
 private JarLoader _jarLoader;
@@ -219,7 +219,7 @@ sun.misc.Launcher$ExtClassLoader@1a16869
 额，没有任何一个Resin的Loader被打印出来啊，对头，有就错了。下面就让我们看看DynamicClassLoader中getResource的源码来解答。
 getResource(String name)
 
-{% highlight java  %}
+{% highlight java %}
 /**
 * Gets the named resource
 *
