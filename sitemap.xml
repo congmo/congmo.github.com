@@ -2,86 +2,90 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://congmo.github.com//blog/2012/02/02/1/</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//blog/2012/02/04/1/</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//blog/2012/02/13/1/</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//blog/2012/02/13/2/</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//blog/2012/02/14/1-exception/</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//blog/2012/02/16/1-translationofstring/</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//blog/2012/02/16/1-translationofstring-intern/</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//blog/2012/02/24/Interview-Summary/</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//blog/2012/03/05/Long-toString/</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//blog/2012/03/10/Long-LongCache/</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//blog/2012/03/11/Long-ByteShifting/</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//blog/2012/06/27/ajax-cross-domain/</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//blog/2012/07/01/java-outofmemory/</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//blog/2012/07/04/java-death-of-object/</loc>
-        <lastmod>2012-07-08T00:49:12+08:00</lastmod>
+        <lastmod>2012-07-08T00:59:38+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://congmo.github.com//blog/2012/07/08/java-gc-algorithm/</loc>
+        <lastmod>2012-07-08T15:02:26+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//about.html</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//archive/2012/2012.html</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//category/Java/Java.html</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//category/Resin/Resin.html</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//category/Translation/Translation.html</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//drafts/outsource-your-blog.html</loc>
-        <lastmod>2012-07-07T20:18:16+08:00</lastmod>
+        <lastmod>2012-07-08T00:58:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://congmo.github.com//</loc>
-        <lastmod>2012-07-08T00:49:12+08:00</lastmod>
+        <lastmod>2012-07-08T15:02:26+08:00</lastmod>
     </url>
 </urlset>
