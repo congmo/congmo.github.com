@@ -222,7 +222,7 @@ public class OneFaceQuestionV3 {
 运行结果：
 
 <blockquote>
-6 1 4 5 9 8 7 2 10 3 \<br>
+6 1 4 5 9 8 7 2 10 3 <br>
 6 1 4 9 8 7 2 10 
 </blockquote>
 
