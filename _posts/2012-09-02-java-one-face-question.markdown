@@ -98,7 +98,7 @@ public class OneFaceQuestionV1 {
 {% endhighlight %}
 运行结果：
 <blockquote>
-1 2 3 4 5 6 7 8 9 10\n 
+1 2 3 4 5 6 7 8 9 10<br> 
 1 2 4 6 7 8 9 10 
 </blockquote>
 
@@ -167,7 +167,7 @@ public class OneFaceQuestionV2 {
 
 运行结果：
 <blockquote>
-6 1 4 5 9 8 7 2 10 3\n
+6 1 4 5 9 8 7 2 10 3<br>
 6 1 4 9 8 7 2 10 
 </blockquote>
 
@@ -222,7 +222,7 @@ public class OneFaceQuestionV3 {
 运行结果：
 
 <blockquote>
-6 1 4 5 9 8 7 2 10 3 \n
+6 1 4 5 9 8 7 2 10 3 \<br>
 6 1 4 9 8 7 2 10 
 </blockquote>
 
