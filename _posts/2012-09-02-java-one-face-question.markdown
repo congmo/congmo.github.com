@@ -248,11 +248,11 @@ public class OneFaceQuestionV3 {
 </blockquote>
 
 {% highlight java %}
-	if(indexOfThree > indexOfFive){//3对应的索引值大，先删除元素3
-			disorderList.remove(indexOfThree);
-			disorderList.remove(indexOfFive);
-		}else{//5对应的索引之大，先删除元素5
-			disorderList.remove(indexOfFive);
-			disorderList.remove(indexOfThree);
-		}
+if(indexOfThree > indexOfFive){//3对应的索引值大，先删除元素3
+	disorderList.remove(indexOfThree);
+	disorderList.remove(indexOfFive);
+}else{//5对应的索引之大，先删除元素5
+	disorderList.remove(indexOfFive);
+	disorderList.remove(indexOfThree);
+}
 {% endhighlight %}
