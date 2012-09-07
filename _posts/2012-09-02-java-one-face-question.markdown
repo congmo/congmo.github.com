@@ -242,3 +242,17 @@ public class OneFaceQuestionV3 {
 <li>
 方式一与方式三效率差不多。由于元素数量很少，所以O(n)与O(n*lgn)没有太大的区别。
 </li>
+####补充
+<blockquote>
+	昨天在地铁上又想起来这道面试题，突然想起来第二种方式有个小小的bug，在标记完索引值之后，比较两个索引值的大小，先删除索引值大的，然后再删除小的，就不需要移动索引值了。代码片段如下：
+</blockquote>
+
+{% highlight java %}
+	if(indexOfThree > indexOfFive){//3对应的索引值大，先删除元素3
+			disorderList.remove(indexOfThree);
+			disorderList.remove(indexOfFive);
+		}else{//5对应的索引之大，先删除元素5
+			disorderList.remove(indexOfFive);
+			disorderList.remove(indexOfThree);
+		}
+{% endhighlight %}
