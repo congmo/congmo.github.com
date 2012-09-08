@@ -5,10 +5,10 @@ layout: nil
 <feed xmlns="http://www.w3.org/2005/Atom">
  
  <title>World Hello</title>
- <link href="http://congmo.github.com/atom.xml" rel="self"/>
- <link href="http://congmo.github.com/"/>
+ <link href="http://congmo.net/atom.xml" rel="self"/>
+ <link href="http://congmo.net/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://congmo.github.com/</id>
+ <id>http://congmo.net/</id>
  <author>
    <name>xiaori.Liu</name>
    <email>congmogit@gmail.com</email>
