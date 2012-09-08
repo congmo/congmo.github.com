@@ -38,16 +38,16 @@ public class Foo {
 不存在参数类型不确定性是指Bar和Baz不在一个继承体系内（除Object体系外），因此在配置&lt;constructor-arg/&gt;时，不需要特别指定参数的索引值或类型。如下：
  
 {% highlight xml %}
-&lt;beans&gt;
-  &lt;bean id="foo" class="x.y.Foo"&gt;
-      &lt;constructor-arg ref="bar"/&gt;
-      &lt;constructor-arg ref="baz"/&gt;
-  &lt;/bean&gt;
+<beans>
+  <bean id="foo" class="x.y.Foo">
+      <constructor-arg ref="bar"/>
+      <constructor-arg ref="baz"/>
+  </bean>
 
-  &lt;bean id="bar" class="x.y.Bar"/&gt;
-  &lt;bean id="baz" class="x.y.Baz"/&gt;
+  <bean id="bar" class="x.y.Bar"/>
+  <bean id="baz" class="x.y.Baz"/>
 
-&lt;/beans&gt;
+</beans>
 {% endhighlight %}
 
 ####Setter注入方式
