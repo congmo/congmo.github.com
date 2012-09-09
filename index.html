@@ -9,7 +9,7 @@ lastest_posts: 10
   <div class="posts">
     <span class='date'>{{ post.date | date_to_string }}</span>
     <h1 id='title'><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h1>
-    <div class="body" style='background: #FFF;'>
+    <div class="body">
       <div id="post_content_overflow">{{ post.content }}</div>
       <div class='quick-read-more'><a href='{{post.url}}'>阅读全文...</a></div>
     </div><br />

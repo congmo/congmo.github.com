@@ -33,6 +33,20 @@ a:visited {
 
 #header {
   height: 120px;
+  background: #F8F8F8;
+  filter:alpha(opacity=85); /*IE*/
+  -moz-opacity:0.85; /*MOZ , FF*/
+  opacity:0.85; /*CSS3, FF1.5*/
+  margin:10px 0px 15px 0px;
+  border: 1px solid #CCC;
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  -webkit-border-top-right-radius: 8px;
+  -moz-border-radius-bottomleft: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  -moz-border-radius-bottomright: 8px;
+  -webkit-border-bottom-right-radius: 8px;
 }
 #header h1 {
   float: left;
@@ -303,7 +317,7 @@ div.related {
 }
 #post_content{
   padding:0.5em;
-  background: #FFF;
+  /*background: #FFF;*/
 }
 
 #post_content li, #post_content_overflow li {
@@ -340,7 +354,7 @@ box-shadow: rgba(0,0,0,0.06) 0 0 10px;
   padding: 0.5em 0.7em;
   margin: 0 0 0.8em 0;
   font-weight: bold;
-  background: #f8f8f8 url(/images/header_gradient.gif) repeat-x bottom;
+  /*background: #f8f8f8 url(/images/header_gradient.gif) repeat-x bottom;*/
   -moz-box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
   -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
   box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
@@ -351,7 +365,7 @@ box-shadow: rgba(0,0,0,0.06) 0 0 10px;
 }
 
 .repo li{
-  background: url(/images/icons.gif) 0 -557px no-repeat;
+  /*background: url(/images/icons.gif) 0 -557px no-repeat;*/
   line-height: 22px;
   padding-left: 22px;
   list-style: none;
@@ -408,7 +422,7 @@ box-shadow: rgba(0,0,0,0.06) 0 0 10px;
   display:block;/*内联对象需加*/ 
   overflow:hidden;
   padding:0.5em;
-  background: #FFF;
+  /*background: #FFF;*/
 }
 
 #contiue{
@@ -564,7 +578,7 @@ blockquote{
 }
 
 .repo ul #tag-item {
-  background: #efeded;
+  /*background: #efeded;*/
   display: inline;
   line-height: 25px;
   padding: 1px;
@@ -573,8 +587,8 @@ blockquote{
   margin-bottom: 1px;
   list-style: none;
   text-align: -webkit-match-parent;
-  -moz-border-radius: 1px;
-  -webkit-border-radius: 3px;
+  /*-moz-border-radius: 1px;
+  -webkit-border-radius: 3px;*/
 }
 
 .wp-pagenavi {
