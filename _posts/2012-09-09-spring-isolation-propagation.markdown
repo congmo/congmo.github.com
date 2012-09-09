@@ -29,6 +29,10 @@ keywords: Java,Spring,Isolation,Propagation,传播机制,隔离级别
 
 在Spring中，声明式事务是用事务参数来定义的。一个事务参数就是对事务策略应该如何应用到某个方法的一段描述，如下图所示一个事务参数共有5个方面组成：
 
+<div class='center'>
+  <img src="/post_images/2012/09/declarative-transaction.png">
+</div>
+
 
 ###传播行为
 
