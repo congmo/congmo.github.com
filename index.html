@@ -7,8 +7,8 @@ lastest_posts: 10
 <div class='home_box' id='home_left' style='margin-left:0.3em'>
 {% for post in paginator.posts %}
   <div class="posts">
-   
-    <h1 id='title'><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h1> <span class='date'>{{ post.date | date_to_string }}</span>
+    <span class='date'>{{ post.date | date_to_string }}</span>
+    <h1 id='title'><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h1> 
     <div class="body">
       <div id="post_content_overflow">{{ post.content }}</div>
       <div class='quick-read-more'><a href='{{post.url}}'>阅读全文...</a></div>
