@@ -87,10 +87,10 @@ a:visited {
   text-indent: -999em;
 }
 
-#menu ul li a#twitter_link { background-image: url(/images/weibo.gif); }
-#menu ul li a#github_link { background-image: url(/images/github.gif); }
-#menu ul li a#home_link { background-image: url(/images/home.gif); }
-#menu ul li a#rss_link { background-image: url(/images/feed.png); }
+#menu ul li a#twitter_link { background-image: url(/images/weibo.png); }
+#menu ul li a#github_link { background-image: url(/images/github.png); }
+#menu ul li a#home_link { background-image: url(/images/home.png); }
+#menu ul li a#rss_link { background-image: url(/images/rss.png); }
 
 #content {
   padding-top: 0.5em;
