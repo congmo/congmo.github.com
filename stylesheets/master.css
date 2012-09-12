@@ -89,7 +89,7 @@ a:visited {
 
 #menu ul li a#twitter_link { background-image: url(/images/weibo.png); }
 #menu ul li a#github_link { background-image: url(/images/github.png); }
-#menu ul li a#home_link { background-image: url(/images/home.png); }
+#menu ul li a#home_link { background-image: url(/images/blog.png); }
 #menu ul li a#rss_link { background-image: url(/images/rss.png); }
 
 #content {
