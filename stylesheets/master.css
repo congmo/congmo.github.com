@@ -53,7 +53,6 @@ a:visited {
 }
 
 #header h1 a {  
-  margin-top: 10px;
   margin-left:20px;
   display: block;
   background: url(/images/title.png) no-repeat top left;
