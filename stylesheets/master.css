@@ -119,7 +119,7 @@ span.date {
   -moz-box-shadow: 1px -1px 5px rgba(0,0,0,0.4);
   -webkit-box-shadow: 1px -1px 5px rgba(0,0,0,0.4);
   box-shadow: 1px -1px 5px rgba(0,0,0,0.4);    
-  float: right;
+  float: left;
   text-shadow: black 1px 1px 4px;
 }
 
