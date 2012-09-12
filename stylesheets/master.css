@@ -49,11 +49,11 @@ a:visited {
   -webkit-border-bottom-right-radius: 8px;
 }
 #header h1 {
+  margin-top: 0px;
   float: left;
 }
 
 #header h1 a {  
-  margin-top: 0px;
   margin-left:20px;
   display: block;
   background: url(/images/title.png) no-repeat top left;
