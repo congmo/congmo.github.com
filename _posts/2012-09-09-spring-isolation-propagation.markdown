@@ -418,29 +418,15 @@ public interface TransactionDefinition {
 }
 {% endhighlight %}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+还是觉得不安心，发两张图证明隔离级别和传播机制：
+<li>eclipse中给出的关于传播机制的智能提示截图</li>
+<div class="center">
+  <img src="/post_images/2012/09/propagation.png">
+</div>
+<li>eclipse中给出的关于隔离级别的智能提示截图</li>
+<div class="center">
+  <img src="/post_images/2012/09/isolation.png">
+</div>
 
 <style type="text/css">
   table td,th{
@@ -455,4 +441,3 @@ public interface TransactionDefinition {
     border-right: 1.0pt solid;
   }
 </style>
-
