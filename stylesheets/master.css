@@ -32,7 +32,7 @@ a:visited {
 }
 
 #header {
-  height: 120px;
+  height: 100px;
   background: #F8F8F8;
   filter:alpha(opacity=85); /*IE*/
   -moz-opacity:0.85; /*MOZ , FF*/
@@ -91,6 +91,7 @@ a:visited {
 #menu ul li a#github_link { background-image: url(/images/github.png); }
 #menu ul li a#home_link { background-image: url(/images/blog.png); }
 #menu ul li a#rss_link { background-image: url(/images/rss.png); }
+#menu ul li a#sof_link { background-image: url(/images/stackoverflow.png); }
 
 #content {
   padding-top: 0.5em;
