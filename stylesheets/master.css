@@ -56,8 +56,8 @@ a:visited {
   margin-left:20px;
   display: block;
   background: url(/images/title.png) no-repeat top left;
-  /*width: 405px;
-  height: 80px;*/
+  width: 345px;
+  height: 100px;
   text-indent: -999em;
 }
 
