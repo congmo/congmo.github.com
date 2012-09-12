@@ -38,7 +38,6 @@ a:visited {
   -moz-opacity:0.85; /*MOZ , FF*/
   opacity:0.85; /*CSS3, FF1.5*/
   /*margin:10px 0px 15px 0px;*/
-  border: 1px solid #CCC;
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
   -moz-border-radius-topright: 8px;
@@ -310,8 +309,9 @@ div.related {
   color: #583;
 }
 #navigater{
-  background: #E0E0E0 url(/images/header_bg.gif) repeat-x bottom;
-  height:12px;
+  /*background: #E0E0E0 url(/images/header_bg.gif) repeat-x bottom;*/
+  background: #618a22;
+  height:8px;
   margin: 0;
   padding: 0;
   margin-bottom:5px;
