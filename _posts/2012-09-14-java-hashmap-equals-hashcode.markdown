@@ -76,9 +76,9 @@ public class Name {
 
 从if条件上看，是一个短路与，首先要判断两个对象的hash值是否相等。如果相等才进行后续的判断。或者换一个说法，在HashMap中只有两个对象的hash值相等的前提下才会执行equals方法的逻辑。关于这一点，有两个佐证。
 
-1.在stackoverflow上找到一篇关于HashMap不执行equals方法的文章，回答中有明确给出这样的答案。[Java HashMap.containsKey() doesn't call equals()](http://stackoverflow.com/questions/4611764/java-hashmap-containskey-doesnt-call-equals)
+<li>在stackoverflow上找到一篇关于HashMap不执行equals方法的文章，回答中有明确给出这样的答案。[Java HashMap.containsKey() doesn't call equals()](http://stackoverflow.com/questions/4611764/java-hashmap-containskey-doesnt-call-equals)</li>
 
-2.自己编程验证。
+<li>自己编程验证。</li>
 
 在文章开头的基础上，做了点儿改进，输出两个对象的hash值，并且在equals方法中打印一行文字。如下：
 
