@@ -54,19 +54,19 @@ public class Name {
 }
 {% endhighlight %}
 
-那输出结果是什么呢？类似这样的题目总能遇到，以前不知道有什么好考的，弱智？自己动手尝试了一次，发现结果不是自己想象的那样。本篇就用来揭示`HashMap的`equals与`hashCode中你不知道的秘密。结果如下：
+那输出结果是什么呢？类似这样的题目总能遇到，以前不知道有什么好考的，弱智？自己动手尝试了一次，发现结果不是自己想象的那样。本篇就用来揭示HashMap的equals与hashCode中你不知道的秘密。结果如下：
 
 <blockquote>
   is the key existed? ture or false? -> false
 </blockquote>
 
-对的，结果就是`false，我很不理解为什么这样，已经重写了equals函数了啊！当时真心不服气，就在equals函数里面打了断点，然后更让我难以置信的事情发生了，断点处没有停。非常困惑，不过还好，jdk的源码在手上，去查了`HashMap中`containsKey函数的源码。源码结构如下图：
+对的，结果就是false，我很不理解为什么这样，已经重写了equals函数了啊！当时真心不服气，就在equals函数里面打了断点，然后更让我难以置信的事情发生了，断点处没有停。非常困惑，不过还好，jdk的源码在手上，去查了HashMap中containsKey函数的源码。源码结构如下图：
 
 <div class='center'>
   <img src="/post_images/2012/09/hashmap-containsKey.png">
 </div>
 
-从图中可以看出，真正干活的是`getEntry(Object key)，重点看如下两行：
+从图中可以看出，真正干活的是getEntry(Object key)，重点看如下两行：
 
 {% highlight java %}
   if (e.hash == hash &&
@@ -74,13 +74,13 @@ public class Name {
     return e;
 {% endhighlight %}
 
-从`if条件上看，是一个短路与，首先要判断两个对象的`hash值是否相等。如果相等才进行后续的判断。或者换一个说法，在`HashMap中只有两个对象的`hash值相等的前提下才会执行`equals方法的逻辑。关于这一点，有两个佐证。
+从if条件上看，是一个短路与，首先要判断两个对象的hash值是否相等。如果相等才进行后续的判断。或者换一个说法，在HashMap中只有两个对象的hash值相等的前提下才会执行equals方法的逻辑。关于这一点，有两个佐证。
 
-1.在`stackoverflow上找到一篇关于`HashMap不执行`equals方法的文章，回答中有明确给出这样的答案。<a href="http://stackoverflow.com/questions/4611764/java-hashmap-containskey-doesnt-call-equals" target="_blank">Java HashMap.containsKey() doesn't call equals()</a>
+1.在stackoverflow上找到一篇关于HashMap不执行equals方法的文章，回答中有明确给出这样的答案。[Java HashMap.containsKey() doesn't call equals()](http://stackoverflow.com/questions/4611764/java-hashmap-containskey-doesnt-call-equals)
 
 2.自己编程验证。
 
-在文章开头的基础上，做了点儿改进，输出两个对象的`hash值，并且在`equals方法中打印一行文字。如下：
+在文章开头的基础上，做了点儿改进，输出两个对象的hash值，并且在equals方法中打印一行文字。如下：
 
 {% highlight java %}
 public class Name {
@@ -139,9 +139,9 @@ public class Name {
   is the key existed? ture or false? -> false<br>
 </blockquote>
 
-从执行结果可以看出1、两个对象的`hash值是不相同的；2、equals方法确实也没有执行。
+从执行结果可以看出1、两个对象的hash值是不相同的；2、equals方法确实也没有执行。
 
-再次对代码进行改进，加入重写的`hashCode方法，如下，看看这次的结果会是怎样。
+再次对代码进行改进，加入重写的hashCode方法，如下，看看这次的结果会是怎样。
 
 {% highlight java %}
 public class Name {
@@ -209,7 +209,7 @@ public class Name {
   is the key existed? ture or false? -> true
 </blockquote>
 
-同样从结果中可以看出：在`hash值相等的情况下，`equals方法也执行了，`HashMap的`containsKey方法也像预想的那样起作用了。
+同样从结果中可以看出：在hash值相等的情况下，equals方法也执行了，HashMap的containsKey方法也像预想的那样起作用了。
 
 ###结论：
-在使用`HashSet（`contains也是调用`HashMap中的方法）、`HashMap等集合时，如果用到`contains系列方法时，记得需同时重写`equals与`hashCode方法。
+在使用HashSet（contains也是调用HashMap中的方法）、HashMap等集合时，如果用到contains系列方法时，记得需同时重写equals与hashCode方法。
