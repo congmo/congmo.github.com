@@ -74,7 +74,7 @@ public class A {
 
 <blockquote>
   解析：<br>
-    0行：将数字9push到栈顶<br>
+    0行：将数字8push到栈顶<br>
     2行：将栈顶值存入第一个本地变量<br>
     3行：将第0个本地变量增加-1<br>
     6行：将第一个本地变量push到栈顶<br>
