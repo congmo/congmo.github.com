@@ -41,7 +41,7 @@ public class A {
 
 也就是说b--没其作用，在return之后才其的作用，可是为什么呢？使用优先级也没法解释啊！难道要return之后才进行自减运算吗？还是使用利器javap查看一下编译后的字节码。
 
-<div class='center'>
+<div class='center' style="width:500px;">
   <img src="/post_images/2012/09/javap--++.png">
 </div>
 
@@ -52,12 +52,12 @@ public class A {
 </div>
 
 <blockquote>
-  解析：
-    0行：将数字9push到栈顶
-    2行：将栈顶值存入第一个本地变量
-    3行：将第一个本地变量push到栈顶
-    4行：将第0个本地变量增加-1
-    7行：返回栈顶数据
+  解析：<br>
+    0行：将数字9push到栈顶<br>
+    2行：将栈顶值存入第一个本地变量<br>
+    3行：将第一个本地变量push到栈顶<br>
+    4行：将第0个本地变量增加-1<br>
+    7行：返回栈顶数据<br>
 </blockquote>
 
 下图辅助解释字节码执行过程：
@@ -73,11 +73,11 @@ public class A {
 </div>
 
 <blockquote>
-  解析：
-    0行：将数字9push到栈顶
-    2行：将栈顶值存入第一个本地变量
-    3行：将第0个本地变量增加-1
-    6行：将第一个本地变量push到栈顶
+  解析：<br>
+    0行：将数字9push到栈顶<br>
+    2行：将栈顶值存入第一个本地变量<br>
+    3行：将第0个本地变量增加-1<br>
+    6行：将第一个本地变量push到栈顶<br>
     7行：返回栈顶数据
 </blockquote>
 
