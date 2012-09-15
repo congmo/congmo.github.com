@@ -41,8 +41,8 @@ public class A {
 
 也就是说b--没其作用，在return之后才其的作用，可是为什么呢？使用优先级也没法解释啊！难道要return之后才进行自减运算吗？还是使用利器javap查看一下编译后的字节码。
 
-<div class='center' style="width:500px;">
-  <img src="/post_images/2012/09/javap--++.png">
+<div class='center' >
+  <img src="/post_images/2012/09/javap--++.png" style="width:700px;">
 </div>
 
 上图就是编译后的java字节码，仔细观察会发现前减减与后减减被编译后生成的指令是有区别的。那就针对这两小段字节码来解释前自增（或者自减），后自增（或者自减）与return组合时都发生了什么。
