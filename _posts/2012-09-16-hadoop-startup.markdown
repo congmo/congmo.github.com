@@ -12,21 +12,15 @@ keywords: Java,hadoop,ubuntu,安装
 
 就在决定写这篇blog的前一刻，才完成了hadoop的安装，安装配置起来其实挺简单的，总结起来就下面两步：
 
-<li>
   第一步：官方下载最新的release版本hadoop，我下载的是1.0.3,·[hadoop-1.0.3.tar.gz](http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-1.0.3/hadoop-1.0.3.tar.gz)，下载之后移动到自己的文件夹下，我的为：/home/liuzi/work/。
   然后解压：
   {% highlight shell %}
     tar zxvf hadoop-1.0.3.tar.gz 
   {% endhighlight %}
-</li>
 
-<li>
   第二步：配置。解压完成后，进入conf目录下，编辑hadoop-env.sh文件，将JAVA_HOME添加进去。
-</li>
 
-<li>
   第三步：在hadoop安装路径下运行：bin/hadoop version。
-</li>
 
 至此，hadoop就安装完成了。见下图：
 
@@ -36,7 +30,7 @@ keywords: Java,hadoop,ubuntu,安装
 
 不能每次都到hadoop安装目录下去运行hadoop命令，那么继续添加配置：
 
-{% highlight shell %}
+{% highlight %}
    export HADOOP_INSTALL=/home/liuzi/work/hadoop-1.0.3
    export PATH=$PATH:$HADOOP_INSTALL/bin
 {% endhighlight %}
