@@ -14,7 +14,7 @@ keywords: Java,hadoop,ubuntu,安装
 
   第一步：官方下载最新的release版本hadoop，我下载的是1.0.3,·[hadoop-1.0.3.tar.gz](http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-1.0.3/hadoop-1.0.3.tar.gz)，下载之后移动到自己的文件夹下，我的为：/home/liuzi/work/。
   然后解压：
-  {% highlight shell %}
+  {% highlight%}
     tar zxvf hadoop-1.0.3.tar.gz 
   {% endhighlight %}
 
