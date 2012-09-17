@@ -17,7 +17,7 @@ keywords: Java,hadoop,ubuntu,安装
   {% highlight%}
     tar zxvf hadoop-1.0.3.tar.gz 
   {% endhighlight %}
-
+ 
   第二步：配置。解压完成后，进入conf目录下，编辑hadoop-env.sh文件，将JAVA_HOME添加进去。
 
   第三步：在hadoop安装路径下运行：bin/hadoop version。
