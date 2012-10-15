@@ -1,0 +1,13 @@
+---
+layout: post
+title: "aaaa"
+category: Spring
+tags:
+ - Java
+ - Spring
+ - IOC
+ - DI
+keywords: Java,Spring,Java,IOC,DI
+---
+
+aaaa
