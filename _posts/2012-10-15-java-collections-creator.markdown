@@ -10,7 +10,8 @@ keywords: Java,集合,Collection,HashMap,ArrayList,HashSet,LinkedList,LinkedHash
 不知道大家有没觉得在jdk1.5引入范型之后，声明与创建集合类就变得异常的繁琐；不知道大家没有这样的强迫症：总是不太能允许程序中有worning，总是千方百计的要去掉它。范型的引入有它的好处，这里不去讨论，从一个使用者的角度，它确确实实有些蹩脚。举一个偏激的例子：
 
 {% highlight java %}
-Map<String, Map<String,Map<String, List<Object>>>> map = new HashMap<String, Map<String,Map<String, List<Object>>>>();
+Map<String, Map<String,Map<String, List<Object>>>> map = 
+	new HashMap<String, Map<String,Map<String, List<Object>>>>();
 {% endhighlight %}
 
 看到这个极品的map应该会很抓狂吧，哈哈，不说是否可读，从写这行代码人的角度来看也够崩溃的，声明和创建的时候都要写那么一大陀东西。在读《Effective Java》的过程中受书中启发，分别为每种集合类提供一个静态工厂方法。
@@ -30,9 +31,11 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 /**
- * jdk1.5加入范型后，每每创建集合都倍受折磨，声明的时候要标注范型，创建的时候也要标注范型，
- *  实在是一件让人恼火的事儿，受《Effective Java》启发，利用范型的特性， 
- *  为每种集合类提供一个静态工厂方法(不同于设计模式中的静态工厂方法模式)就可以避免重复书写范型。
+ * jdk1.5加入范型后，每每创建集合都倍受折磨，声明的时候要标注范型，
+ * 创建的时候也要标注范型，
+ * 实在是一件让人恼火的事儿，受《Effective Java》启发，利用范型的特性，
+ * 为每种集合类提供一个静态工厂方法(不同于设计模式中的静态工厂方法模式)
+ * 就可以避免重复书写范型。
  * 
  * @author liuzi
  * @date 2012-10-11
