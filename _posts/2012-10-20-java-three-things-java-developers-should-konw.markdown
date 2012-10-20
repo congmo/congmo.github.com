@@ -5,8 +5,8 @@ category: Translation
 tags:
  - Java
  - Translation
-keywords: Java,ConcurrencyPrinciples,IDKSkill,GC,MemoryManagement
-
+keywords: Java,ConcurrencyPrinciples,IDESkill,GC,MemoryManagement
+---
 <div class="center">
 	<img src="post_images/2012/10/programmer.jpg">
 </div>
