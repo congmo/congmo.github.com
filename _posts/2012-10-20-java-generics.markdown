@@ -59,7 +59,8 @@ EDIT:如果换做List&lt;? extends Animal&gt;为参数，下面的情况会发�
 
 void mySub(List< ? super Animal> myList) {
     myList.add(new Cat());     // works fine
-    Animal a = myList.get(0);  // compile error here, since the list entry could be a Plant
+    Animal a = myList.get(0);  // compile error here, 
+                               //since the list entry could be a Plant
 }
 
 {% endhighlight %}
@@ -74,9 +75,11 @@ void mySub(List< ? super Animal> myList) {
 它们是不一样的，List&lt;Animal&gt;表示它指向的变量值得类型必须是List&lt;Animal&gt;类型的，这并不意味着只能添加Animal对象，还可以添加Animal对象的子类。
 
 {% highlight java %}
+
 	List<Number> l = new ArrayList<Number>();
 	l.add(4); // autoboxing to Integer
 	l.add(6.7); // autoboxing to Double
+
 {% endhighlight %}
 
 如果想构造一个List存储Number对象，并且这个List本身并不需要是List&lt;Number&gt;类型的，可以也是这个List的子类型（比如List&lt;Integer&gt;），这个时候可以使用List&lt;? extends Animal&gt;。
