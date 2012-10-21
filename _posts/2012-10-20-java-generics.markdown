@@ -47,7 +47,7 @@ EDIT:如果换做List&lt;? extends Animal&gt;为参数，下面的情况会发�
 	    Animal a = myList.get(0);  // works fine 
 	}
 
-{% endhighlighe %}
+{% endhighlight %}
 
 
 
