@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Java:集合中使用泛型的讨论"
+title: "泛型:List&lt;? extends Animal&gt;和List&lt;Animal&gt;一样吗?"
 category: Translation
 tags:
  - Java
