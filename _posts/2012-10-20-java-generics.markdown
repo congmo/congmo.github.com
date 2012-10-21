@@ -8,6 +8,7 @@ tags:
 keywords: Java,泛型,Geneics
 ---
 
+
 <blockquote>
 	stackoverflow上看见一篇关于java泛型非常好的讨论，所以今天拿出来简单翻译一下。
 </blockquote>
@@ -20,4 +21,17 @@ Q:我只想弄清楚java泛型中extends关键字，List&lt;? extends Animal&gt;
 谢谢！
 
 <hr>
+
+A1:List&lt;Dog&gt;是List&lt;? extends Animal&gt;的子类型,但不是List&lt;Animal&gt;的子类型。
+
+为什么List&lt;Dog&gt;不是List&lt;Animal&gt;的子类型呢？先看一下这个例子吧：
+
+{% highlight java %}
+
+	void mySub(List<Animal> myList) {
+	    myList.add(new Cat());
+	}
+
+{% endhighlight %}
+
 
