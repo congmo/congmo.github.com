@@ -16,13 +16,17 @@ keywords: Java,泛型,Geneics
 ###正文
 
 
-Q:我只想弄清楚java泛型中extends关键字，List&lt;? extends Animal&gt;就是任何继承Animal的对象都可以插入到这个List中。它和下面这句难道不一样吗？List&lt;Animal&gt;。谁能帮我解释下这两种用法的不同吗？在我看来extends有些多余啊！
+####Q:
+
+我只想弄清楚java泛型中extends关键字，List&lt;? extends Animal&gt;就是任何继承Animal的对象都可以插入到这个List中。它和下面这句难道不一样吗？List&lt;Animal&gt;。谁能帮我解释下这两种用法的不同吗？在我看来extends有些多余啊！
 
 谢谢！
 
 <hr>
 
-A1:List&lt;Dog&gt;是List&lt;? extends Animal&gt;的子类型,但不是List&lt;Animal&gt;的子类型。
+####A1:
+
+List&lt;Dog&gt;是List&lt;? extends Animal&gt;的子类型,但不是List&lt;Animal&gt;的子类型。
 
 为什么List&lt;Dog&gt;不是List&lt;Animal&gt;的子类型呢？先看一下这个例子吧：
 
@@ -65,7 +69,7 @@ void mySub(List< ? super Animal> myList) {
 <hr>
 
 
-A2:
+####A2:
 
 它们是不一样的，List&lt;Animal&gt;表示它指向的变量值得类型必须是List&lt;Animal&gt;类型的，这并不意味着只能添加Animal对象，还可以添加Animal对象的子类。
 
@@ -105,7 +109,9 @@ List&lt;? extends Number&gt;这种方式用在方法参数时的含义是：只�
 
 <hr>
 
-A2:看见你已经找到答案了，我还是想补充一下我的理解，希望能帮上忙。
+####A3:
+
+看见你已经找到答案了，我还是想补充一下我的理解，希望能帮上忙。
 
 List&lt;? extends Animal&gt;和List&lt;Animal&gt;的区别如下：
 
@@ -127,7 +133,8 @@ List&lt;Animal&gt;就是定义了一个动物的列表，它的元素不仅可�
 
 {% highlight java %}
 
-	aL.peek().meow();//we can't do this, as it's not guaranteed that aL.peek() will be a Cat
+	aL.peek().meow();//we can't do this, as it's 
+	                 //not guaranteed that aL.peek() will be a Cat
 
 {% endhighlight %}
 
@@ -135,7 +142,8 @@ List&lt;Animal&gt;就是定义了一个动物的列表，它的元素不仅可�
 
 {% highlight java %}
 
-	((Cat)aL.peek()).meow();//will generate a runtime error if aL.peek() is not a Cat
+	((Cat)aL.peek()).meow();//will generate a runtime error 
+	                        //if aL.peek() is not a Cat
 
 {% endhighlight %}
 
