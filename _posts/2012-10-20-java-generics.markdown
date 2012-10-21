@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "泛型:List&lt;? extends Animal&gt;和List&lt;Animal&gt;一样吗?"
+title: "泛型:List< ? extends Animal>和List<Animal>一样吗?"
 category: Translation
 tags:
  - Java
