@@ -49,18 +49,5 @@ EDIT:如果换做List&lt;? extends Animal&gt;为参数，下面的情况会发�
 
 {% endhighlighe %}
 
-可以以List&lt;Dog&gt;为参数传入这个函数，但是编译器会发现这样会给你带来很多麻烦。如果用super代替extends（允许传入List&lt;LifeForm&gt;），情况就完全相反了：
 
-{% highlight java %}
-
-void mySub(List< ? super Animal> myList) {
-    myList.add(new Cat());     // works fine
-    Animal a = myList.get(0);  // compile error here, since the list entry could be a Plant
-}
-
-{% endhighlight %}
-
-背后的原理是：<a href="http://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29#Java">协变性和逆变性</a>
-
-<hr>
 
