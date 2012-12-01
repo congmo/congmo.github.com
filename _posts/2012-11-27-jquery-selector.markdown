@@ -37,30 +37,24 @@ keywords: jQuery,selector
 </div>
 
 
-<h3 class="headline"><a name="what">什么是jQuery选择器</a></h3>
+<h3 class="headline"><a name="what">什么是jQuery选择器?</a></h3>
 
 jQuery选择器是jQuery类库最重要功能之一。这些选择器的用法和CSS的语法非常相似，结合jQuery类库的方法你可以很方便快速地定位页面中任何元素。理解jQuery选择器是高效使用jQuery类库的关键。本索引卡就将jQuery选择器强大的功能展现在你眼前。
 
 典型的jQuery语法格式如下：
-
 {% highlight javascript %} 
 	$(selector).methodName();
 {% endhighlight %} 
-
 selector是一个字符串表达式，用于将符合的DOM元素放到集合中，以供jQuery类库方法使用。
 
 多个jQuery操作可以以链的形式串起来：
-
 {% highlight javascript %} 
 	$(selector).method1().method2().method3();
 {% endhighlight %} 
-
 比如，要隐藏id为goAway的DOM元素，并且为其添加名为incognito的样式。实现如下：
-
 {% highlight javascript %} 
 	$('#goAway').hide().addClass('incognito');
 {% endhighlight %} 
-
 使用起来非常简单，这就是选择器表达式的强大之处。
 
 <blockquote>
@@ -73,14 +67,11 @@ var element = $('img')[0];<br>
 它会将element指向通过选择器获取到的包装集合的第一个元素。<br>
 </blockquote>
 
-
-
 <h3 class="headline"><a name="types">jQuery选择器种类</a></h3>
 
 jQuery选择器有三种：基本的CSS选择器、位置选择器和自定义选择器。
 
 由于基本选择器用来查找DOM中的元素，又名查找选择器。位置选择器和自定义选择器则用于过滤元素(默认为DOM的全部元素)得名过滤选择器。
-
 
 <h4 class="headline1"><a name="basic">基本的CSS选择器</a></h4>
 
@@ -175,15 +166,11 @@ jQuery选择器有三种：基本的CSS选择器、位置选择器和自定义�
 	<li>$('button[id*=test]') 获取全部&lt;button&gt;元素， &lt;button&gt;元素id属性值中包含test</li>
 </ul>
 
-
 在一个$()中可以使用多个选择器，用逗号分隔即可。比如下面获取全部&lt;div&gt;和&lt;p&gt;元素的表达式：
-
 {% highlight javascript %} 
 	$('div,p')
 {% endhighlight %} 
-
 下面这个则匹配所有有title属性的&lt;div&gt;元素和有alt属性的&lt;img&gt;:
-
 {% highlight javascript %} 
 	$('div[title],img[alt]')
 {% endhighlight %} 
@@ -397,7 +384,7 @@ jQuery选择器有三种：基本的CSS选择器、位置选择器和自定义�
 
 不论单独还是组合使用jQuery选择器，都可以很方便的获取一组元素，以供jQuery类库方法进行操作。
 
-<h3 class="headline"><a name="method">匹配方法</a></h3>
+<h3 class="headline"><a name="method">匹配函数</a></h3>
 
 尽管选择器为我们提供了非常灵活的过滤DOM的手段，但还是有时候单单使用选择器是没法表示匹配规则。而且我们可能也需要在方法调用见调整匹配元素的内容。
 
@@ -428,36 +415,28 @@ add()方法返回一个新的匹配元素集合，原有匹配元素集合再加
 
 
 来看看这个表达式：
-
 {% highlight javascript %} 
 	$('div').add('p').css('color','red');
 {% endhighlight %} 
-
 这段代码首先获取一个全部&lt;div&gt;元素的集合，然后又将现有的&lt;div&gt;元素集合加上&lt;p&gt;元素形成一个新的集合(所有的&lt;div&gt;和&lt;p&gt;元素)，最后为他们添加color=read的样式。
 
 可是这样的代码完全没有什么意义，因为他和下面这句的效果一样：
-
 {% highlight javascript %} 
 	$('div,p').css('color','red');
 {% endhighlight %} 
-
 不过下面这句用选择器就搞不定了：
-
 {% highlight javascript %} 
 	$('div').css('font-weight','bold').add('p').css('color','red');
 {% endhighlight %} 
-
 首先将所有的&lt;div&gt;元素中内容都加粗，最后加入所有&lt;p&gt;元素后形成新的集合，最后增加color=read的样式。
 
 jQuery的方法链可以用很简短的代码实现强大的功能。
 
 再来一个例子：
-
 {% highlight javascript %} 
 	$('div').add(someElement).css('border','3px solid pink');
 	$('div').add([element1,element2]).css('border','3px solid pink');
 {% endhighlight %} 
-
 
 <h4 class="headline1"><a name="delete">删除匹配元素</a></h4>
 
@@ -473,7 +452,7 @@ jQuery的方法链可以用很简短的代码实现强大的功能。
 		<tr>
 			<td class="td_left">expression</td>
 			<td class="td_right">
-				String, 从匹配集合中删除选择器参数匹配的元素<br>
+				String，从匹配集合中删除选择器参数匹配的元素<br>
 				Element，从匹配集合中删除参数所引用的元素<br>
 				Array，从匹配集合中删除数组中的元素<br>
 			</td>
@@ -485,17 +464,13 @@ jQuery的方法链可以用很简短的代码实现强大的功能。
 
 
 示例
-
 {% highlight javascript %} 
 	$('body *').css('font-weight','bold').not('p').css('color','red');
 {% endhighlight %} 
-
 将所有元素的内容都加粗，然后把除&lt;p&gt;元素外的所有元素都添加color=read样式。
-
 {% highlight javascript %} 
 	$('body *').css('font-weight','bold').not(anElement).css('color','red');
 {% endhighlight %} 
-
 同上面那句类似，只不过剔除anElement元素在外。
 
 <blockquote>
@@ -526,7 +501,6 @@ jQuery的方法链可以用很简短的代码实现强大的功能。
 和前面其他的方法不同find()方法只接受选择器表达式作为参数，匹配集合中元素的后代将被选择器表达式参数再次匹配。原匹配集合中任何元素不参与第二次匹配。
 
 示例：
-
 {% highlight javascript %} 
 	$('div').css('background-color','blue').find('img').css('border','1px solid aqua');
 {% endhighlight %} 
@@ -555,19 +529,194 @@ jQuery的方法链可以用很简短的代码实现强大的功能。
 
 filter()函数可以以选择器(如果有多个则用逗号分隔)或者函数作为入参。当入参为选择器时，就完全与not()函数相反，会保留全部匹配的元素而不是删掉他们。当入参为一个函数时，这个函数会被每个元素调用，来判断是否匹配选择器表达式，从而决定是否能添加到新集合中。
 
-示例：
-
+示例
 {% highlight javascript %} 
-	$('.bashful').show().filter('img[src$=.gif]').attr('title','Hi there!');
+$('.bashful').show().filter('img[src$=.gif]').attr('title','Hi there!');
 {% endhighlight %} 
-
 选择所有拥有bashful样式的元素，确保他们是可见的，并且保留gif格式的&lt;img&gt;元素，最后给这些&lt;img&gt;元素增加title属性。
 
- 
+<h4 class="headline1"><a name="slice">分割匹配集合</a></h4>
 
-获取所有指定路径的&lt;img&gt;元素，只保留那些title为.com或邮箱地址的元素，最后把他们隐藏。
+尽管可以使用选择器来获取匹配元素，但是有时候还是想通过匹配集合中元素的位置来分割匹配集合，本节介绍两个方法来完成这项功能：
+
+这两个方法的索引值都是从0开始的。
+				
+<table>
+	<thead>
+		<tr>
+			<th class="th_left" colspan="2">slice(being,end)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="td_left">begin</td>
+			<td class="td_right">
+				数字类型，新集合中第一个元素的索引值
+			</td>
+		</tr>
+		<tr>
+			<td class="td_left">end</td>
+			<td class="td_right">
+				数字类型，最后一个不能添加到新集合中的索引值，如果忽略则从begin到最后的元素都被包含在新集合中
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+示例
+{% highlight javascript %} 
+	$('body *').slice(2).hide();
+{% endhighlight %} 
+隐藏body中除了前两个元素之外的所有元素。
+{% highlight javascript %} 
+	$('body *').slice(2,3).hide();
+{% endhighlight %} 
+隐藏body中第三个元素。注意：只包含索引值为2的元素，不包含索引值为3的元素。
+
+<table>
+	<thead>
+		<tr>
+			<th class="th_left" colspan="2">eq(position)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="td_left">position</td>
+			<td class="td_right">
+				数字类型，只有索引值为position的元素会被添加到新集合中
+			</td>
+		</tr>
+	</tbody>
+</table>
+eq(n)可以被看做是slice(n, n+1)的简化方式。
+
+<h4 class="headline1"><a name="relationship">通过关系匹配</a></h4>
 
 
+通过元素之间关系来创建新集合这个需求经常存在，下面这些方法就是完成这项功能的，他们非常相似，所以把他们放进同一个表格：
+
+
+<table>
+	<thead>
+		<tr>
+			<th class="th_left">语法</th>
+			<th class="th_right">描述</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="td_left">children(expression)</td>
+			<td class="td_right">从匹配集合中获取匹配expression的所有子元素</td>
+		</tr>
+		<tr>
+			<td class="td_left">next(expression)</td>
+			<td class="td_right">
+				从匹配集合中获取匹配expression的所有兄弟元素，仅仅是匹配的直接后兄弟元素
+			</td>
+		</tr>
+		<tr>
+			<td class="td_left">nextAll(expression)</td>
+			<td class="td_right">从匹配集合中获取匹配expression的所有兄弟元素，所有匹配的后兄弟元素均可/td>
+		</tr>
+		<tr>
+			<td class="td_left">parent(expression)</td>
+			<td class="td_right">获取所有匹配集合中匹配expression的直接父亲元素</td>
+		</tr>
+		<tr>
+			<td class="td_left">parents(expression)</td>
+			<td class="td_right">获取所有匹配集合中匹配expression的父亲元素</td>
+		</tr>
+		<tr>
+			<td class="td_left">prev(expression)</td>
+			<td class="td_right">从匹配集合中获取匹配expression的所有前兄弟元素，仅仅是匹配的直接前兄弟元素</td>
+		</tr>
+		<tr>
+			<td class="td_left">prevAll(expression)</td>
+			<td class="td_right">
+				从匹配集合中获取匹配expression的所有前兄弟元素，所有匹配的前兄弟元素
+			</td>
+		</tr>
+		<tr>
+			<td class="td_left">siblings(expression)</td>
+			<td class="td_right">
+				从匹配集合中获取匹配expression的所有兄弟元素，所有匹配的兄弟元素
+			</td>
+		</tr>
+		<tr>
+			<td class="td_left">contents()</td>
+			<td class="td_right">
+				获取匹配集合中每个元素的子元素，包括文本。也可以用于获得iframe的内容文档
+			</td>
+		</tr>
+	</tbody>
+</table>				
+
+这些方法(除了contents()方法)都接受一个过滤器表达式作为参数，如果不传参数则不进行过滤。
+
+
+<h4 class="headline1"><a name="translation">转换元素</a></h4>
+
+当想将匹配集合中每个元素转换为其他类型的元素时，可以使用map()方法。
+
+<table>
+	<thead>
+		<tr>
+			<th class="th_left" colspan="2">map(callback)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="td_left">callback</td>
+			<td class="td_right">
+				函数类型，匹配集合中每个元素都会调用callback函数。函数的返回结果会被放入数组中作为map()函数的返回值。当前元素作为函数的入参。
+			</td>
+		</tr>
+	</tbody>
+</table>				
+
+比如，想获取id为myForm的表单中全部表单元素的值：
+{% highlight javascript %} 
+	var values = $('#myForm :input').map(function(){
+		return $(this).val();
+	 } );
+{% endhighlight %} 
+<blockquote>
+map()方法返回的是jQuery对象的实例，可以使用无参的get()函数转换为javascript中的数组：<br>
+<br>
+var values = $('#myForm :input').map(function(){ <br>
+	return $(this).val();<br>
+ } ).get();<br>
+<br>
+这样values就是一个javascript数组而不是jQuery对象。<br>
+
+</blockquote>
+					
+
+<h4 class="headline1"><a name="controll">控制链</a></h4>
+
+前面提到的所有方法都以自己的方式创建新的匹配集合，那么原来的匹配集合哪里去了呢？被回收了吗？当然不是。当新的匹配集合被创建后，就被放到了栈顶，任何方法都可以使用(就像我们在示例中看到的那样)。但是jQuery允许弹出栈顶元素，这样方法就可以使用原来的匹配集合了。这就是end()方法的作用。
+
+再来看一下前面的一个例子：
+{% highlight javascript %} 
+	$('div').add('p').css('color','red');
+{% endhighlight %} 
+
+首先创建一个所有&lt;div&gt;的集合，随后又创建一个包含所有&lt;div&gt;和&lt;p&gt;元素的集合，当css()方法被调用时，第二个集合位于栈顶的位置，所以起作用的为第二个集合。那么这个该怎么理解呢？
+{% highlight javascript %} 
+	$('div').add('p').css('color','red').end().hide();
+{% endhighlight %} 
+css()方法调用后，end()方法把原先的匹配集合(全部&lt;div&gt;元素的集合)暴露了出来，然后他们就被隐藏了。
+
+还有一个可以影响匹配集合操作链的方法是andSelf()。
+
+调用andSelf()方法后，会将栈顶的两个元素集合合并成一个全新的集合，这个方法在某些场合下非常有用，比如先通过一个方法创建一个集合，再创建一个不同的新集合，然后在这两个集合的基础上调用一个或多个方法。
+{% highlight javascript %} 
+	$('div').css('background-color','yellow')
+	.children('img').css('border','4px ridge maroon').andSelf().css('margin','4em');
+{% endhighlight %} 
+首先把所有&lt;div&gt;元素的背景色都换成黄色，然后为子元素&lt;img&gt;添加边框，最后为&lt;div&gt;和子&lt;img&gt;元素设置缩进。
+
+jQuery选择器和jQuery方法间，我们可以操作匹配集合，jQuery为我们提供了异常强大的工具来选择DOM元素，还有非常多的jQuery方法可在其基础上进行操作。
 
 本文来自DZone，作者为：Bear Bibeault & Yehuda Katz
 
@@ -579,6 +728,10 @@ filter()函数可以以选择器(如果有多个则用逗号分隔)或者函数�
 			line-height: 25px;
 			font-family: "Microsoft YaHei" ! important;
 		 } 
+
+		 #catalog a {
+		 	color: #000;
+		 }
 
 		.headline { 
 			background-color: #B2073B;
@@ -635,6 +788,7 @@ filter()函数可以以选择器(如果有多个则用逗号分隔)或者函数�
 		#ul li { 
 			list-style-type:square;
 			margin: 5px;
+			padding: 0;
 		 }
 
 		 h3 a, h4 a {
