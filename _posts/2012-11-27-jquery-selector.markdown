@@ -502,7 +502,7 @@ jQuery的方法链可以用很简短的代码实现强大的功能。
 
 示例：
 {% highlight javascript %} 
-	$('div').css('background-color','blue').find('img').css('border','1px solid aqua');
+$('div').css('background-color','blue').find('img').css('border','1px solid aqua');
 {% endhighlight %} 
 将所有&lt;div&gt;元素的背景变为蓝色，再将所有这些&lt;div&gt;元素中的&lt;img&gt;子元素加上aqua样式的边框。
 
@@ -595,7 +595,6 @@ eq(n)可以被看做是slice(n, n+1)的简化方式。
 
 通过元素之间关系来创建新集合这个需求经常存在，下面这些方法就是完成这项功能的，他们非常相似，所以把他们放进同一个表格：
 
-
 <table>
 	<thead>
 		<tr>
@@ -616,7 +615,7 @@ eq(n)可以被看做是slice(n, n+1)的简化方式。
 		</tr>
 		<tr>
 			<td class="td_left">nextAll(expression)</td>
-			<td class="td_right">从匹配集合中获取匹配expression的所有兄弟元素，所有匹配的后兄弟元素均可/td>
+			<td class="td_right">从匹配集合中获取匹配expression的所有兄弟元素，所有匹配的后兄弟元素均可</td>
 		</tr>
 		<tr>
 			<td class="td_left">parent(expression)</td>
@@ -736,7 +735,7 @@ jQuery选择器和jQuery方法间，我们可以操作匹配集合，jQuery为�
 		.headline { 
 			background-color: #B2073B;
 			color: white;
-			padding: .4em;
+			padding: .5em;
 			border-bottom: 1px solid black;
 			text-transform: uppercase;
 			margin-left: .5em;
@@ -747,7 +746,7 @@ jQuery选择器和jQuery方法间，我们可以操作匹配集合，jQuery为�
 		.headline1 { 
 			background-color: #B2073B;
 			color: white;
-			padding: .4em;
+			padding: .5em;
 			border-bottom: 1px solid black;
 			text-transform: uppercase;
 			margin-left: 1em;
