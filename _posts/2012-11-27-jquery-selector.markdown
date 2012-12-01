@@ -503,6 +503,74 @@ jQuery的方法链可以用很简短的代码实现强大的功能。
 </blockquote>
 
 
+<h4 class="headline1"><a name="find">寻找后代</a></h4>
+
+有时候从匹配集合中搜索后代元素是非常有用的，这个功能可以用find()方法实现：
+
+<table>
+	<thead>
+		<tr>
+			<th class="th_left" colspan="2">find(expression)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="td_left">expression</td>
+			<td class="td_right">
+				选择器表达式，用于标示哪些后代可以被匹配
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+和前面其他的方法不同find()方法只接受选择器表达式作为参数，匹配集合中元素的后代将被选择器表达式参数再次匹配。原匹配集合中任何元素不参与第二次匹配。
+
+示例：
+
+{% highlight javascript %} 
+	$('div').css('background-color','blue').find('img').css('border','1px solid aqua');
+{% endhighlight %} 
+将所有&lt;div&gt;元素的背景变为蓝色，再将所有这些&lt;div&gt;元素中的&lt;img&gt;子元素加上aqua样式的边框。
+
+<h4 class="headline1"><a name="filter">过滤匹配集合</a></h4>
+
+当有更细粒度的需求，需要对匹配结果集合进行过滤的时候，就轮到filter()方法出场了：
+										
+<table>
+	<thead>
+		<tr>
+			<th class="th_left" colspan="2">filter(expression)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="td_left">expression</td>
+			<td class="td_right">
+				字符值，选择器表达式用于标示哪些元素可以被保留<br>
+				函数值，一个函数型参数用来判断一个元素是否应该包含在新的集合中。从0号元素开始作为函数的参数，返回false则表示该元素不能出现在新的集合中。
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+filter()函数可以以选择器(如果有多个则用逗号分隔)或者函数作为入参。当入参为选择器时，就完全与not()函数相反，会保留全部匹配的元素而不是删掉他们。当入参为一个函数时，这个函数会被每个元素调用，来判断是否匹配选择器表达式，从而决定是否能添加到新集合中。
+
+示例：
+
+{% highlight javascript %} 
+	$('.bashful').show().filter('img[src$=.gif]').attr('title','Hi there!');
+{% endhighlight %} 
+
+选择所有拥有bashful样式的元素，确保他们是可见的，并且保留gif格式的&lt;img&gt;元素，最后给这些&lt;img&gt;元素增加title属性。
+
+{% highlight javascript %} 
+	$('img[src^=images/]').filter(function(){ 
+		return $(this).attr('title').match(/.+@.+\.com/)!= null;
+	 } ).hide();
+{% highlight javascript %} 
+
+获取所有指定路径的&lt;img&gt;元素，只保留那些title为.com或邮箱地址的元素，最后把他们隐藏。
+
 
 
 本文来自DZone，作者为：Bear Bibeault & Yehuda Katz
