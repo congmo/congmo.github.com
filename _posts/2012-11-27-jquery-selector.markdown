@@ -43,23 +43,23 @@ jQuery选择器是jQuery类库最重要功能之一。这些选择器的用法�
 
 典型的jQuery语法格式如下：
 
-{highlight javascript}
+{% highlight javascript %} 
 	$(selector).methodName();
-{endhighlight}
+{% endhighlight %} 
 
 selector是一个字符串表达式，用于将符合的DOM元素放到集合中，以供jQuery类库方法使用。
 
 多个jQuery操作可以以链的形式串起来：
 
-{highlight javascript}
+{% highlight javascript %} 
 	$(selector).method1().method2().method3();
-{endhighlight}
+{% endhighlight %} 
 
 比如，要隐藏id为goAway的DOM元素，并且为其添加名为incognito的样式。实现如下：
 
-{highlight javascript}
+{% highlight javascript %} 
 	$('#goAway').hide().addClass('incognito');
-{endhighlight}
+{% endhighlight %} 
 
 使用起来非常简单，这就是选择器表达式的强大之处。
 
@@ -178,15 +178,15 @@ jQuery选择器有三种：基本的CSS选择器、位置选择器和自定义�
 
 在一个$()中可以使用多个选择器，用逗号分隔即可。比如下面获取全部&lt;div&gt;和&lt;p&gt;元素的表达式：
 
-{highlight javascript}
+{% highlight javascript %} 
 	$('div,p')
-{endhighlight}
+{% endhighlight %} 
 
 下面这个则匹配所有有title属性的&lt;div&gt;元素和有alt属性的&lt;img&gt;:
 
-{highlight javascript}
+{% highlight javascript %} 
 	$('div[title],img[alt]')
-{endhighlight}
+{% endhighlight %} 
 
 <h4 class="headline1"><a name="position">位置选择器</a></h4>
 
@@ -429,23 +429,23 @@ add()方法返回一个新的匹配元素集合，原有匹配元素集合再加
 
 来看看这个表达式：
 
-{highlight}
+{% highlight javascript %} 
 	$('div').add('p').css('color','red');
-{endhighlight}
+{% endhighlight %} 
 
 这段代码首先获取一个全部&lt;div&gt;元素的集合，然后又将现有的&lt;div&gt;元素集合加上&lt;p&gt;元素形成一个新的集合(所有的&lt;div&gt;和&lt;p&gt;元素)，最后为他们添加color=read的样式。
 
 可是这样的代码完全没有什么意义，因为他和下面这句的效果一样：
 
-{highlight javascript}
+{% highlight javascript %} 
 	$('div,p').css('color','red');
-{endhighlight}
+{% endhighlight %} 
 
 不过下面这句用选择器就搞不定了：
 
-{highlight javascript}
+{% highlight javascript %} 
 	$('div').css('font-weight','bold').add('p').css('color','red');
-{endhighlight}
+{% endhighlight %} 
 
 首先将所有的&lt;div&gt;元素中内容都加粗，最后加入所有&lt;p&gt;元素后形成新的集合，最后增加color=read的样式。
 
@@ -453,10 +453,10 @@ jQuery的方法链可以用很简短的代码实现强大的功能。
 
 再来一个例子：
 
-{highlight javascript}
+{% highlight javascript %} 
 	$('div').add(someElement).css('border','3px solid pink');
 	$('div').add([element1,element2]).css('border','3px solid pink');
-{endhighlight}
+{% endhighlight %} 
 
 
 <h4 class="headline1"><a name="delete">删除匹配元素</a></h4>
@@ -486,15 +486,15 @@ jQuery的方法链可以用很简短的代码实现强大的功能。
 
 示例
 
-{highlight javascript}
+{% highlight javascript %} 
 	$('body *').css('font-weight','bold').not('p').css('color','red');
-{endhighlight}
+{% endhighlight %} 
 
 将所有元素的内容都加粗，然后把除&lt;p&gt;元素外的所有元素都添加color=read样式。
 
-{highlight javascript}
+{% highlight javascript %} 
 	$('body *').css('font-weight','bold').not(anElement).css('color','red');
-{endhighlight}
+{% endhighlight %} 
 
 同上面那句类似，只不过剔除anElement元素在外。
 
@@ -527,9 +527,9 @@ jQuery的方法链可以用很简短的代码实现强大的功能。
 
 示例：
 
-{highlight javascript}
+{% highlight javascript %} 
 	$('div').css('background-color','blue').find('img').css('border','1px solid aqua');
-{endhighlight}
+{% endhighlight %} 
 将所有&lt;div&gt;元素的背景变为蓝色，再将所有这些&lt;div&gt;元素中的&lt;img&gt;子元素加上aqua样式的边框。
 
 <h4 class="headline1"><a name="filter">过滤匹配集合</a></h4>
@@ -557,17 +557,17 @@ filter()函数可以以选择器(如果有多个则用逗号分隔)或者函数�
 
 示例：
 
-{highlight javascript}
+{% highlight javascript %} 
 	$('.bashful').show().filter('img[src$=.gif]').attr('title','Hi there!');
-{endhighlight}
+{% endhighlight %} 
 
 选择所有拥有bashful样式的元素，确保他们是可见的，并且保留gif格式的&lt;img&gt;元素，最后给这些&lt;img&gt;元素增加title属性。
 
-{highlight javascript}
-	$('img[src^=images/]').filter(function(){
+{% highlight javascript %} 
+	$('img[src^=images/]').filter(function(){% 
 		return $(this).attr('title').match(/.+@.+\.com/)!= null;
-	}).hide();
-{highlight javascript}
+	 %} ).hide();
+{% highlight javascript %} 
 
 获取所有指定路径的&lt;img&gt;元素，只保留那些title为.com或邮箱地址的元素，最后把他们隐藏。
 
@@ -601,15 +601,15 @@ filter()函数可以以选择器(如果有多个则用逗号分隔)或者函数�
 
 示例
 
-{highlight javascript}
+{% highlight javascript %} 
 $('body *').slice(2).hide();
-{endhighlight}
+{% endhighlight %} 
 
 隐藏body中除了前两个元素之外的所有元素。
 
-{highlight javascript}
+{% highlight javascript %} 
 $('body *').slice(2,3).hide();
-{endhighlight}
+{% endhighlight %} 
 
 隐藏body中第三个元素。注意：只包含索引值为2的元素，不包含索引值为3的元素。
 
@@ -716,18 +716,18 @@ eq(n)可以被看做是slice(n, n+1)的简化方式。
 
 比如，想获取id为myForm的表单中全部表单元素的值：
 
-{highlight javascript}
-	var values = $('#myForm :input').map(function(){
+{% highlight javascript %} 
+	var values = $('#myForm :input').map(function(){% 
 		return $(this).val();
-	});
-{endhighlight}
+	 %} );
+{% endhighlight %} 
 
 <blockquote>
 map()方法返回的是jQuery对象的实例，可以使用无参的get()函数转换为javascript中的数组：<br>
 <br>
-var values = $('#myForm :input').map(function(){<br>
+var values = $('#myForm :input').map(function(){% <br>
 return $(this).val();<br>
-}).get();<br>
+ %} ).get();<br>
 <br>
 这样values就是一个javascript数组而不是jQuery对象。<br>
 
@@ -739,15 +739,15 @@ return $(this).val();<br>
 前面提到的所有方法都以自己的方式创建新的匹配集合，那么原来的匹配集合哪里去了呢？被回收了吗？当然不是。当新的匹配集合被创建后，就被放到了栈顶，任何方法都可以使用(就像我们在示例中看到的那样)。但是jQuery允许弹出栈顶元素，这样方法就可以使用原来的匹配集合了。这就是end()方法的作用。
 
 再来看一下前面的一个例子：
-{highlight javascript}
+{% highlight javascript %} 
 	$('div').add('p').css('color','red');
-{endhighlight}
+{% endhighlight %} 
 
 首先创建一个所有&lt;div&gt;的集合，随后又创建一个包含所有&lt;div&gt;和&lt;p&gt;元素的集合，当css()方法被调用时，第二个集合位于栈顶的位置，所以起作用的为第二个集合。那么这个该怎么理解呢？
 
-{highlight javascript}
+{% highlight javascript %} 
 	$('div').add('p').css('color','red').end().hide();
-{endhighlight}
+{% endhighlight %} 
 
 css()方法调用后，end()方法把原先的匹配集合(全部&lt;div&gt;元素的集合)暴露了出来，然后他们就被隐藏了。
 
@@ -755,10 +755,10 @@ css()方法调用后，end()方法把原先的匹配集合(全部&lt;div&gt;元�
 
 调用andSelf()方法后，会将栈顶的两个元素集合合并成一个全新的集合，这个方法在某些场合下非常有用，比如先通过一个方法创建一个集合，再创建一个不同的新集合，然后在这两个集合的基础上调用一个或多个方法。
 
-{highlight javascript}
+{% highlight javascript %} 
 	$('div').css('background-color','yellow')
 	.children('img').css('border','4px ridge maroon').andSelf().css('margin','4em');
-{endhighlight}
+{% endhighlight %} 
 
 首先把所有&lt;div&gt;元素的背景色都换成黄色，然后为子元素&lt;img&gt;添加边框，最后为&lt;div&gt;和子&lt;img&gt;元素设置缩进。
 
@@ -769,13 +769,13 @@ jQuery选择器和jQuery方法间，我们可以操作匹配集合，jQuery为�
 原文链接：<a href="http://refcardz.dzone.com/refcardz/jquery-selectors" target="_blank">http://refcardz.dzone.com/refcardz/jquery-selectors</a>
 
 <style type="text/css">
-		#catalog li{
+		#catalog li{% 
 			list-style: none;
 			line-height: 25px;
 			font-family: "Microsoft YaHei" ! important;
-		}
+		 %} 
 
-		.headline {
+		.headline {% 
 			background-color: #B2073B;
 			color: white;
 			padding: .4em;
@@ -784,9 +784,9 @@ jQuery选择器和jQuery方法间，我们可以操作匹配集合，jQuery为�
 			margin-left: .5em;
 			margin-right: .5em;
 			line-height: 1em;
-		}
+		 %} 
 
-		.headline1 {
+		.headline1 {% 
 			background-color: #B2073B;
 			color: white;
 			padding: .4em;
@@ -795,41 +795,41 @@ jQuery选择器和jQuery方法间，我们可以操作匹配集合，jQuery为�
 			margin-left: 1em;
 			margin-right: 1em;
 			line-height: 1em;
-		}
+		 %} 
 
-		thead th{
+		thead th{% 
 			border-bottom: 1px solid;
 			color: #494949;
 			font-weight: bold;
-		}
+		 %} 
 
-		.th_left {
+		.th_left {% 
 			background-color: #A3D8F5;
-		}
-		.td_left {
+		 %} 
+		.td_left {% 
 			background-color: #D9EBFB
-		}
-		.th_right {
+		 %} 
+		.th_right {% 
 			background-color: #FFEFBC;
-		}
-		.td_right {
+		 %} 
+		.td_right {% 
 			background-color: #FFF7DC
-		}
+		 %} 
 
-		table {
+		table {% 
 			border-collapse: collapse;
 			border-spacing: 0;
 			border: 1px solid;
 			margin-left: 10px;
-		}
-		td, th {
+		 %} 
+		td, th {% 
 			border: 1px solid;
 			padding: 5px;
-		}
+		 %} 
 
-		#ul li {
+		#ul li {% 
 			list-style-type:square;
 			margin: 5px;
-		}
+		 %} 
 
 </style>
