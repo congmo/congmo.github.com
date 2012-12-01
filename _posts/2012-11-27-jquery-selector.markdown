@@ -188,6 +188,101 @@ jQuery选择器有三种：基本的CSS选择器、位置选择器和自定义�
 	$('div[title],img[alt]')
 {% endhighlight %} 
 
+<h4 class="headline1"><a name="position">位置选择器</a></h4>
+
+这些选择器的匹配是基于元素之间的相对位置。这些选择器也可以追加到基本选择器(用B表示)后面，基于位置再次过滤元素。如果不考虑B则等同于*(全部元素)。
+
+<table>
+	<thead>
+		<tr>
+			<th class="th_left">语法</th>
+			<th class="th_right">描述</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="td_left">B:first</td>
+			<td class="td_right">获取B选择器获取的元素集合中的第一个元素</td>
+		</tr>
+		<tr>
+			<td class="td_left">B:last</td>
+			<td class="td_right">获取B选择器获取的元素集合中的最后一个元素</td>
+		</tr>
+		<tr>
+			<td class="td_left">B:first-child</td>
+			<td class="td_right">获取全部B元素，B为父元素的第一个孩子</td>
+		</tr>
+		<tr>
+			<td class="td_left">B:last-child</td>
+			<td class="td_right">获取全部B元素，B为父元素的最后一个孩子</td>
+		</tr>
+		<tr>
+			<td class="td_left">B:only-child</td>
+			<td class="td_right">获取全部B元素，B为父元素仅有的孩子</td>
+		</tr>
+		<tr>
+			<td class="td_left">B:nth-child(n)</td>
+			<td class="td_right">获取全部B元素，B为父元素的第n个孩子，n从1开始</td>
+		</tr>
+		<tr>
+			<td class="td_left">B:nth-child(odd|even)</td>
+			<td class="td_right">
+				获取全部B元素，B元素为第奇数或偶数个孩子
+				第一个孩子被算作奇数
+			</td>
+		</tr>
+		<tr>
+			<td class="td_left">B:nth-child(Xn+Y)</td>
+			<td class="td_right">
+				获取全部满足表达式(x*序号+y偏移值)的B元素，y为0则被忽略
+			</td>
+		</tr>
+		<tr>
+			<td class="td_left">B:even</td>
+			<td class="td_right">
+				获取B选择器获取的元素集合中的序号为偶数元素
+			</td>
+		</tr>
+		<tr>
+			<td class="td_left">B:odd</td>
+			<td class="td_right">获取B选择器获取的元素集合中的序号为奇数元素</td>
+		</tr>
+		<tr>
+			<td class="td_left">B:eq(n)</td>
+			<td class="td_right">获取B选择器获取的元素集合中的第n个元素，从0开始</td>
+		</tr>
+		<tr>
+			<td class="td_left">B:gt(n)</td>
+			<td class="td_right">获取B选择器获取的元素集合中的序号大于n的元素，从0开始</td>
+		</tr>
+		<tr>
+			<td class="td_left">B:lt(n)</td>
+			<td class="td_right">获取B选择器获取的元素集合中的序号小于n的元素，从0开始</td>
+		</tr>
+	</tbody>
+</table>				
+
+示例
+
+<ul id="ul">
+	<li>$('p:first') 获取页面中的第一个&lt;p&gt;</li>
+	<li>$('img[src$=.png]:first') 获取第一个scr以.png结尾的&lt;img&gt;元素</li>
+	<li>$('button.small:last') 获取最后一个有small样式名的&lt;button&gt;</li>
+	<li>$('li:first-child') 获取每个列表中第一个&lt;li&gt;</li>
+	<li>$('a:only-child') 获取全部&lt;a&gt;元素，&lt;a&gt;元素为父元素仅有的孩子</li>
+	<li>$('li:nth-child(2)') 获取全部列表中第二个&lt;li&gt;元素</li>
+	<li>$('tr:nth-child(odd)') 获取表格中序号为偶数的&lt;tr&gt;元素</li>
+	<li>$('div:nth-child(5n)') 获取全部序号为5的&lt;div&gt;元素</li>
+	<li>$('div:nth-child(5n+1)') 获取全部序号5n后面的元素</li>
+	<li>$('.someClass:eq(1)') 获取第二个样式名为someClass的元素</li>
+	<li>$('.someClass:gt(1)') 获取除前两个之外所有样式名为someClass的元素</li>
+	<li>$('.someClass:lt(4)') 获取前四个样式名为someClass的元素</li>
+</ul>
+
+<blockquote>
+	注意：:nth-child选择器获取的结果集合序号从1开始，而:eq,:gt和:lt选择器获取的结果集合从0开始。
+</blockquote>
+
 
 
 本文来自DZone，作者为：Bear Bibeault & Yehuda Katz
