@@ -9,7 +9,7 @@ keywords: jQuery,selector
 ---
 
 <div style="margin: 0 auto;background-color: #FFFFCC;border: 1px solid #669999;margin: 0px 20px 10px 20px;">
-	<h2 class="headline">目录</h2>
+	<h3 class="headline">目录</h3>
 	<ul id="catalog">
 		<li><a href="#what">什么是jQuery选择器?</a></li>
 		<li>
@@ -37,7 +37,7 @@ keywords: jQuery,selector
 </div>
 
 
-<h2 class="headline"><a name="what">什么是jQuery选择器</a></h2>
+<h3 class="headline"><a name="what">什么是jQuery选择器</a></h3>
 
 jQuery选择器是jQuery类库最重要功能之一。这些选择器的用法和CSS的语法非常相似，结合jQuery类库的方法你可以很方便快速地定位页面中任何元素。理解jQuery选择器是高效使用jQuery类库的关键。本索引卡就将jQuery选择器强大的功能展现在你眼前。
 
@@ -75,14 +75,14 @@ var element = $('img')[0];<br>
 
 
 
-<h2 class="headline"><a name="types">jQuery选择器种类</a></h2>
+<h3 class="headline"><a name="types">jQuery选择器种类</a></h3>
 
 jQuery选择器有三种：基本的CSS选择器、位置选择器和自定义选择器。
 
 由于基本选择器用来查找DOM中的元素，又名查找选择器。位置选择器和自定义选择器则用于过滤元素(默认为DOM的全部元素)得名过滤选择器。
 
 
-<h3 class="headline1"><a name="basic">基本的CSS选择器</a></h3>
+<h4 class="headline1"><a name="basic">基本的CSS选择器</a></h4>
 
 这些选择器遵循标准CSS3的语法和语义。
 
@@ -188,7 +188,7 @@ jQuery选择器有三种：基本的CSS选择器、位置选择器和自定义�
 	$('div[title],img[alt]')
 {endhighlight}
 
-<h3 class="headline1"><a name="position">位置选择器</a></h3>
+<h4 class="headline1"><a name="position">位置选择器</a></h4>
 
 这些选择器的匹配是基于元素之间的相对位置。这些选择器也可以追加到基本选择器(用B表示)后面，基于位置再次过滤元素。如果不考虑B则等同于*(全部元素)。
 
@@ -283,7 +283,7 @@ jQuery选择器有三种：基本的CSS选择器、位置选择器和自定义�
 	注意：:nth-child选择器获取的结果集合序号从1开始，而:eq,:gt和:lt选择器获取的结果集合从0开始。
 </blockquote>
 
-<h3 class="headline1"><a name="custom">jQuery自定义选择器</a></h3>
+<h4 class="headline1"><a name="custom">jQuery自定义选择器</a></h4>
 
 自定义选择器是为了那些经常使用，并且CSS规范中没有提供而被jQuery支持的。比如位置选择器，这些选择器在基本选择器获取的结果集合的基础上再次过滤。下面来看一些强大的选择器组合。
 
@@ -397,13 +397,13 @@ jQuery选择器有三种：基本的CSS选择器、位置选择器和自定义�
 
 不论单独还是组合使用jQuery选择器，都可以很方便的获取一组元素，以供jQuery类库方法进行操作。
 
-<h2 class="headline"><a name="method">匹配方法</a></h2>
+<h3 class="headline"><a name="method">匹配方法</a></h3>
 
 尽管选择器为我们提供了非常灵活的过滤DOM的手段，但还是有时候单单使用选择器是没法表示匹配规则。而且我们可能也需要在方法调用见调整匹配元素的内容。
 
 基于以上两点，jQuery提供了一些用于调整匹配元素的方法。本节将重点介绍这些方法。
 
-<h3 class="headline1"><a name="add">添加新元素</a></h3>
+<h4 class="headline1"><a name="add">添加新元素</a></h4>
 
 add()方法用于向匹配元素集合中添加新元素。
 <table>
@@ -429,7 +429,7 @@ add()方法返回一个新的匹配元素集合，原有匹配元素集合再加
 
 来看看这个表达式：
 
-{highlight javascript}
+{highlight}
 	$('div').add('p').css('color','red');
 {endhighlight}
 
@@ -459,7 +459,7 @@ jQuery的方法链可以用很简短的代码实现强大的功能。
 {endhighlight}
 
 
-<h3 class="headline1"><a name="delete">删除匹配元素</a></h3>
+<h4 class="headline1"><a name="delete">删除匹配元素</a></h4>
 
 如果想冲匹配元素集合中删除元素要怎么办呢？这个正是not()方法的功能：
 
@@ -503,7 +503,7 @@ jQuery的方法链可以用很简短的代码实现强大的功能。
 </blockquote>
 
 
-<h3 class="headline1"><a name="find">寻找后代</a></h3>
+<h4 class="headline1"><a name="find">寻找后代</a></h4>
 
 有时候从匹配集合中搜索后代元素是非常有用的，这个功能可以用find()方法实现：
 
@@ -532,7 +532,7 @@ jQuery的方法链可以用很简短的代码实现强大的功能。
 {endhighlight}
 将所有&lt;div&gt;元素的背景变为蓝色，再将所有这些&lt;div&gt;元素中的&lt;img&gt;子元素加上aqua样式的边框。
 
-<h3 class="headline1"><a name="filter">过滤匹配集合</a></h3>
+<h4 class="headline1"><a name="filter">过滤匹配集合</a></h4>
 
 当有更细粒度的需求，需要对匹配结果集合进行过滤的时候，就轮到filter()方法出场了：
 										
@@ -571,7 +571,7 @@ filter()函数可以以选择器(如果有多个则用逗号分隔)或者函数�
 
 获取所有指定路径的&lt;img&gt;元素，只保留那些title为.com或邮箱地址的元素，最后把他们隐藏。
 
-<h3 class="headline1"><a name="slice">分割匹配集合</a></h3>
+<h4 class="headline1"><a name="slice">分割匹配集合</a></h4>
 
 尽管可以使用选择器来获取匹配元素，但是有时候还是想通过匹配集合中元素的位置来分割匹配集合，本节介绍两个方法来完成这项功能：
 
@@ -630,7 +630,7 @@ $('body *').slice(2,3).hide();
 </table>
 eq(n)可以被看做是slice(n, n+1)的简化方式。
 
-<h3 class="headline1"><a name="relationship">通过关系匹配</a></h3>
+<h4 class="headline1"><a name="relationship">通过关系匹配</a></h4>
 
 
 通过元素之间关系来创建新集合这个需求经常存在，下面这些方法就是完成这项功能的，他们非常相似，所以把他们放进同一个表格：
@@ -694,7 +694,7 @@ eq(n)可以被看做是slice(n, n+1)的简化方式。
 这些方法(除了contents()方法)都接受一个过滤器表达式作为参数，如果不传参数则不进行过滤。
 
 
-<h3 class="headline1"><a name="translation">转换元素</a></h3>
+<h4 class="headline1"><a name="translation">转换元素</a></h4>
 
 当想将匹配集合中每个元素转换为其他类型的元素时，可以使用map()方法。
 
@@ -734,7 +734,7 @@ return $(this).val();<br>
 </blockquote>
 					
 
-<h3 class="headline1"><a name="controll">控制链</a></h3>
+<h4 class="headline1"><a name="controll">控制链</a></h4>
 
 前面提到的所有方法都以自己的方式创建新的匹配集合，那么原来的匹配集合哪里去了呢？被回收了吗？当然不是。当新的匹配集合被创建后，就被放到了栈顶，任何方法都可以使用(就像我们在示例中看到的那样)。但是jQuery允许弹出栈顶元素，这样方法就可以使用原来的匹配集合了。这就是end()方法的作用。
 
