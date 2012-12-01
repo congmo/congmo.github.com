@@ -565,7 +565,7 @@ filter()函数可以以选择器(如果有多个则用逗号分隔)或者函数�
 
 {% highlight javascript %} 
 	$('img[src^=images/]').filter(function(){ 
-		return $(this).attr('title').match(/.+@.+\.com/)!= null;
+		return $(this).attr('title').match(/.+@.+\\.com/)!= null;
 	 } ).hide();
 {% highlight javascript %} 
 
