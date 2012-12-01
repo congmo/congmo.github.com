@@ -571,65 +571,6 @@ filter()函数可以以选择器(如果有多个则用逗号分隔)或者函数�
 
 获取所有指定路径的&lt;img&gt;元素，只保留那些title为.com或邮箱地址的元素，最后把他们隐藏。
 
-<h4 class="headline1"><a name="slice">分割匹配集合</a></h4>
-
-尽管可以使用选择器来获取匹配元素，但是有时候还是想通过匹配集合中元素的位置来分割匹配集合，本节介绍两个方法来完成这项功能：
-
-这两个方法的索引值都是从0开始的。
-				
-<table>
-	<thead>
-		<tr>
-			<th class="th_left" colspan="2">slice(being,end)</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="td_left">begin</td>
-			<td class="td_right">
-				数字类型，新集合中第一个元素的索引值
-			</td>
-		</tr>
-		<tr>
-			<td class="td_left">end</td>
-			<td class="td_right">
-				数字类型，最后一个不能添加到新集合中的索引值，如果忽略则从begin到最后的元素都被包含在新集合中
-			</td>
-		</tr>
-	</tbody>
-</table>
-
-示例
-
-{% highlight javascript %} 
-	$('body *').slice(2).hide();
-{% endhighlight %} 
-
-隐藏body中除了前两个元素之外的所有元素。
-
-{% highlight javascript %} 
-	$('body *').slice(2,3).hide();
-{% endhighlight %} 
-
-隐藏body中第三个元素。注意：只包含索引值为2的元素，不包含索引值为3的元素。
-
-<table>
-	<thead>
-		<tr>
-			<th class="th_left" colspan="2">eq(position)</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="td_left">position</td>
-			<td class="td_right">
-				数字类型，只有索引值为position的元素会被添加到新集合中
-			</td>
-		</tr>
-	</tbody>
-</table>
-eq(n)可以被看做是slice(n, n+1)的简化方式。
-
 
 
 本文来自DZone，作者为：Bear Bibeault & Yehuda Katz
