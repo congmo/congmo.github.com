@@ -564,9 +564,9 @@ filter()函数可以以选择器(如果有多个则用逗号分隔)或者函数�
 选择所有拥有bashful样式的元素，确保他们是可见的，并且保留gif格式的&lt;img&gt;元素，最后给这些&lt;img&gt;元素增加title属性。
 
 {% highlight javascript %} 
-	$('img[src^=images/]').filter(function(){% 
+	$('img[src^=images/]').filter(function(){ 
 		return $(this).attr('title').match(/.+@.+\.com/)!= null;
-	 %} ).hide();
+	 } ).hide();
 {% highlight javascript %} 
 
 获取所有指定路径的&lt;img&gt;元素，只保留那些title为.com或邮箱地址的元素，最后把他们隐藏。
@@ -602,13 +602,13 @@ filter()函数可以以选择器(如果有多个则用逗号分隔)或者函数�
 示例
 
 {% highlight javascript %} 
-$('body *').slice(2).hide();
+	$('body *').slice(2).hide();
 {% endhighlight %} 
 
 隐藏body中除了前两个元素之外的所有元素。
 
 {% highlight javascript %} 
-$('body *').slice(2,3).hide();
+	$('body *').slice(2,3).hide();
 {% endhighlight %} 
 
 隐藏body中第三个元素。注意：只包含索引值为2的元素，不包含索引值为3的元素。
@@ -717,17 +717,17 @@ eq(n)可以被看做是slice(n, n+1)的简化方式。
 比如，想获取id为myForm的表单中全部表单元素的值：
 
 {% highlight javascript %} 
-	var values = $('#myForm :input').map(function(){% 
+	var values = $('#myForm :input').map(function(){
 		return $(this).val();
-	 %} );
+	 } );
 {% endhighlight %} 
 
 <blockquote>
 map()方法返回的是jQuery对象的实例，可以使用无参的get()函数转换为javascript中的数组：<br>
 <br>
-var values = $('#myForm :input').map(function(){% <br>
-return $(this).val();<br>
- %} ).get();<br>
+var values = $('#myForm :input').map(function(){ <br>
+	return $(this).val();<br>
+ } ).get();<br>
 <br>
 这样values就是一个javascript数组而不是jQuery对象。<br>
 
