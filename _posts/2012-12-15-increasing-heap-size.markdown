@@ -8,7 +8,7 @@ keywords: 堆,GC
 ---
 <div>
 	<p>
-		<img src="/post_images/2012/12/cobra.jpg" width="300" height="200" style="float:right">
+		<img src="/post_images/2012/12/cobra.jpg" width="260" height="274" style="float:right">
 		“眼镜蛇效应”源于在当时的英国统治的殖民地印度的轶事。英国政府担心眼镜蛇。因此，政府为打死每条眼镜蛇设有奖励。最初，这是一个成功的策略，大量的蛇被打死。然而最终印度人开始繁殖眼镜蛇来创造收入。
 	</p>
 </div>
