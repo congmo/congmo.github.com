@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "Chrome开发者工具之Elements面板"
+title: "调整堆大小-谨防眼镜蛇效应"
 category: Translation
 tags:
- - Chrome
+ - JVM
+keywords: 堆,GC
 ---
