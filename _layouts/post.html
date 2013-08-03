@@ -2,27 +2,15 @@
 layout: master
 lastest_posts: 10
 ---
-<div class='home_box' id='home_left'>
-  <span class='date'>{{page.date | date_to_string}}</span>
-  <h1 id='title'><a href='{{page.url}}'>{{page.title}}</a></h1>
-  <div class='body' id='post_content'>{{ content }}</div>
+<section class="articles">
+ <article>
+  <h3 id='title'><a href='{{page.url}}'>{{page.title}}</a></h3>
+  <span class="byline">Posted on {{page.date | date: "%d %B %Y"}}</span>
+  <div>{{ content }}</div>
 
-
-<!--<div class="related">
-  <h3>Related Posts</h3>
-  <table class="post-list">
-    {% for post in site.related_posts limit:1 %}
-      <tr>
-        <th><a href='{{ post.url }}'>{{ post.title }}</a></th>
-        <td>{{ post.date | date_to_string }}</td>
-        <td><a href='{{post.url}}#disqus_thread'>Comments</a></td>
-      </tr>
-    {% endfor %}
-  </table>
-</div>-->
-<div id="disqus_thread" style='margin-left: 0.5em;'></div>
-</div>
-
+  <div id="disqus_thread" style='margin-left: 0.5em;'></div>
+ </article>
+</section>
 <script type="text/javascript" charset="utf-8">
   var disqus_url = "http://congmo.github.com{{page.url}}";
 </script>

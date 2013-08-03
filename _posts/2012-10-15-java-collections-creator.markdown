@@ -1,9 +1,6 @@
 ---
 layout: post
 title: "集合类简易创建工具类"
-category: Java
-tags:
- - Java
 keywords: Java,集合,Collection,HashMap,ArrayList,HashSet,LinkedList,LinkedHashMap
 ---
 

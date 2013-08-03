@@ -1,9 +1,6 @@
 ---
 layout: post
 title: "选32位还是64位的JVM好呢？"
-category: Translation
-tags:
- - JVM
 keywords: JVM,32bit,64bit
 ---
 
@@ -82,20 +79,3 @@ keywords: JVM,32bit,64bit
 文章作者: Vladimir Šor
 
 原文链接: <a href="http://plumbr.eu/blog/should-i-use-32-or-64-bit-jvm" target="_blank">http://plumbr.eu/blog/should-i-use-32-or-64-bit-jvm</a>
-
-<style type="text/css">
-	table{
-		border-collapse: separate;
-		border-spacing: 2px;
-		border-color: gray;
-	}
-
-	td {
-		border: thin solid;
-		padding: 3px;
-	}
-
-	td， th {
-		text-align: left;
-	}
-</style>

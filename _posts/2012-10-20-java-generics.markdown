@@ -1,10 +1,6 @@
 ---
 layout: post
-title: "泛型:List&lt;? extends Animal&gt;和List&lt;Animal&gt;一样吗?"
-category: Translation
-tags:
- - Java
- - Translation
+title: "泛型:List< ? extends Animal >和List< Animal >一样吗?"
 keywords: Java,泛型,Geneics
 ---
 
@@ -13,12 +9,9 @@ keywords: Java,泛型,Geneics
 	stackoverflow上看见一篇关于java泛型非常好的讨论，所以今天拿出来简单翻译一下。
 </blockquote>
 
-###正文
-
-
 ####Q:
 
-我只想弄清楚java泛型中extends关键字，List&lt;? extends Animal&gt;就是任何继承Animal的对象都可以插入到这个List中。它和下面这句难道不一样吗？List&lt;Animal&gt;。谁能帮我解释下这两种用法的不同吗？在我看来extends有些多余啊！
+我只想弄清楚java泛型中extends关键字，`List<? extends Animal>`就是任何继承Animal的对象都可以插入到这个List中。它和下面这句难道不一样吗？`List<Animal>`。谁能帮我解释下这两种用法的不同吗？在我看来extends有些多余啊！
 
 谢谢！
 
@@ -26,9 +19,9 @@ keywords: Java,泛型,Geneics
 
 ####A1:
 
-List&lt;Dog&gt;是List&lt;? extends Animal&gt;的子类型,但不是List&lt;Animal&gt;的子类型。
+`List<Dog>`是`List<? extends Animal>`的子类型,但不是`List<Animal>`的子类型。
 
-为什么List&lt;Dog&gt;不是List&lt;Animal&gt;的子类型呢？先看一下这个例子吧：
+为什么List<Dog>不是List<Animal>的子类型呢？先看一下这个例子吧：
 
 {% highlight java %}
 
@@ -39,10 +32,10 @@ List&lt;Dog&gt;是List&lt;? extends Animal&gt;的子类型,但不是List&lt;Anim
 {% endhighlight %}
 
 
-如果允许以List&lt;Dog&gt;为参数传入这个方法，那么会发生运行时异常。
+如果允许以`List<Dog>`为参数传入这个方法，那么会发生运行时异常。
 
 
-EDIT:如果换做List&lt;? extends Animal&gt;为参数，下面的情况会发生；
+EDIT:如果换做`List<? extends Animal>`为参数，下面的情况会发生；
 
 {% highlight java %}
 
@@ -53,7 +46,7 @@ EDIT:如果换做List&lt;? extends Animal&gt;为参数，下面的情况会发�
 
 {% endhighlight %}
 
-可以以List&lt;Dog&gt;为参数传入这个函数，但是编译器会发现这样会给你带来很多麻烦。如果用super代替extends（允许传入List&lt;LifeForm&gt;），情况就完全相反了：
+可以以`List<Dog>`为参数传入这个函数，但是编译器会发现这样会给你带来很多麻烦。如果用super代替extends（允许传入`List<LifeForm>`），情况就完全相反了：
 
 {% highlight java %}
 
@@ -72,7 +65,7 @@ void mySub(List< ? super Animal> myList) {
 
 ####A2:
 
-它们是不一样的，List&lt;Animal&gt;表示它指向的变量值得类型必须是List&lt;Animal&gt;类型的，这并不意味着只能添加Animal对象，还可以添加Animal对象的子类。
+它们是不一样的，`List<Animal>`表示它指向的变量值得类型必须是`List<Animal>`类型的，这并不意味着只能添加Animal对象，还可以添加Animal对象的子类。
 
 {% highlight java %}
 
@@ -82,9 +75,9 @@ void mySub(List< ? super Animal> myList) {
 
 {% endhighlight %}
 
-如果想构造一个List存储Number对象，并且这个List本身并不需要是List&lt;Number&gt;类型的，可以也是这个List的子类型（比如List&lt;Integer&gt;），这个时候可以使用List&lt;? extends Animal&gt;。
+如果想构造一个List存储Number对象，并且这个List本身并不需要是`List<Number>`类型的，可以也是这个List的子类型（比如`List<Integer>`），这个时候可以使用`List<? extends Animal>`。
 
-List&lt;? extends Number&gt;这种方式用在方法参数时的含义是：只要是个Number列表即可，List&lt;Double&gt;类型的也可以；而List&lt;Number&gt;作为参数时，可以避免错误的向上类型转换，比如想获得一个基类类型的List，却传入一个子类类型的List。
+`List<? extends Number>`这种方式用在方法参数时的含义是：只要是个Number列表即可，`List<Double>`类型的也可以；而`List<Number>`作为参数时，可以避免错误的向上类型转换，比如想获得一个基类类型的List，却传入一个子类类型的List。
 
 {% highlight java %}
 	publid void doSomethingWith(List<Number> l) {
@@ -95,7 +88,7 @@ List&lt;? extends Number&gt;这种方式用在方法参数时的含义是：只�
 	doSomethingWith(d); // not working
 {% endhighlight %}
 
-上面这段代码不起作用是因为参数的类型是List&lt;Number&gt;而不是List&lt;Double&gt;。如果改成List&lt;? extends Number&gt;那么传入List&lt;Double&gt;是没有问题的。
+上面这段代码不起作用是因为参数的类型是List<Number>而不是List<Double>。如果改成`List<? extends Number>`那么传入`List<Double>`是没有问题的。
 
 {% highlight java %}
 
@@ -108,7 +101,7 @@ List&lt;? extends Number&gt;这种方式用在方法参数时的含义是：只�
 
 {% endhighlight %}
 
-注意：这东西和List中元素的继承关系无关，不管是否使用? extends都可以将Double或Integer添加到List&lt;Number&gt;中。
+注意：这东西和List中元素的继承关系无关，不管是否使用? extends都可以将Double或Integer添加到`List<Number>`中。
 
 <hr>
 
@@ -116,9 +109,9 @@ List&lt;? extends Number&gt;这种方式用在方法参数时的含义是：只�
 
 看见你已经找到答案了，我还是想补充一下我的理解，希望能帮上忙。
 
-List&lt;? extends Animal&gt;和List&lt;Animal&gt;的区别如下：
+`List<? extends Animal>`和`List<Animal>`的区别如下：
 
-List&lt;Animal&gt;就是定义了一个动物的列表，它的元素不仅可以是Animal对象，也可以是Animal的派生类。比如，有一个动物列表，一部分是山羊，还有猫咪等，是这样吗？
+`List<Animal>`就是定义了一个动物的列表，它的元素不仅可以是Animal对象，也可以是Animal的派生类。比如，有一个动物列表，一部分是山羊，还有猫咪等，是这样吗？
 
 下面这个例子证明确实是这样的：
 
@@ -141,7 +134,7 @@ List&lt;Animal&gt;就是定义了一个动物的列表，它的元素不仅可�
 
 {% endhighlight %}
 
-当然如果确定aL.peek()就是返回一个Cat对象，那么可以这样做：
+当然如果确定`aL.peek()`就是返回一个Cat对象，那么可以这样做：
 
 {% highlight java %}
 
@@ -151,7 +144,7 @@ List&lt;Animal&gt;就是定义了一个动物的列表，它的元素不仅可�
 {% endhighlight %}
 
 
-至于List&lt;? extends Animal&gt;是定义了这个List本身的类型，而不是元素的类型。
+至于`List<? extends Animal>`是定义了这个List本身的类型，而不是元素的类型。
 
 比如：
 

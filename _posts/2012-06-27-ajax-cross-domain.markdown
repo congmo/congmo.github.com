@@ -1,10 +1,6 @@
 ---
 layout: post
 title: "看小白是如何解决ajax跨域问题"
-category: jQuery
-tags:
- - jQuery
- - ajax
 keywords: ajax,jsonp,跨域,jQuery,jquery-jsonp
 ---
 
@@ -44,7 +40,7 @@ keywords: ajax,jsonp,跨域,jQuery,jquery-jsonp
     });
 {% endhighlight %}
 
-这样写是完全没有问题的，起先error的处理函数中仅仅是alert("error")，为了进一步弄清楚是什么原因造成了错误，故将处理函数变为上面的实现方式。最后一行alert使用为；parsererror。百思不得其解，继续google，最终还是在万能的stackoverflow找到了答案，链接在<a href="http://stackoverflow.com/questions/4683114/sending-jsonp-vs-json-data">这里</a>。原因是jsonp的格式与json格式有着细微的差别，所以在server端的代码上稍稍有所不同。
+这样写是完全没有问题的，起先error的处理函数中仅仅是`alert("error")`，为了进一步弄清楚是什么原因造成了错误，故将处理函数变为上面的实现方式。最后一行alert使用为；parsererror。百思不得其解，继续google，最终还是在万能的stackoverflow找到了答案，链接在<a href="http://stackoverflow.com/questions/4683114/sending-jsonp-vs-json-data">这里</a>。原因是jsonp的格式与json格式有着细微的差别，所以在server端的代码上稍稍有所不同。
 
 比较一下json与jsonp格式的区别：
 
@@ -68,7 +64,7 @@ keywords: ajax,jsonp,跨域,jQuery,jquery-jsonp
   })
 {% endhighlight %}
 
-看出来区别了吧，在url中callback传到后台的参数是神马callback就是神马，jsonp比json外面有多了一层，callback()。这样就知道怎么处理它了。于是修改后台代码。
+看出来区别了吧，在url中callback传到后台的参数是神马callback就是神马，jsonp比json外面有多了一层，`callback()`。这样就知道怎么处理它了。于是修改后台代码。
 
 后台java代码最终如下：
 

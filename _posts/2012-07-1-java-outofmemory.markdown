@@ -1,11 +1,6 @@
 ---
 layout: post
 title: "OutOfMemoryError详解"
-category: Impression After Reading
-tags:
- - Java
- - OutOfMemoryError
- - JVM
 keywords: JVM,Java,OutOfMemoryError,深入理解Java虚拟机
 ---
 
@@ -75,7 +70,7 @@ Java堆用于存储对象实例，知道这一点就很容易呈现堆溢出，�
   }
 {% endhighlight %}
 
-通过设置-Xms20M -Xmx20M都为20M意在防止堆大小自动扩展，更好的展现溢出。
+通过设置`-Xms20M -Xmx20M`都为20M意在防止堆大小自动扩展，更好的展现溢出。
 执行结果如下：
 
 <div class='center'>
@@ -85,13 +80,15 @@ Java堆用于存储对象实例，知道这一点就很容易呈现堆溢出，�
 <blockquote>Exception in thread "main" java.lang.OutOfMemoryError: Java heap space</blockquote>
 是不是很明显啊，显示堆空间发生OutOfMemoryError。
 
-书中告诉我们发生了OutOfMemoryError后，通常是通过内存影像分析工具对dump出来的堆转储快照进行分析(这就是运行时参数中配置-XX:+HeapDumpOnOutOfMemoryError的原因)，重点是确定是由内存泄露(Memory Leak)还是有内存溢出(Memory Overflow)引起的OutOfMemoryError。如果是内存泄露则找到泄露点，修正；如果确实是合理的存在，那么就增加堆空间。(内存分析这里我也木有做过，工具也木有使用过，在后续章节会有介绍，用熟了后再来一篇)
+书中告诉我们发生了OutOfMemoryError后，通常是通过内存影像分析工具对dump出来的堆转储快照进行分析(这就是运行时参数中配置`-XX:+HeapDumpOnOutOfMemoryError`的原因)，重点是确定是由内存泄露(Memory Leak)还是有内存溢出(Memory Overflow)引起的OutOfMemoryError。如果是内存泄露则找到泄露点，修正；如果确实是合理的存在，那么就增加堆空间。(内存分析这里我也木有做过，工具也木有使用过，在后续章节会有介绍，用熟了后再来一篇)
 
 #####虚拟机栈和本地方法栈溢出
 
-由于在HotSpot虚拟机中并不区分虚拟机栈和本地方法区栈，因此对于HotSpot来说，-Xoss(设置本地方法栈大小)参数是无效的，栈容量由-Xss参数设定。关于虚拟机栈和本地方法区栈，在Java虚拟机规范中描述了两种异常：
-<li>如果线程请求的栈深度大于虚拟机所允许的最大深度，将抛出StackOverflowError异常</li>
-<li>如果虚拟机在扩展栈时无法申请到足够的内存空间，则抛出OutOfMemoryError异常</li>
+由于在HotSpot虚拟机中并不区分虚拟机栈和本地方法区栈，因此对于HotSpot来说，-Xoss(设置本地方法栈大小)参数是无效的，栈容量由`-Xss`参数设定。关于虚拟机栈和本地方法区栈，在Java虚拟机规范中描述了两种异常：
+<ul>
+  <li>如果线程请求的栈深度大于虚拟机所允许的最大深度，将抛出StackOverflowError异常</li>
+  <li>如果虚拟机在扩展栈时无法申请到足够的内存空间，则抛出OutOfMemoryError异常</li>
+</ul>
 
 书中谈到单线程的场景下只能浮现StackOverflowError，那我们就先来看看单线程场景下到底会是什么样子。
 {% highlight java %}
@@ -119,7 +116,7 @@ public class JavaVMStackSOF {
 
 {% endhighlight %}
 
-通过-Xss128k设置虚拟机栈大小为128k，执行结果如下：
+通过`-Xss128k`设置虚拟机栈大小为128k，执行结果如下：
 
 <div class="center">
   <img style="max-width:700px" src='/post_images/2012/07/JavaVMStackSOF.png'/>
@@ -131,7 +128,7 @@ public class JavaVMStackSOF {
 
 #####运行时常量池溢出
 
-向运行时常量池中添加内容最简单的方式就是使用String.intern()方法。由于常量池分配在方法区内，可以通过-XX:PermSize和-XX:MaxPermSize限制方法区的大小，从而间接限制其中常量池的容量。
+向运行时常量池中添加内容最简单的方式就是使用`String.intern()`方法。由于常量池分配在方法区内，可以通过`-XX:PermSize`和`-XX:MaxPermSize`限制方法区的大小，从而间接限制其中常量池的容量。
 
 代码如下：
 
@@ -159,7 +156,7 @@ public class JavaVMStackSOF {
   }
 {% endhighlight %}
 
-这里有个小小的插曲，之前有听说在jdk7中将永久区(方法区和常量池)给干掉了，没有验证过。永久区可以说是在堆之上的一个逻辑分区。如果jdk7中去掉了，那么这个示例应该会抛出堆空间的内存溢出，而非运行时常量池的内存溢出。所以在执行程序的时候分别用了jdk6和jdk7两个版本。多说一句，如果jdk7去掉了方法区，那么-XX:PermSize=10M -XX:MaxPermSize=10M就不起作用了，所以在jdk7环境下运行时，堆大小为jvm默认的大小，要执行一会儿(半小时左右:( ))才能抛出异常。没关系，再配置下运行时参数即可，注意要配置成不可扩展。以图为据：
+这里有个小小的插曲，之前有听说在jdk7中将永久区(方法区和常量池)给干掉了，没有验证过。永久区可以说是在堆之上的一个逻辑分区。如果jdk7中去掉了，那么这个示例应该会抛出堆空间的内存溢出，而非运行时常量池的内存溢出。所以在执行程序的时候分别用了jdk6和jdk7两个版本。多说一句，如果jdk7去掉了方法区，那么`-XX:PermSize=10M -XX:MaxPermSize=10M`就不起作用了，所以在jdk7环境下运行时，堆大小为jvm默认的大小，要执行一会儿(半小时左右:( ))才能抛出异常。没关系，再配置下运行时参数即可，注意要配置成不可扩展。以图为据：
 
 <li>jdk6环境下抛出运行时常量池内存溢出</li>
 

@@ -1,11 +1,6 @@
 ---
 layout: post
 title: "多种垃圾回收器简介"
-category: Impression After Reading
-tags:
- - Java
- - GC
- - JVM
 keywords: JVM,Java,GC,深入理解Java虚拟机
 ---
 
@@ -13,7 +8,7 @@ keywords: JVM,Java,GC,深入理解Java虚拟机
 
 周末了，再来一篇，卡在这一章好久周了，怕欠债太多就木有再往下读。此篇介绍几种垃圾回收器的原理。这里讨论的收集器基于Sun HotSpot虚拟机1.6版，这个版本虚拟机所包含的垃圾回收器如下图：
 <div class="center">
-  <img style="max-width:700px" src='/post_images/2012/07/gcs.png'/>
+  <img src='/post_images/2012/07/gcs.png'/>
 </div>
 
 图中展示了7中作用于不同分代的收集器（包括JDK 1.6_Update14后引入的Early Access版G1收集器），如果两个收集器之间存在连线，就说明他们可以搭配使用。虽然后面的篇幅会对各种垃圾收集器进行比较，但并非为了挑选一个最好的垃圾收集器出来。因为到目前为止还没有最好的收集器出现，更加没有万能的收集器，所以我们选择的只是对聚齐应用最合适的收集器。
@@ -25,24 +20,24 @@ Serial收集器是最基本、历史最悠久的收集器，增加（在JDK 1.3.
 下图展示了Serial/Serial Old收集器的运行过程
 
 <div class="center">
-  <img style="max-width:700px" src='/post_images/2012/07/Serial.jpg'/>
+  <img src='/post_images/2012/07/Serial.jpg'/>
 </div>
 
 虽然Serial收集器需要暂停其他线程来完成垃圾收集，但它仍然是虚拟机运行在Client模式下的默认新生代收集器。它也有着优于其他收集器的地方：简单而高效（与其他收集器的单线程比），对限定单个CPU的环境来说，Serial收集器由于没有线程交互的开销，专心做垃圾收集，自然可以获得最高的单线程收集效率。Serial收集器对于运行在Client模式下的虚拟机来说是一个很好的选择
 
 ####ParNew收集器
 
-ParNew收集器其实就是Serial收集器的多线程版本，除了使用多条线程进行垃圾收集之外，其余行为包括Serial收集器可用的所有控制参数（例如：-XX:SurvivorRatio、-XX:PretenureSizeThreshold、-XX:HandlePromotionFailure等）、收集算法、Stop The World、对象分配规则、回收策略等都与Serial收集器完全一样，实现上着两种收集器也共用了相当多的代码。ParNew收集器的工作过程如下图：
+ParNew收集器其实就是Serial收集器的多线程版本，除了使用多条线程进行垃圾收集之外，其余行为包括Serial收集器可用的所有控制参数（例如：`-XX:SurvivorRatio、-XX:PretenureSizeThreshold、-XX:HandlePromotionFailure`等）、收集算法、Stop The World、对象分配规则、回收策略等都与Serial收集器完全一样，实现上着两种收集器也共用了相当多的代码。ParNew收集器的工作过程如下图：
 
 <div class="center">
-  <img style="max-width:700px" src='/post_images/2012/07/ParNew.jpg'/>
+  <img src='/post_images/2012/07/ParNew.jpg'/>
 </div>
 
 ParNew收集器除了多线程收集外，其他与Serial收集器相比，并没有太多创新之处，但它却是许多运行在Server模式下的虚拟机中首选的新生代收集器，其中一个与性能无关但很重要的原因是，除了Serial收集器外，目前只有它能与CMS收集器配合工作。
 
-不幸的是，CMS作为老年代的收集器，却无法与JDK 1.4.0中已经存在的新生代收集器Parallel Scavenge配合工作，所以在JDK1.5中使用CMS来收集老年代的时候，新生代只能选择ParNew或Serial收集器中的一个。ParNew收集器也是使用-XX:+UseConcMarkSweepGC选项后的默认新生代收集器，也可以使用-XX:+UseParNewGC选项来强制指定它。
+不幸的是，CMS作为老年代的收集器，却无法与JDK 1.4.0中已经存在的新生代收集器Parallel Scavenge配合工作，所以在JDK1.5中使用CMS来收集老年代的时候，新生代只能选择ParNew或Serial收集器中的一个。ParNew收集器也是使用`-XX:+UseConcMarkSweepGC`选项后的默认新生代收集器，也可以使用`-XX:+UseParNewGC`选项来强制指定它。
 
-ParNew收集器在但CPU的环境中绝对不会比有Seiral收集器更好的效果，甚至由于存在线程交互的开销，该收集器在通过超线程技术实现的两个CPU的环境中都不能百分之百地保证超越Serial收集器。当然，随着可以使用的CPU的数量的增加，它对于GC时，系统资源的利用还是很有好处的。它默认开启的收集线程与CPU的数量相同，在CPU非常多的环境下，可以使用-XX:ParallelGCThreads参数来限制垃圾收集的线程数。
+ParNew收集器在但CPU的环境中绝对不会比有Seiral收集器更好的效果，甚至由于存在线程交互的开销，该收集器在通过超线程技术实现的两个CPU的环境中都不能百分之百地保证超越Serial收集器。当然，随着可以使用的CPU的数量的增加，它对于GC时，系统资源的利用还是很有好处的。它默认开启的收集线程与CPU的数量相同，在CPU非常多的环境下，可以使用`-XX:ParallelGCThreads`参数来限制垃圾收集的线程数。
 
 ####Parallel Scavenge收集器
 
@@ -52,20 +47,20 @@ Parallel Scavenge收集器的特点是它的关注点与其他收集器不同，
 
 停顿时间越短就越适合需要与用户交互的程序，良好的相应速度能提升用户的体验；而高吞吐量则可以最高效率地利用CPU时间，尽快地完成程序的运算任务，主要适合在后台运算而不需要太多交互的任务。
 
-Parallel Scavenge收集器提供了两个参数用于精确控制吞吐量，分别是控制最大垃圾收集停顿时间的:-XX:MaxGCPauseMillis参数以及直接设置吞吐量大小的-XX:GCTimeRatio参数。
+Parallel Scavenge收集器提供了两个参数用于精确控制吞吐量，分别是控制最大垃圾收集停顿时间的:`-XX:MaxGCPauseMillis`参数以及直接设置吞吐量大小的`-XX:GCTimeRatio`参数。
 
 MaxGCPauseMillis参数允许的值是一个大于0的毫秒数，收集器将尽力保证内存回收花费的时间不超过设定值。不过不要异想天开地认为把这个参数的值设置的稍微小一点就能是的系统的垃圾收集速度变得更快，GC停顿时间缩短是以牺牲吞吐量和新生代空间换取的：系统把新生代调小一些，收集300MB新生代肯定比收集500MB快吧，这也直接导致垃圾收集发生的更频繁。停顿时间的确在下降，但是吞吐量也降下来了。
 
 GCTimeRatio参数值应当是一个大于0小于100的整数，也就是垃圾收集时间占总时间的比率，相当于是吞吐量的倒数。
 
-由于与吞吐量关系密切，Parallel Scavenge收集器也经常被称为"吞吐量优先"收集器。除了上述两个参数外，Parallel Scavenge收集器还有一个参数-XX:+UseAdaptiveSizePolicy值得关注。这是一个开关参数，当这个参数打开之后，就不需要手工指定新生代的大小了（-Xmn）、Eden与Survivor区的比例（-XX:SurvivorRatio）、晋升老年代对象年龄（-XX：PretenureSizeThreshold）等细节参数了。虚拟机会根据当前系统的运行情况收集性能监控信息，动态调整这些参数以提供最合适的停顿时间或最大的吞吐量，这种调节方式成为GC自适应的调节策略。只需要把基本的内存数据设置好（如-Xmx设置最大堆），然后使用MaxGCPauseMillis参数（更关注最大停顿时间）或GCTimeRatio参数（更关注吞吐量）。给虚拟机设立一个优化目标，那具体细节参数的调整工作就由虚拟机完成了。自适应调节策略也是Parallel Scavenge收集器与ParNew收集器的一个重要区别。
+由于与吞吐量关系密切，Parallel Scavenge收集器也经常被称为"吞吐量优先"收集器。除了上述两个参数外，Parallel Scavenge收集器还有一个参数`-XX:+UseAdaptiveSizePolicy`值得关注。这是一个开关参数，当这个参数打开之后，就不需要手工指定新生代的大小了（-Xmn）、Eden与Survivor区的比例（`-XX:SurvivorRatio`）、晋升老年代对象年龄（`-XX：PretenureSizeThreshold`）等细节参数了。虚拟机会根据当前系统的运行情况收集性能监控信息，动态调整这些参数以提供最合适的停顿时间或最大的吞吐量，这种调节方式成为GC自适应的调节策略。只需要把基本的内存数据设置好（如-Xmx设置最大堆），然后使用MaxGCPauseMillis参数（更关注最大停顿时间）或GCTimeRatio参数（更关注吞吐量）。给虚拟机设立一个优化目标，那具体细节参数的调整工作就由虚拟机完成了。自适应调节策略也是Parallel Scavenge收集器与ParNew收集器的一个重要区别。
 
 ####Serial Old收集器
 
 Serial Old是Serial收集器的老年代版本，它同样是一个单线程收集器，使用"标记-整理"算法。这个收集器的主要意义也是被Client模式下的虚拟机使用。如果再Server模式下，它主要还有两大用途：一个是在JDK 1.5及之前的版本中与Parallel Scavenge收集器搭配使用，另外一个就是作为CMS收集器的后备预案，在并发收集发生Concurrent Mode Failure的时候使用。Serial Old收集器的工作过程如下：
 
 <div class="center">
-  <img style="max-width:700px" src='/post_images/2012/07/SerialOld.jpg'/>
+  <img src='/post_images/2012/07/SerialOld.jpg'/>
 </div>
 
 ####Parallel Old收集器
@@ -75,7 +70,7 @@ Parallel Old是Parallel Scavenge收集器的老年代版本，使用多线程和
 直到Parallel Old收集器出现后，"吞吐量优先"收集器终于有了比较名副其实的应用组合，在注重吞吐量及CPU资源敏感的场合，都可以优先考虑Parallel Scavenge加Parallel Old收集器。Parallel Old收集器的工作过程如下图：
 
 <div class="center">
-  <img style="max-width:700px" src='/post_images/2012/07/ParallelOld.jpg'/>
+  <img src='/post_images/2012/07/ParallelOld.jpg'/>
 </div>
 
 ####CMS收集器
@@ -84,24 +79,28 @@ CMS（Concurrent Mark Sweep）收集器是一种以获取最短回收停顿时�
 
 从名字（包含Mark Sweep）上就可以看出CMS收集器是基于标记-清除算法实现的，它的运作过程相对于前面几种收集器来说要更复杂一些，整个过程分为4个步骤，包括：
 
-<li>初始化标记（CMS initial mark）</li>
-<li>并发标记（CMS concurrent mark）</li>
-<li>重新标记（CMS remark）</li>
-<li>并发清除（CMS concurrent sweep）</li>
+<ul>
+	<li>初始化标记（CMS initial mark）</li>
+	<li>并发标记（CMS concurrent mark）</li>
+	<li>重新标记（CMS remark）</li>
+	<li>并发清除（CMS concurrent sweep）</li>
+</ul>
 
 其中初始标记、重新标记着两个步骤仍然需要"Stop The World"。初始标记仅仅只是标记下GC Roots能直接关联到的对象，速度很快，并发标记阶段就是进行GC Roots Tracing的过程，而重新标记阶段则是为了修正并发标记期间，因用户程序继续运作而导致标记产生变动的那一部分的标记记录，这个阶段的停顿时间一般会比初始标记阶段稍长一些，但比并发标记的时间短。
 
 由于整个过程中耗时最长的并发标记和并发清除过程中，收集器线程都可以与用户线程一起工作，所以说总体上来说，CMS收集器的内存回收过程是与一起并发执行的。CMS收集器的运作步骤中并发和需要停顿的时间如下图：
 
 <div class="center">
-  <img style="max-width:700px" src='/post_images/2012/07/CMS.jpg'/>
+  <img src='/post_images/2012/07/CMS.jpg'/>
 </div>
 
 CMS是一款优秀的收集器，它的最主要有点在名字上已经体现出来了：并发收集、低停顿，Sun的一些官方文档里面也称之为并发低停顿收集器。但是CMS还远达不到完美的程度，它有以下三个显著的缺点：
 
-<li>CMS收集器对CPU资源非常敏感。其实面向并发设计的程序都对CPU资源比较敏感。在并发阶段，它虽然不会导致用户线程停顿，但是会因为占用了一部分线程（或者说CPU资源）而导致应用程序变慢，总吞吐量会降低。</li>
-<li>CMS收集器无法处理浮动垃圾，可能出现Concurrent Mode Failure 失败而导致另一次Full GC的产生。由于CMS并发清理阶段用户线程还在运行着，伴随程序的运行自然还会有新的垃圾不断产生，这一部分出现在标记过程之后，CMS无法在本次搜集中处理掉它们，治好留待下一次GC时再将其清理掉。这一部分垃圾就称为浮动垃圾。也是由于在垃圾收集阶段用户线程还需要运行，即还需要预留足够的内存空间给用户线程使用，因此CMS收集器不能像其他收集器那样等到老年代几乎完全被填满再进行收集，需要预留一部分空间提供并发收集时的程序使用。</li>
-<li>还有最后一个缺点，CMS是一款基于标记-清除算法实现的收集器，所以会产生大量的空间碎片。</li>
+<ul>
+	<li>CMS收集器对CPU资源非常敏感。其实面向并发设计的程序都对CPU资源比较敏感。在并发阶段，它虽然不会导致用户线程停顿，但是会因为占用了一部分线程（或者说CPU资源）而导致应用程序变慢，总吞吐量会降低。</li>
+	<li>CMS收集器无法处理浮动垃圾，可能出现Concurrent Mode Failure 失败而导致另一次Full GC的产生。由于CMS并发清理阶段用户线程还在运行着，伴随程序的运行自然还会有新的垃圾不断产生，这一部分出现在标记过程之后，CMS无法在本次搜集中处理掉它们，治好留待下一次GC时再将其清理掉。这一部分垃圾就称为浮动垃圾。也是由于在垃圾收集阶段用户线程还需要运行，即还需要预留足够的内存空间给用户线程使用，因此CMS收集器不能像其他收集器那样等到老年代几乎完全被填满再进行收集，需要预留一部分空间提供并发收集时的程序使用。</li>
+	<li>还有最后一个缺点，CMS是一款基于标记-清除算法实现的收集器，所以会产生大量的空间碎片。</li>
+</ul>
 
 ####G1收集器
 

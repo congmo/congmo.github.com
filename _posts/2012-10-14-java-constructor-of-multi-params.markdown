@@ -1,10 +1,6 @@
 ---
 layout: post
 title: "多参数构造函数优化"
-category: Java
-tags:
- - Java
- - Builder
 keywords: Java,构造函数,Builder设计模式
 ---
 Just say nothing, show you the code!

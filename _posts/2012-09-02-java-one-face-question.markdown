@@ -1,9 +1,6 @@
 ---
 layout: post
 title: "一道面试题的思考"
-category: Interview Summary
-tags:
- - Java
 keywords: List,Java,数组，排序，面试
 ---
 
@@ -231,6 +228,7 @@ public class OneFaceQuestionV3 {
 首先结论是不论哪种方式都可以满足题目。
 
 然后我们再来比较下三种实现方式：
+<ul>
 <li>
 第一种，第二种方式要满足题目都有一个小小的陷阱，也就是面试官要考察的地方，就是每次List删除元素后length都会改变。所以都需要对第二个删除的元素的索引值要减1。
 </li>
@@ -242,6 +240,7 @@ public class OneFaceQuestionV3 {
 <li>
 方式一与方式三效率差不多。由于元素数量很少，所以O(n)与O(n*lgn)没有太大的区别。
 </li>
+</ul>
 ####补充
 <blockquote>
 	昨天在地铁上又想起来这道面试题，突然想起来第二种方式有个小小的bug，在标记完索引值之后，比较两个索引值的大小，先删除索引值大的，然后再删除小的，就不需要移动索引值了。代码片段如下：

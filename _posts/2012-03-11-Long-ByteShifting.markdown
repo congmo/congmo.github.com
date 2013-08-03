@@ -1,10 +1,6 @@
 ---
 layout: post
 title: "java.lang.Long详解之三：大显神通的位移运算"
-category: Java
-tags:
- - Java
- - Long
 keywords: Long,Java,详解,缓存,位移
 ---
 
@@ -19,7 +15,7 @@ public static int signum(long i) {
 }
 {% endhighlight %}
 
-这个函数作用就是返回参数i的符号，如果返回-1则是负数，如果返回0则是0，如果返回1则是正数。算法就是(int) ((i &gt;&gt; 63) | (-i &gt;&gt;&gt; 63))，如果是正数的话i有符号右移63位后为0，-i无符号右移63位之后结果为1，或操作之后结果就是1.如果i为负数，那么有符号右移63位后就变成了1，然后-i无符号右移63位后就只剩下符号位，最后做或(|)操作结果就是-1. 如果参数i为0，那么移位后结果就是0.
+这个函数作用就是返回参数i的符号，如果返回-1则是负数，如果返回0则是0，如果返回1则是正数。算法就是`(int) ((i >> 63) | (-i >>> 63))`，如果是正数的话i有符号右移63位后为0，-i无符号右移63位之后结果为1，或操作之后结果就是1.如果i为负数，那么有符号右移63位后就变成了1，然后-i无符号右移63位后就只剩下符号位，最后做或(|)操作结果就是-1. 如果参数i为0，那么移位后结果就是0.
 {% highlight java %}
 System.out.println(Long.signum(100L));
 System.out.println(Long.signum(0L));
@@ -41,9 +37,9 @@ public static long rotateRight(long i, int distance) {
 }
 {% endhighlight %}
 
-实现的代码量可以说已经精简到最少了，有一点要注意的是，循环移位时，参数distance可以接受负数，当distance为负数时，这个等式是成立的，rotateLeft(i, distance) = rotateRight(i, -distance)。这个方法中有两点值得借鉴的，第一从整体上讲循环移位的实现方式；第二是distance与-distance的巧妙运用。
+实现的代码量可以说已经精简到最少了，有一点要注意的是，循环移位时，参数distance可以接受负数，当distance为负数时，这个等式是成立的，`rotateLeft(i, distance) = rotateRight(i, -distance)`。这个方法中有两点值得借鉴的，第一从整体上讲循环移位的实现方式；第二是distance与-distance的巧妙运用。
 
-就拿循环左移先来说说第二点吧，前置条件，我们首先假设distance大于0，起先我是很不理解i &gt;&gt;&gt; -distance的，后来在stackoverflow上发问，有人给出了解释，在移位的时候，如果distance小于0，会根据被移位数的长度进行转换。就比如说这里我们对long进行移位，那么-distance就会被转换成(64 + distance)(注，这里的distance是小于0的)。这样的话，如果distance大于0时，(i &lt;&lt; distance) | (i &gt;&gt;&gt; -distance);就会被转化成(i &lt;&lt; distance) | (i &gt;&gt;&gt; 64 + distance);
+就拿循环左移先来说说第二点吧，前置条件，我们首先假设distance大于0，起先我是很不理解`i >>> -distance`的，后来在stackoverflow上发问，有人给出了解释，在移位的时候，如果distance小于0，会根据被移位数的长度进行转换。就比如说这里我们对long进行移位，那么-distance就会被转换成`(64 + distance)`(注，这里的distance是小于0的)。这样的话，如果distance大于0时，`(i << distance) | (i >>> -distance);`就会被转化成`(i << distance) | (i >>> 64 + distance);`
 
 清楚了第二点，那么第一点也就不难理解了。用一幅图来解释循环左移。
 <div class='center'>
@@ -51,7 +47,7 @@ public static long rotateRight(long i, int distance) {
 </div>
 在distance大于0的前提下，先左移distance位，然后再右移64-distance，最终用或运算相加，就是循环移位的结果。图中为了省事儿用了8位做了个演示，先左移3位，然后右移(8-3)位，或运算之后就是结果啦。关于-distance在stackoverflow上的提问在<a href="http://stackoverflow.com/questions/9513074/how-does-i-distance-work">这里</a>。
 
-下面是个更给力的方法-reverse(long i)，可以说就是高效率的化身。
+下面是个更给力的方法-`reverse(long i)`，可以说就是高效率的化身。
 {% highlight java %}
 public static long reverse(long i) {
     // HD, Figure 7-1
@@ -64,7 +60,7 @@ public static long reverse(long i) {
 }
 {% endhighlight %}
 
-从整体上说，这个reverse方法集移位与二分算法于一身，堪称经典。
+从整体上说，这个`reverse`方法集移位与二分算法于一身，堪称经典。
 第一步以单位为单位，奇偶位交换
 第二步以两位为单位，完成前后两位的交换。
 第三步以四位为单位，完成前后四位的交换。

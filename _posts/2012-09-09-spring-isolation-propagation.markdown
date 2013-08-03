@@ -1,10 +1,6 @@
 ---
 layout: post
 title: "Spring 声明式事务的隔离级别与传播机制"
-category: Spring
-tags:
- - Java
- - Spring
 keywords: Java,Spring,Isolation,Propagation,传播机制,隔离级别
 ---
 
@@ -25,7 +21,7 @@ keywords: Java,Spring,Isolation,Propagation,传播机制,隔离级别
   后来想想那天他那么问我完全可能是一个坑啊，因为交谈的过程中挖过至少两个坑了。再者说，Spring要向下兼容的，如果少了怎么处理呢？当然这两点都是我自己的猜测。
 </blockquote>
 
-###声明式事务
+####声明式事务
 
 在Spring中，声明式事务是用事务参数来定义的。一个事务参数就是对事务策略应该如何应用到某个方法的一段描述，如下图所示一个事务参数共有5个方面组成：
 
@@ -34,7 +30,7 @@ keywords: Java,Spring,Isolation,Propagation,传播机制,隔离级别
 </div>
 
 
-###传播行为
+####传播行为
 
 事务的第一个方面是传播行为。传播行为定义关于客户端和被调用方法的事务边界。Spring定义了7中传播行为。
 <table>
@@ -78,12 +74,13 @@ keywords: Java,Spring,Isolation,Propagation,传播机制,隔离级别
 
 传播规则回答了这样一个问题，就是一个新的事务应该被启动还是被挂起，或者是一个方法是否应该在事务性上下文中运行。
 
-###隔离级别
+####隔离级别
 
 声明式事务的第二个方面是隔离级别。隔离级别定义一个事务可能受其他并发事务活动活动影响的程度。另一种考虑一个事务的隔离级别的方式，是把它想象为那个事务对于事物处理数据的自私程度。
 
 在一个典型的应用程序中，多个事务同时运行，经常会为了完成他们的工作而操作同一个数据。并发虽然是必需的，但是会导致一下问题：
 
+<ul>
 <li>
   脏读（Dirty read）-- 脏读发生在一个事务读取了被另一个事务改写但尚未提交的数据时。如果这些改变在稍后被回滚了，那么第一个事务读取的数据就会是无效的。
 </li>
@@ -95,6 +92,7 @@ keywords: Java,Spring,Isolation,Propagation,传播机制,隔离级别
 <li>
   幻影读（Phantom reads）-- 幻影读和不可重复读相似。当一个事务（T1）读取几行记录后，另一个并发事务（T2）插入了一些记录时，幻影读就发生了。在后来的查询中，第一个事务（T1）就会发现一些原来没有的额外记录。
 </li>
+</ul>
 
 在理想状态下，事务之间将完全隔离，从而可以防止这些问题发生。然而，完全隔离会影响性能，因为隔离经常牵扯到锁定在数据库中的记录（而且有时是锁定完整的数据表）。侵占性的锁定会阻碍并发，要求事务相互等待来完成工作。
 
@@ -131,13 +129,13 @@ keywords: Java,Spring,Isolation,Propagation,传播机制,隔离级别
   </tbody>
 </table>
 
-###只读
+####只读
 
 声明式事务的第三个特性是它是否是一个只读事务。如果一个事务只对后端数据库执行读操作，那么该数据库就可能利用那个事务的只读特性，采取某些优化措施。通过把一个事务声明为只读，可以给后端数据库一个机会来应用那些它认为合适的优化措施。由于只读的优化措施是在一个事务启动时由后端数据库实施的，因此，只有对于那些具有可能启动一个新事务的传播行为（PROPAGATION_REQUIRES_NEW、PROPAGATION_REQUIRED、ROPAGATION_NESTED）的方法来说，将事务声明为只读才有意义。
 
 此外，如果使用Hibernate作为持久化机制，那么把一个事务声明为只读，将使Hibernate的flush模式被设置为FLUSH_NEVER。这就告诉Hibernate避免和数据库进行不必要的对象同步，从而把所有更新延迟到事务的结束。
 
-###事务超时
+####事务超时
 
 为了使一个应用程序很好地执行，它的事务不能运行太长时间。因此，声明式事务的下一个特性就是它的超时。
 
@@ -145,13 +143,13 @@ keywords: Java,Spring,Isolation,Propagation,传播机制,隔离级别
 
 由于超时时钟在一个事务启动的时候开始的，因此，只有对于那些具有可能启动一个新事务的传播行为（PROPAGATION_REQUIRES_NEW、PROPAGATION_REQUIRED、ROPAGATION_NESTED）的方法来说，声明事务超时才有意义。
 
-###回滚规则
+####回滚规则
 
 事务五边形的对后一个边是一组规则，它们定义哪些异常引起回滚，哪些不引起。在默认设置下，事务只在出现运行时异常（runtime exception）时回滚，而在出现受检查异常（checked exception）时不回滚（这一行为和EJB中的回滚行为是一致的）。
 
 不过，也可以声明在出现特定受检查异常时像运行时异常一样回滚。同样，也可以声明一个事务在出现特定的异常时不回滚，即使那些异常是运行时一场。
 
-###扩展阅读
+####扩展阅读
 
 标题是只有事务的隔离级别和传播机制，却顺带这把声明式事务的五个特性都讲述了一遍。：）
 
@@ -419,25 +417,19 @@ public interface TransactionDefinition {
 {% endhighlight %}
 
 还是觉得不安心，发两张图证明隔离级别和传播机制：
-<li>eclipse中给出的关于传播机制的智能提示截图</li>
-<div class="center">
-  <img src="/post_images/2012/09/propagation.png">
-</div>
-<li>eclipse中给出的关于隔离级别的智能提示截图</li>
-<div class="center">
-  <img src="/post_images/2012/09/isolation.png">
-</div>
+<ul>
+  <li>eclipse中给出的关于传播机制的智能提示截图
+    <div class="center">
+      <img src="/post_images/2012/09/propagation.png">
+    </div>
+  </li>
+  <li>eclipse中给出的关于隔离级别的智能提示截图
+    <div class="center">
+      <img src="/post_images/2012/09/isolation.png">
+    </div>
+  </li>
+</ul>
 
 <style type="text/css">
-  table td,th{
-    border-right: 1.0pt solid;
-    border-bottom: 1.0pt solid;
-  }
-  table{
-    border-collapse: collapse;
-    border-top: 1.0pt solid;
-    border-bottom: 1.0pt solid;
-    border-left: 1.0pt solid;
-    border-right: 1.0pt solid;
-  }
+  
 </style>

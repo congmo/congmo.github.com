@@ -1,11 +1,6 @@
 ---
 layout: post
 title: "对象之死亡历程"
-category: Impression After Reading
-tags:
- - Java
- - GC
- - JVM
 keywords: JVM,Java,GC,深入理解Java虚拟机
 ---
 

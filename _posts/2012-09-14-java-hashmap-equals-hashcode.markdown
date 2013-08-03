@@ -1,9 +1,6 @@
 ---
 layout: post
 title: "HashMap之equals与hashCode小陷阱"
-category: Java
-tags:
- - Java
 keywords: Java,HashMap,equals,hashCode,不执行equals
 ---
 
@@ -76,9 +73,9 @@ public class Name {
 
 从if条件上看，是一个短路与，首先要判断两个对象的hash值是否相等。如果相等才进行后续的判断。或者换一个说法，在HashMap中只有两个对象的hash值相等的前提下才会执行equals方法的逻辑。关于这一点，有两个佐证。
 
-####在stackoverflow上找到一篇关于HashMap不执行equals方法的文章，回答中有明确给出这样的答案。[Java HashMap.containsKey() doesn't call equals()](http://stackoverflow.com/questions/4611764/java-hashmap-containskey-doesnt-call-equals)
+<b>在stackoverflow上找到一篇关于HashMap不执行equals方法的文章，回答中有明确给出这样的答案。[Java HashMap.containsKey() doesn't call equals()](http://stackoverflow.com/questions/4611764/java-hashmap-containskey-doesnt-call-equals)</b>
 
-####自己编程验证。
+<b>自己编程验证。</b>
 
 在文章开头的基础上，做了点儿改进，输出两个对象的hash值，并且在equals方法中打印一行文字。如下：
 
@@ -211,5 +208,5 @@ public class Name {
 
 同样从结果中可以看出：在hash值相等的情况下，equals方法也执行了，HashMap的containsKey方法也像预想的那样起作用了。
 
-###结论：
+####结论：
 在使用HashSet（contains也是调用HashMap中的方法）、HashMap等集合时，如果用到contains系列方法时，记得需同时重写equals与hashCode方法。
