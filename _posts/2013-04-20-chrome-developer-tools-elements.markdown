@@ -122,4 +122,19 @@ CSS的层叠特性使得The cascading nature of CSS makes the Styles browser in 
   <img src="/post_images/2013/4/elements_event_listeners_gear.png">
 </div>
 
-`Event Listeners`面板中显示所有捕获和冒泡阶段的所有监听事件。
+`Event Listeners`面板中显示所有捕获和冒泡阶段的所有监听事件，这样可以提供很多准确和有用的信息。事件监听器按类型分组，如果节点上同时注册了双击和mouseover事件它们就会被分配到不同的组中。也可以使用齿轮装的按钮（我使用的chrome是漏斗型的按钮）过滤当前选中或者全部的事件流。
+
+####Search
+在搜索框中键入`document.write`，会看见所有结果：
+
+<div class="center">
+  <img src="/post_images/2013/4/elements_search.png">
+</div>
+
+元素面板除了文本搜索还支持XPath和CSS选择器搜索，所有的搜索结果都会在DOM树上高亮显示，第一个结果会被选中且高亮显示。
+
+
+原文链接：
+
+<a href="https://developers.google.com/chrome-developer-tools/docs/elements" target="_blank">https://developers.google.com/chrome-developer-tools/docs/elements</a>
+
