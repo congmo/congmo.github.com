@@ -309,6 +309,7 @@ p
 	webkit-hyphenate-limit-after: 1;
 	webkit-hyphenate-limit-before: 3;
 	webkit-hyphens: auto;
+	line-height: 28px;
 }
 ul,ol
 {
@@ -1473,7 +1474,7 @@ aside a,aside a:visited
 	}
 	.blog article p
 	{
-		margin-bottom: 1em;
+		margin-bottom: 2em;
 	}
 	.sub p+p
 	{
