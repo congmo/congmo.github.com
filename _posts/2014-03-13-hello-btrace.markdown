@@ -19,12 +19,12 @@ keywords: Java,BTrace,Unsafe,多jar依赖
 
 <blockquote>
     ➜  bin  btrace<br/>
-        Usage: btrace &lt;options&gt; &lt;pid&lt;btrace source or .class file&lt; &lt;btrace arguments&lt;<br/>
+        Usage: btrace &lt;options&gt; &lt;pid&gt; &lt;btrace source or .class file&gt; &lt;btrace arguments&gt;<br/>
         where possible options include:<br/>
-            -classpath &lt;path&lt; Specify where to find user class files and annotation processors<br/>
-            -cp &lt;path&lt;        Specify where to find user class files and annotation processors<br/>
-            -I &lt;path&lt;         Specify where to find include files<br/>
-            -p &lt;port&lt;         Specify port to which the btrace agent listens for clients<br/>
+            -classpath &lt;path&gt; Specify where to find user class files and annotation processors<br/>
+            -cp &lt;path&gt;        Specify where to find user class files and annotation processors<br/>
+            -I &lt;path&gt;         Specify where to find include files<br/>
+            -p &lt;port&gt;         Specify port to which the btrace agent listens for clients<br/>
 </blockquote>
 
 在决定使用`BTrace`前，楼主还是稍稍做了点其他的努力，尝试了一把`HouseMD`，不过安装过程中我放弃了，放弃它有两点原因：第一它是`scala`实现的，楼主又比较笨，准备环境嫌太麻烦；其次如果想在线上使用它还是有成本的，而不像`BTrace`，基于`java`环境，无需额外的准备工作。
