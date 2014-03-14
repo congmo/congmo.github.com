@@ -52,7 +52,7 @@ keywords: Java,BTrace,Unsafe,多jar依赖
 `safe mode`下只能使用`BTrace`内置的功能，`jdk`相关的功能都不能使用，否则编译就不通过。`BTraceUtils`就提供了诸多静态方法可供使用，比如`str()`，它会调用目标对象的`toString`方法。然后我就踩了个坑。
 
 先看两个例子：
-{% hightlight java %}
+{% highlight java %}
 @BTrace
 public class TestBtrace {
     
@@ -81,7 +81,7 @@ public class TestBtrace {
 因为楼主重写了`ProductInfo`对象的`toString()`方法，所以输出了对象的属性值。从第一个示例可以得出结论：重写`toString()`方法起到了作用。
 
 示例二：
-{% hightlight java %}
+{% highlight java %}
 @BTrace
 public class TestBtrace {
     
@@ -121,7 +121,7 @@ public class TestBtrace {
 
 大家注意到了没，只有被`BootStrapClassLoader`加载的类实例的`toString()`方法才会被`BTrace script`调用，其他情况使用`Object`的`toString()`方法，非重写后的。楼主顿觉真气止不住的涌来，原来如此啊。第一个示例的返回值类型是个`Set`自然会由系统类加载器加载，其范型也沾了点金，同样被加载了；而实例二中`Result`是自定义对象，由应用类加载器加载，待遇自然而然就不同喽。这样也就解释了最初的疑问，完美解决。楼主可不是一般人，刨根问底能手中的能手，哼，遂翻出我大`BTrace`源码一探究竟。
 
-{% hightlight java %}
+{% highlight java %}
 /**
  * Returns a string representation of the object. In general, the
  * &lt;code&gt;toString&lt;/code&gt; method returns a string that
