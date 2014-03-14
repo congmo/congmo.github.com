@@ -8,8 +8,11 @@ keywords: Java,BTrace,Unsafe,多jar依赖
 ####`Linux`安装`BTrace`
 
 首先，<a href="https://kenai.com/projects/btrace/downloads/directory/releases" target="_blank">这里</a>下载`BTrace`的release版本
+
 其次，直接解压到相应的目录下`tar -xvf btrace-bin.tar.gz`
+
 然后，配置`BTRACE_HOME`，楼主使用的是zsh，所以编辑`~/.zshrc`文件，在文件末尾添加`export BTRCE_HOME=/export/servers/btrace`，然后在将`BTRACE_HOME`添加到`PATH`中。`export PATH=$PATH:$HADOOP_HOME/bin:$BTRCE_HOME/bin:$SBT_HOME/bin:$MAVEN_HOME/bin:$ANT_HOME/bin`
+
 最终，还有可能需要修改`btrace`脚本中的`JAVA_HOME`，这个视情况而定。
 
 至此，`BTrace`就安装完毕，如何验证是否安装配置成功呢？终端输入`btrace`命令，输出如下提示及表示安装配置成功：
