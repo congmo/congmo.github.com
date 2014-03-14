@@ -5,12 +5,12 @@ keywords: Java,BTrace,Unsafe,多jar依赖
 ---
 很久之前就有听说过`BTrace`这样一个神奇的工具存在，一直很懒，没有实际使用过。最近总被测试环境以及预发布环境数据困扰着，今天需要通过log打印这个接口的数据验证一下功能，明天需要另外一个接口的返回值，入参。更悲剧的是每到下班时间这样的事儿就如潮水一般涌来，这让我情何以堪啊，完全不能忍啊。受够了这样重复的打log，然后还要重新部署测试环境，重启服务，`tail`日志文件。如果是预发布就更悲催了，还要求运维大哥帮帮忙，覆盖个包，还的买个小饮料什么的。就这样，决定尝试`BTrace`这货，试图从这种不能忍的工作中解脱出来。目的比较单一，就是方法执行过程中的入参与出参，没有涉及到使用`BTrace`打印内存以及堆栈信息等。
 
-###`Linux`安装`BTrace`
+####`Linux`安装`BTrace`
 
-1. <a href="https://kenai.com/projects/btrace/downloads/directory/releases" target="_blank">这里</a>下载`BTrace`的release版本
-2. 直接解压到相应的目录下`tar -xvf btrace-bin.tar.gz`
-3. 配置`BTRACE_HOME`，楼主使用的是zsh，所以编辑`~/.zshrc`文件，在文件末尾添加`export BTRCE_HOME=/export/servers/btrace`，然后在将`BTRACE_HOME`添加到`PATH`中。`export PATH=$PATH:$HADOOP_HOME/bin:$BTRCE_HOME/bin:$SBT_HOME/bin:$MAVEN_HOME/bin:$ANT_HOME/bin`
-4. 还有可能需要修改`btrace`脚本中的`JAVA_HOME`，这个视情况而定。
+首先，<a href="https://kenai.com/projects/btrace/downloads/directory/releases" target="_blank">这里</a>下载`BTrace`的release版本
+其次，直接解压到相应的目录下`tar -xvf btrace-bin.tar.gz`
+然后，配置`BTRACE_HOME`，楼主使用的是zsh，所以编辑`~/.zshrc`文件，在文件末尾添加`export BTRCE_HOME=/export/servers/btrace`，然后在将`BTRACE_HOME`添加到`PATH`中。`export PATH=$PATH:$HADOOP_HOME/bin:$BTRCE_HOME/bin:$SBT_HOME/bin:$MAVEN_HOME/bin:$ANT_HOME/bin`
+最终，还有可能需要修改`btrace`脚本中的`JAVA_HOME`，这个视情况而定。
 
 至此，`BTrace`就安装完毕，如何验证是否安装配置成功呢？终端输入`btrace`命令，输出如下提示及表示安装配置成功：
 
@@ -29,7 +29,7 @@ keywords: Java,BTrace,Unsafe,多jar依赖
 `BTrace`官方是这样描述的：
 
 <blockquote>
-    &lt;b&gt;BTrace&lt;/b&gt; is a safe, dynamic tracing tool for Java. BTrace works by dynamically (bytecode) instrumenting classes of a running Java program. BTrace inserts tracing actions into the classes of a running Java program and hotswaps the traced program classes.
+    <b>BTrace</b> is a safe, dynamic tracing tool for Java. BTrace works by dynamically (bytecode) instrumenting classes of a running Java program. BTrace inserts tracing actions into the classes of a running Java program and hotswaps the traced program classes.
 </blockquote>
 
 `BTrace`自称是安全的，这个安全就带来了诸多的限制：
@@ -47,7 +47,7 @@ keywords: Java,BTrace,Unsafe,多jar依赖
 
 下面是本文的重点，开始踩坑！
 
-###坑一：toString
+####坑一：toString
 
 `safe mode`下只能使用`BTrace`内置的功能，`jdk`相关的功能都不能使用，否则编译就不通过。`BTraceUtils`就提供了诸多静态方法可供使用，比如`str()`，它会调用目标对象的`toString`方法。然后我就踩了个坑。
 
@@ -154,7 +154,7 @@ public static String str(Object obj) {
 
 至此，真相大白了。可是仍然没有解决问题啊？我需要输出业务实体的字段值！！好吧，试试`unsafe mode`吧。然后，然后就继续踩坑。
 
-###坑二：unsafe mode
+####坑二：unsafe mode
 
 `safe mode`有太多的限制了，这样楼主同样不能忍。不过也还是有他的道理的，在可以保证`safe`的前提下楼主喜欢`unsafe mode`思米达。不用再畏首畏尾了，木有那么多限制自然顺风顺水。结果苦逼的楼主在开启`unsafe mode`时候给跪了。
 
