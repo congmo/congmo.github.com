@@ -12,15 +12,15 @@ keywords: Java,JRockit,Oracle
 
 There are main types of command-line options to JRockit--system properties, standardized options(`-X flags`), and non-standard ones(`-XX flags`)
 
-######System properties
+**System properties**
 
 Arguments starting with `-D` are interpreted as directive to set a system property.
 
-######Standardized options
+**Standardized options**
 
 Configuration settings for the JVM typically start with `-X` for settings that are commonly supported across vendors.
 
-######Non-stdndart options
+**Non-stdndart options**
 
 Vendor-sepecific configuration options are usually prefixed with `-XX`.These options should be treaded as potentially unsupported and subject to change without notice.If any JVM setup depends on `-XX-prefixed` options,those flags should be removed or ported before an application is started on a JVM from a different vendor.
 
@@ -69,7 +69,7 @@ Naturally, a native code version of a program executes orders of magnitude faste
     </p>
 </blockquote>
 
-######Stack machine
+**Stack machine**
 
 The Java Virtual Machine is a stack machine. All bytecode operations, with few exceptions, are computed on an evaluation stack by popping operands from the stack, executing the operation and pushing the result back to the stack.
 
@@ -89,17 +89,17 @@ An operation in bytecode is encoded by just one byte, so Java supports up to 256
     </p>
 </blockquote>
 
-######Bytecode format
+**Bytecode format**
 
 Slot 0 in an instance method is reserved for this, according to the JVM specification, and this particular example is an instance method.
 
-######Operations and operands
+**Operations and operands**
 
 As we see, Java bytecode is a relatively compack format, the previous method only being four bytes in length(a fraction of the source code mass). Operations are always encoded with one byte for the opcode, followed by an optional number of operations of variable length. Typically, a bytecode instruction complete with operands is just one to three bytes.
 
 Other more complex constructs such as tables switches also exist in bytecocde with an entire jump table of offsets following the opcode in the bytecode.
 
-######The constant pool
+**The constant pool**
 
 A program requires data as well as code. Data is used for operands. The operand data for a bytecode program can, as we have seen, be kept in the bytecode instruction itself. But this is only true when the data is small enough, or commonly used(such as the constant 0).
 
@@ -107,7 +107,7 @@ Larger chunks of data, such as string constants or large numbers,are stored in a
 
 #####Code generation strategies
 
-######Pure bytecode interpretation
+**Pure bytecode interpretation**
 
 Early JVMs contained only simple bytecode interpreters as a means of executing Java code. To simplify this a little, a bytecode interpreter is just a main function with a large switch construct on the possible opcodes. The function is called with a state representing the contents of the Java evaluation stack and the local variables. Interpreting a bytecode operation uses this state as input and output. All in all, the fundamentals of a working interpreter shouldn't amount to more than a couple of thousand lines of code.
 
@@ -139,7 +139,7 @@ Naturally, there is a significant performance penalty to a purely interpreted la
     当然，相比于执行编译为本地代码的方式，纯解释执行的性能很差。
 </blockquote>
 
-######Static compilation
+**Static compilation**
 
 Usually, an entire Java program was compiled into native code before execution. This is known as ahead-of-time compilation.
 
@@ -147,7 +147,7 @@ The obvious disadvantage of static compilation for Java is that the benefits of 
 
 Another disadvantage is that the automatic memory management of Java has to be handled more or less explicitly, leading to limited implementations with scalability issues.
 
-######Total JIT compilation
+**Total JIT compilation**
 
 Another way to speed up bytecode execution is to not use an interpreter at all, and JIT compile all Java methods to native code immediately when they are first encountered. The compilation takes place at runtime, inside the JVM, not ahead-of-time.
 
@@ -177,7 +177,7 @@ JRockit is an example of a JVM that uses an advanced variant of total JIT compil
     </p>
 </blockquote>
 
-######Mixed mode interpretation
+**Mixed mode interpretation**
 
 The first workable solution that was proposed, that would both increase execution speed and not compromise the dynamic nature of Java, was mixed mode interpretation.
 
