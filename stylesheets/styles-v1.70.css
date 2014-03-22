@@ -1964,6 +1964,11 @@ aside a,aside a:visited
 		margin-top: 3.5em;
 		width: 630px;
 	}
+	.sub #post_articles
+	{
+		margin-top: 3.5em;
+		width: 100%;	
+	}
 	.entry .articles
 	{
 		margin-top: 0;
