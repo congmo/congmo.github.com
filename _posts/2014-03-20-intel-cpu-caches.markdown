@@ -96,6 +96,15 @@ An effective memory address is split (MSB to LSB) into the tag, the index and th
 
 最后要吐槽下GFW，这混蛋太恶心了，简直恶心透顶了，让善良的楼主心烦意乱。楼主最开始使用鲜果订阅博客，实在忍受不了那禽兽一般的排版后，转战Digg，结果可想而知，就被墙了，知道嘛，混蛋！刚开始楼主还蒙在鼓里，不知道为什么Digg怎么也登录不上（通过google帐号登录），暗自感叹这东西太垃圾了，遂Google了一下，看起来像是被墙了。楼主使用的是<a href="https://www.grjsq.me/" target="_blank">Green</a>免费200m流量的vpn，这家vpn挺不错的，那个大名鼎鼎的池建强大大也推荐过，愿意为他做广告（真正的原因是楼主的博客流量很低，无所谓。哈哈）。接通了vpn，地球引力就正常了，一切都通畅了。万恶的GFW，fuck you！
 
+**EDIT**
+
+刚刚在洗完的时候突然想起来自己犯了一个愚蠢的错误，竟然将原文链接忘记注明了。罪过，罪过。
+
+原文链接：
+
+<a href="http://duartes.org/gustavo/blog/post/intel-cpu-caches/" target="_blank">http://duartes.org/gustavo/blog/post/intel-cpu-caches/</a>
+
+
 参考资料：
 
 <a href="http://en.wikipedia.org/wiki/CPU_cache" target="_blank">http://en.wikipedia.org/wiki/CPU_cache</a>
